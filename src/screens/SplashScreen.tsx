@@ -57,7 +57,7 @@ export default function SplashScreen() {
             <img 
               alt="Kudo Kudo Logo" 
               className="object-contain w-full h-full" 
-              src="./logo_upscayl_4x_upscayl-standard-4x.png" 
+              src="/logo_upscayl_4x_upscayl-standard-4x.png" 
             />
           </motion.div>
 

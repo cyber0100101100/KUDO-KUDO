@@ -19,7 +19,7 @@ export default function Sidebar() {
         <div className="flex items-center justify-center mb-12 w-full">
           <div className="h-12 w-full">
             <img 
-              src="./logo_upscayl_4x_upscayl-standard-4x.png" 
+              src="/logo_upscayl_4x_upscayl-standard-4x.png" 
               alt="KUDO KUDO" 
               className="h-full w-full object-contain"
             />

@@ -46,7 +46,7 @@ export default function AdminTopHeader({ title, showBackButton = false }: AdminT
         <motion.img 
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          src="./logo_upscayl_4x_upscayl-standard-4x.png" 
+          src="/logo_upscayl_4x_upscayl-standard-4x.png" 
           alt="KUDO KUDO" 
           className="h-6 md:h-8 object-contain"
         />

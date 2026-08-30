@@ -97,7 +97,7 @@ export default function AccountVerificationScreen() {
         className="w-full max-w-md"
       >
         <div className="flex justify-center mb-8">
-          <img alt="Logo" className="h-20" src="./logo_upscayl_4x_upscayl-standard-4x.png" />
+          <img alt="Logo" className="h-20" src="/logo_upscayl_4x_upscayl-standard-4x.png" />
         </div>
 
         <div className="bg-white rounded-[40px] p-10 shadow-xl shadow-slate-200/50 text-center">

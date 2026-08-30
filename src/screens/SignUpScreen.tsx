@@ -140,7 +140,7 @@ export default function SignUpScreen() {
       <main className="w-full max-w-md mx-auto">
         <div className="flex justify-center mb-10">
           <div className="h-16 flex items-center justify-center px-8">
-            <img alt="KUDO KUDO" className="h-full object-contain" src="./logo_upscayl_4x_upscayl-standard-4x.png" />
+            <img alt="KUDO KUDO" className="h-full object-contain" src="/logo_upscayl_4x_upscayl-standard-4x.png" />
           </div>
         </div>
 

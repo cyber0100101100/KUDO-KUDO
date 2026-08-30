@@ -84,7 +84,7 @@ export default function EmployeeHomeScreen() {
         </div>
         
         <div className="h-6 md:h-8">
-          <img src="./logo_upscayl_4x_upscayl-standard-4x.png" alt="KUDO KUDO" className="h-full object-contain" />
+          <img src="/logo_upscayl_4x_upscayl-standard-4x.png" alt="KUDO KUDO" className="h-full object-contain" />
         </div>
 
         <div className="flex items-center gap-2 md:gap-3">
