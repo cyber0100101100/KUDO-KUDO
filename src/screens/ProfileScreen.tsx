@@ -160,7 +160,7 @@ export default function ProfileScreen() {
         </button>
         <h1 className="text-base font-black text-slate-900 tracking-tight">الملف الشخصي</h1>
         <div className="h-9 px-3 flex items-center justify-center">
-          <img src="/logo_upscayl_4x_upscayl-standard-4x.png" alt="KUDO" className="h-5 object-contain grayscale opacity-40" />
+          <img src="./logo_upscayl_4x_upscayl-standard-4x.png" alt="KUDO" className="h-5 object-contain grayscale opacity-40" />
         </div>
       </header>
 

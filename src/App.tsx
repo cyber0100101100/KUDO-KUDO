@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import SplashScreen from './screens/SplashScreen';
 import AccountTypeSelection from './screens/AccountTypeSelection';
@@ -29,7 +29,7 @@ import GlobalServiceRunner from './components/GlobalServiceRunner';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <AuthProvider>
         <GlobalServiceRunner />
         <Routes>
@@ -73,6 +73,6 @@ export default function App() {
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       </AuthProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
