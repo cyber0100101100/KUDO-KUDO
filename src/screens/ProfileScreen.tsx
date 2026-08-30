@@ -152,15 +152,15 @@ export default function ProfileScreen() {
   if (!user) return null;
 
   return (
-    <div className="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased" dir="rtl">
+    <div className="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased pt-16" dir="rtl">
       {/* Header */}
-      <header className="bg-white/90 backdrop-blur-xl px-6 py-4 flex items-center justify-between sticky top-0 z-50 border-b border-slate-100/50 shadow-sm">
-        <button onClick={() => navigate(-1)} className="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-slate-100 transition-all active:scale-95">
-          <span className="material-symbols-outlined text-xl">chevron_right</span>
+      <header className="bg-white/90 backdrop-blur-xl px-4 py-3 md:px-6 md:py-4 flex items-center justify-between fixed top-0 left-0 right-0 z-50 border-b border-slate-100/50 shadow-sm">
+        <button onClick={() => navigate(-1)} className="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-slate-100 transition-all active:scale-95">
+          <span className="material-symbols-outlined text-lg md:text-xl">chevron_right</span>
         </button>
-        <h1 className="text-base font-black text-slate-900 tracking-tight">الملف الشخصي</h1>
+        <h1 className="text-sm md:text-base font-black text-slate-900 tracking-tight">الملف الشخصي</h1>
         <div className="h-9 px-3 flex items-center justify-center">
-          <img src="./logo_upscayl_4x_upscayl-standard-4x.png" alt="KUDO" className="h-5 object-contain grayscale opacity-40" />
+          <img src="./logo_upscayl_4x_upscayl-standard-4x.png" alt="KUDO" className="h-4 md:h-5 object-contain grayscale opacity-40" />
         </div>
       </header>
 
@@ -282,11 +282,10 @@ export default function ProfileScreen() {
               className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-40"
             />
             <motion.div 
-              initial={{ y: '100%' }}
-              animate={{ y: 0 }}
-              exit={{ y: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed bottom-0 left-0 right-0 bg-white rounded-t-[40px] z-50 p-8 shadow-2xl max-h-[90vh] overflow-y-auto"
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="fixed inset-0 m-auto bg-white rounded-[32px] md:rounded-[40px] z-50 p-6 md:p-8 shadow-2xl h-fit max-h-[90vh] w-[90%] max-w-lg overflow-y-auto"
             >
               <div className="flex items-center justify-between mb-8">
                 <h3 className="text-xl font-bold text-slate-800">تعديل البيانات</h3>

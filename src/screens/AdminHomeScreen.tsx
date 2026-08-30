@@ -339,7 +339,7 @@ export default function AdminHomeScreen() {
         </motion.div>
       )}
 
-      <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 md:gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 md:gap-6">
         <MetricCard label="إجمالي الموظفين" value={stats.totalEmployees} icon="groups" trend="+2" color="bg-slate-50 text-slate-900" />
         <MetricCard label="الحضور اليوم" value={stats.presentToday} icon="task_alt" trend="98%" color="bg-emerald-50 text-emerald-600" />
         <MetricCard label="المتأخرون" value={stats.lateToday} icon="history" trend={`${stats.lateToday > 0 ? '+' : ''}${stats.lateToday}`} color="bg-amber-50 text-amber-600" />

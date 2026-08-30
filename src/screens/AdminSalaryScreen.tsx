@@ -697,7 +697,7 @@ export default function AdminSalaryScreen() {
               className="space-y-6"
             >
               {/* Summary Cards */}
-              <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-8 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 gap-4">
                 <div className="bg-white p-6 rounded-[32px] border border-slate-50 shadow-sm">
                   <p className="text-[10px] font-black text-emerald-400 uppercase tracking-widest mb-1">إجمالي الحضور</p>
                   <p className="text-xl font-black text-emerald-600">{totals.attended} <span className="text-xs text-emerald-300">يوم</span></p>

@@ -14,15 +14,13 @@ export default function RequestsScreen() {
   const [type, setType] = useState<'leave' | 'advance'>(initialType);
   const [amount, setAmount] = useState('');
   const [reason, setReason] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
   const [daysCount, setDaysCount] = useState('');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
   const handleSubmit = async () => {
     if (type === 'leave') {
-      if (!startDate || !endDate || !daysCount || !reason) return;
+      if (!reason || !daysCount) return;
     } else {
       if (!reason || !amount) return;
     }
@@ -35,8 +33,8 @@ export default function RequestsScreen() {
         type,
         amount: type === 'advance' ? Number(amount) : null,
         reason,
-        startDate: type === 'leave' ? startDate : null,
-        endDate: type === 'leave' ? endDate : null,
+        startDate: null,
+        endDate: null,
         daysCount: type === 'leave' ? Number(daysCount) : null,
         status: 'pending',
         createdAt: serverTimestamp()
@@ -74,7 +72,7 @@ export default function RequestsScreen() {
     }
   };
 
-  const isButtonDisabled = loading || !reason || (type === 'advance' && !amount) || (type === 'leave' && (!startDate || !endDate || !daysCount));
+  const isButtonDisabled = loading || !reason || (type === 'advance' && !amount) || (type === 'leave' && !daysCount);
 
   if (success) {
     return (
@@ -94,12 +92,12 @@ export default function RequestsScreen() {
 
   return (
     <div className="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
-      <div className="w-full bg-white min-h-screen relative flex flex-col shadow-sm">
-        <header className="bg-white/90 backdrop-blur-xl px-6 py-4 flex items-center justify-between sticky top-0 z-50 border-b border-slate-100/50 shadow-sm">
-          <button onClick={() => navigate(-1)} className="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-slate-100 transition-all active:scale-95">
-            <span className="material-symbols-outlined text-xl">arrow_forward</span>
+      <div className="w-full bg-white min-h-screen relative flex flex-col shadow-sm pt-20">
+        <header className="bg-white/90 backdrop-blur-xl px-4 py-3 md:px-6 md:py-4 flex items-center justify-between fixed top-0 left-0 right-0 z-50 border-b border-slate-100/50 shadow-sm">
+          <button onClick={() => navigate(-1)} className="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-slate-100 transition-all active:scale-95">
+            <span className="material-symbols-outlined text-lg md:text-xl">arrow_forward</span>
           </button>
-          <h1 className="text-base font-black text-slate-900 tracking-tight">{type === 'leave' ? 'طلب إجازة' : 'طلب سلفة'}</h1>
+          <h1 className="text-sm md:text-base font-black text-slate-900 tracking-tight">{type === 'leave' ? 'طلب إجازة' : 'طلب سلفة'}</h1>
           <div className="w-9"></div>
         </header>
 
@@ -126,48 +124,30 @@ export default function RequestsScreen() {
                 animate={{ opacity: 1, y: 0 }}
                 className="bg-white rounded-[32px] p-8 border border-slate-100 shadow-sm space-y-6"
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center">
-                    <span className="material-symbols-outlined">calendar_today</span>
+                <div className="flex flex-col gap-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center">
+                      <span className="material-symbols-outlined">info</span>
+                    </div>
+                    <div>
+                      <h2 className="text-sm font-black text-slate-900">طلب إجازة</h2>
+                      <p className="text-[10px] font-bold text-slate-400">سيتم مراجعة طلب الإجازة من قبل الإدارة</p>
+                    </div>
                   </div>
-                  <div>
-                    <h2 className="text-sm font-black text-slate-900">تحديد فترة الإجازة</h2>
-                    <p className="text-[10px] font-bold text-slate-400">يرجى تحديد تاريخ البداية والنهاية</p>
-                  </div>
-                </div>
 
-                <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-2">تاريخ البداية</label>
-                    <input 
-                      type="date" 
-                      value={startDate}
-                      onChange={(e) => setStartDate(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-100 text-slate-900 text-sm font-bold rounded-2xl p-4 focus:outline-none focus:border-[#E31E24] transition-all"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-2">تاريخ النهاية</label>
-                    <input 
-                      type="date" 
-                      value={endDate}
-                      onChange={(e) => setEndDate(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-100 text-slate-900 text-sm font-bold rounded-2xl p-4 focus:outline-none focus:border-[#E31E24] transition-all"
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-2">عدد أيام الإجازة</label>
-                  <div className="relative">
-                    <input 
-                      type="number" 
-                      value={daysCount}
-                      onChange={(e) => setDaysCount(e.target.value)}
-                      placeholder="0"
-                      className="w-full bg-slate-50 border border-slate-100 text-slate-900 text-sm font-bold rounded-2xl p-4 pl-12 focus:outline-none focus:border-[#E31E24] transition-all"
-                    />
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[10px] font-black text-slate-300 uppercase">أيام</span>
+                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-2">عدد أيام الإجازة المطلوبة</label>
+                    <div className="relative">
+                      <input 
+                        type="number" 
+                        value={daysCount}
+                        onChange={(e) => setDaysCount(e.target.value)}
+                        placeholder="0"
+                        className="w-full bg-slate-50 border border-slate-100 text-slate-900 text-2xl font-black rounded-2xl p-5 focus:outline-none focus:border-[#E31E24] focus:ring-4 focus:ring-red-50/50 transition-all text-center tracking-tighter"
+                        dir="ltr"
+                      />
+                      <div className="absolute left-6 top-1/2 -translate-y-1/2 text-[10px] font-black text-slate-300 uppercase tracking-widest pointer-events-none">أيام</div>
+                    </div>
                   </div>
                 </div>
               </motion.div>

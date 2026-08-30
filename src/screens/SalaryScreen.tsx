@@ -75,14 +75,14 @@ export default function SalaryScreen() {
 
   return (
     <div className="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased font-sans rtl">
-      <div className="w-full bg-white min-h-screen relative flex flex-col">
-        <header className="bg-white/90 backdrop-blur-xl px-6 py-4 flex items-center justify-between sticky top-0 z-50 border-b border-slate-100/50 shadow-sm">
-          <button onClick={() => navigate(-1)} className="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-slate-100 transition-all active:scale-95">
-            <span className="material-symbols-outlined text-xl">arrow_forward</span>
+      <div className="w-full bg-white min-h-screen relative flex flex-col pt-20">
+        <header className="bg-white/90 backdrop-blur-xl px-4 py-3 md:px-6 md:py-4 flex items-center justify-between fixed top-0 left-0 right-0 z-50 border-b border-slate-100/50 shadow-sm">
+          <button onClick={() => navigate(-1)} className="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-slate-100 transition-all active:scale-95">
+            <span className="material-symbols-outlined text-lg md:text-xl">arrow_forward</span>
           </button>
           <div className="flex flex-col items-center">
-            <h1 className="text-sm font-black text-slate-900 tracking-tight">تقرير المستحقات المالية</h1>
-            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{selectedMonth}</span>
+            <h1 className="text-xs md:text-sm font-black text-slate-900 tracking-tight">تقرير المستحقات المالية</h1>
+            <span className="text-[8px] md:text-[9px] font-black text-slate-400 uppercase tracking-widest">{selectedMonth}</span>
           </div>
           <div className="relative">
             <input 
@@ -91,8 +91,8 @@ export default function SalaryScreen() {
               onChange={(e) => setSelectedMonth(e.target.value)}
               className="absolute inset-0 opacity-0 cursor-pointer"
             />
-            <button className="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-slate-100 transition-all active:scale-95">
-              <span className="material-symbols-outlined text-xl">calendar_today</span>
+            <button className="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-slate-100 transition-all active:scale-95">
+              <span className="material-symbols-outlined text-lg md:text-xl">calendar_today</span>
             </button>
           </div>
         </header>

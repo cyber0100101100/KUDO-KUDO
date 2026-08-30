@@ -12,18 +12,18 @@ export default function AdminTopHeader({ title, showBackButton = false }: AdminT
   const { user } = useAuth();
 
   return (
-    <header className="bg-white/80 backdrop-blur-xl px-6 py-4 flex items-center justify-between sticky top-0 z-50 border-b border-slate-100/50 shadow-sm">
-      <div className="flex-1 flex items-center gap-3 min-w-0">
+    <header className="bg-white/80 backdrop-blur-xl px-4 py-3 md:px-6 md:py-4 flex items-center justify-between sticky top-0 z-50 border-b border-slate-100/50 shadow-sm">
+      <div className="flex-1 flex items-center gap-2 md:gap-3 min-w-0">
         {showBackButton ? (
           <button 
             onClick={() => navigate(-1)}
-            className="w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-slate-100 transition-colors active:scale-95"
+            className="w-9 h-9 md:w-10 md:h-10 flex-shrink-0 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-slate-100 transition-colors active:scale-95"
           >
-            <span className="material-symbols-outlined text-xl">arrow_forward</span>
+            <span className="material-symbols-outlined text-lg md:text-xl">arrow_forward</span>
           </button>
         ) : (
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 flex-shrink-0 rounded-xl bg-slate-100 overflow-hidden border border-slate-200 shadow-sm">
+          <div className="flex items-center gap-2 md:gap-3">
+            <div className="w-8 h-8 md:w-10 md:h-10 flex-shrink-0 rounded-xl bg-slate-100 overflow-hidden border border-slate-200 shadow-sm">
               <img 
                 src={user?.profileImageUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.displayName || 'Admin')}&background=f8fafc&color=cbd5e1`} 
                 alt="Profile" 
@@ -31,10 +31,10 @@ export default function AdminTopHeader({ title, showBackButton = false }: AdminT
               />
             </div>
             <div className="flex flex-col text-right">
-              <span className="text-[11px] font-black text-slate-900 leading-tight truncate max-w-[120px]">
+              <span className="text-[10px] md:text-[11px] font-black text-slate-900 leading-tight truncate max-w-[100px] md:max-w-[120px]">
                 {user?.displayName || 'المدير العام'}
               </span>
-              <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none mt-0.5">
+              <span className="text-[8px] md:text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none mt-0.5">
                 {user?.jobTitle || 'إدارة النظام'}
               </span>
             </div>
@@ -42,23 +42,23 @@ export default function AdminTopHeader({ title, showBackButton = false }: AdminT
         )}
       </div>
 
-      <div className="flex-shrink-0 px-4">
+      <div className="flex-shrink-0 px-2 md:px-4">
         <motion.img 
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           src="./logo_upscayl_4x_upscayl-standard-4x.png" 
           alt="KUDO KUDO" 
-          className="h-6 md:h-8 object-contain"
+          className="h-5 md:h-8 object-contain"
         />
       </div>
 
       <div className="flex-1 flex items-center justify-end">
         <button 
           onClick={() => navigate('/admin/notifications')}
-          className="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-slate-100 transition-colors active:scale-95 relative"
+          className="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-slate-100 transition-colors active:scale-95 relative"
         >
-          <span className="material-symbols-outlined text-xl">notifications</span>
-          <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-[#E31E24] rounded-full border-2 border-white"></span>
+          <span className="material-symbols-outlined text-lg md:text-xl">notifications</span>
+          <span className="absolute top-2 right-2 md:top-2.5 md:right-2.5 w-1.5 h-1.5 md:w-2 md:h-2 bg-[#E31E24] rounded-full border border-white"></span>
         </button>
       </div>
     </header>

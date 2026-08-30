@@ -78,12 +78,12 @@ export default function EmployeeHomeScreen() {
             onClick={() => navigate('/employee/notifications')}
             className="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-xl hover:bg-slate-50 transition-colors relative"
           >
-            <span className="material-symbols-outlined text-slate-400 text-xl md:text-2xl">notifications</span>
-            <span className="absolute top-2 right-2 w-2 h-2 bg-[#E31E24] rounded-full border-2 border-white"></span>
+            <span className="material-symbols-outlined text-slate-400 text-lg md:text-xl">notifications</span>
+            <span className="absolute top-2 right-2 w-1.5 h-1.5 md:w-2 md:h-2 bg-[#E31E24] rounded-full border border-white"></span>
           </button>
         </div>
         
-        <div className="h-6 md:h-8">
+        <div className="h-5 md:h-8">
           <img src="./logo_upscayl_4x_upscayl-standard-4x.png" alt="KUDO KUDO" className="h-full object-contain" />
         </div>
 
@@ -196,7 +196,7 @@ export default function EmployeeHomeScreen() {
 
           {/* Secondary Actions & Logs */}
           <div className="md:col-span-7 flex flex-col gap-6 md:gap-10">
-            <div className="grid grid-cols-3 gap-3 md:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-6">
               <QuickAction 
                 onClick={() => navigate('/employee/salary')}
                 icon="payments" 
