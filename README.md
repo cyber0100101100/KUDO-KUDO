@@ -14,19 +14,23 @@ A modern, mobile-optimized attendance management system built with React, Tailwi
 
 ## Deployment to GitHub Pages
 
-To deploy this project to GitHub Pages and avoid the "white screen" error:
+I have added an automated deployment system using **GitHub Actions**. This is the most reliable way to fix the "white screen" and "MIME type" errors.
 
-### Option 1: GitHub Actions (Recommended)
-1. Push your code to GitHub.
-2. Go to **Settings > Pages**.
-3. Under **Build and deployment > Source**, select **GitHub Actions**.
-4. GitHub will automatically detect the Vite project and use a workflow to build and deploy it.
+### 🚀 How to activate the fix:
+1. **Push your code**: Commit and push these latest changes to your `main` branch.
+2. **Enable GitHub Actions**: 
+   - Go to your repository on GitHub.
+   - Click on **Settings** > **Pages**.
+   - Under **Build and deployment** > **Source**, change the dropdown from "Deploy from a branch" to **"GitHub Actions"**.
+3. **Wait for completion**: 
+   - Click the **Actions** tab at the top of your repo.
+   - You will see a workflow named "Deploy static content to Pages" running.
+   - Once it turns green, your site will be live and functional!
 
-### Option 2: Manual Deployment
-If you are deploying manually (e.g., using the `gh-pages` branch):
-1. Run `npm run build`.
-2. Ensure you are deploying the contents of the **`dist`** folder, NOT the root folder.
-3. Ensure the `.nojekyll` file (included in this repo) is present in your deployment to prevent GitHub from ignoring assets.
+### 🔍 Why it was failing:
+- **MIME Type Error**: GitHub Pages was trying to serve the raw `.tsx` files. The new system compiles these into high-performance JavaScript that browsers can understand.
+- **Path Issues**: The automated build correctly handles the `/KUDO-KUDO/` subdirectory automatically.
+- **NoJekyll**: I added a `.nojekyll` file to ensure GitHub doesn't block your app's internal folders.
 
 ## Tech Stack
 
