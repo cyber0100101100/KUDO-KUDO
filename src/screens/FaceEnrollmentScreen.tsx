@@ -81,19 +81,28 @@ export default function FaceEnrollmentScreen() {
     try {
       const s = await navigator.mediaDevices.getUserMedia({ 
         video: { 
-          facingMode: 'user',
+          facingMode: { ideal: 'user' },
           width: { ideal: 1280 },
           height: { ideal: 720 }
         } 
       });
       setVideoStream(s);
-      if (videoRef.current) {
-        videoRef.current.srcObject = s;
-      }
     } catch (err) {
+      console.error('Camera error:', err);
       setError('نحتاج إلى الوصول إلى الكاميرا لإتمام عملية البصمة.');
     }
   };
+
+  useEffect(() => {
+    if (videoRef.current && stream) {
+      videoRef.current.srcObject = stream;
+      videoRef.current.onloadedmetadata = () => {
+        videoRef.current?.play().catch(err => {
+          console.error("Video play error:", err);
+        });
+      };
+    }
+  }, [stream]);
 
   const stopCamera = () => {
     if (stream) {
