@@ -26,6 +26,9 @@ import firebaseConfig from '../../firebase-applet-config.json';
 import { User, Attendance, LeaveRequest, Notification, ChatMessage } from '../types';
 
 // Initialize Firebase
+if (!firebaseConfig || !firebaseConfig.apiKey) {
+  console.error('Firebase configuration is missing or incomplete. Check firebase-applet-config.json.');
+}
 const app = initializeApp(firebaseConfig);
 
 // Initialize Firestore with settings optimized for sandboxed environments
