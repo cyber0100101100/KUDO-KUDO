@@ -1,0 +1,21 @@
+{
+  "name": "KUDO KUDO Smart Attendance",
+  "short_name": "KUDO",
+  "description": "Smart Attendance Management System",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F8FAFC",
+  "theme_color": "#E31E24",
+  "icons": [
+    {
+      "src": "https://ui-avatars.com/api/?name=KUDO&background=E31E24&color=fff&size=192",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://ui-avatars.com/api/?name=KUDO&background=E31E24&color=fff&size=512",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
