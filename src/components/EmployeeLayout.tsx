@@ -34,22 +34,24 @@ export default function EmployeeLayout() {
     return <Navigate to="/employee/join-group" replace />;
   }
 
-  // If in join-group screen, don't show sidebar/bottom nav to make it "stripped of everything"
+  // Hide bottom nav and sidebar in certain screens
   const isJoiningGroup = location.pathname === '/employee/join-group';
+  const isChatRoom = location.pathname.includes('/chat/') && location.pathname.split('/').length > 3;
+  const hideNav = isJoiningGroup || isChatRoom;
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-row overflow-x-hidden antialiased">
+    <div className="min-h-screen bg-white flex flex-row overflow-x-hidden antialiased">
       {/* Desktop Sidebar */}
-      {!isJoiningGroup && <Sidebar />}
+      {!hideNav && <Sidebar />}
 
       {/* Main Content Area */}
-      <div className={`flex-1 flex flex-col relative min-h-screen ${!isJoiningGroup ? 'pb-20 md:pb-0' : ''}`}>
-        <div className={`w-full max-w-6xl mx-auto flex-1 ${!isJoiningGroup ? 'px-4 md:px-8 pb-10' : ''}`}>
+      <div className={`flex-1 flex flex-col relative min-h-screen ${!hideNav ? 'pb-20 md:pb-0' : ''}`}>
+        <div className={`w-full max-w-6xl mx-auto flex-1 ${!hideNav ? 'px-4 md:px-8 pb-10' : ''}`}>
           <Outlet />
         </div>
         
         {/* Mobile Navigation */}
-        {!isJoiningGroup && (
+        {!hideNav && (
           <div className="md:hidden">
             <BottomNav />
           </div>

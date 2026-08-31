@@ -110,57 +110,56 @@ export default function ChatRoomScreen() {
   }, [chatId, user, authLoading]);
 
   const sendMessage = async (imageUrl?: string) => {
-    if ((!text.trim() && !imageUrl) || !chatId || !user || sending) return;
+    // Basic validation: must have text or image
+    if ((!text.trim() && !imageUrl) || !chatId || !user) return;
     
-    const msg = text;
-    const currentRecipient = recipient;
-    setSending(true);
-    setText('');
+    // Block multiple clicks for text messages
+    if (!imageUrl && sending) return;
+    
+    const currentText = text;
+    
+    // For text messages, clear input and show sending state immediately
+    if (!imageUrl) {
+      setSending(true);
+      setText('');
+    }
 
     try {
-      // 1. Add message
-      await addDoc(collection(db, 'chats', chatId, 'messages'), {
+      // 1. Prepare message data
+      const messageData = {
         chatId,
         senderId: user.uid,
-        senderName: user.displayName,
-        text: msg,
+        senderName: user.displayName || 'زميل',
+        text: currentText,
         imageUrl: imageUrl || null,
         type: imageUrl ? 'image' : 'text',
-        timestamp: new Date().toISOString()
-      });
+        timestamp: serverTimestamp()
+      };
 
-      // 2. Update chat room last message
-      const parts = chatId.split('_');
-      const otherId = parts.find(id => id !== user.uid) || recipient?.id || 'manager-id';
+      // 2. Add to messages collection
+      const messagesRef = collection(db, 'chats', chatId, 'messages');
+      await addDoc(messagesRef, messageData);
+
+      // 3. Update the main chat room document for the list view
+      const otherId = chatId.split('_').find(id => id !== user.uid) || recipient?.id || 'manager-id';
       const roomRef = doc(db, 'chats', chatId);
       
-      const updateData: any = {
-        lastMessage: imageUrl ? 'صورة' : msg,
+      await setDoc(roomRef, {
+        lastMessage: imageUrl ? 'صورة 📷' : currentText,
         lastUpdate: serverTimestamp(),
         lastSenderId: user.uid,
         [`unreadCount.${otherId}`]: increment(1)
-      };
+      }, { merge: true });
 
-      await setDoc(roomRef, updateData, { merge: true });
-
-      // 3. Create notification for recipient
-      if (otherId) {
-        try {
-          await addDoc(collection(db, 'notifications'), {
-            userId: otherId,
-            title: `رسالة جديدة من ${user.displayName || 'زميل'}`,
-            message: imageUrl ? 'أرسل لك صورة' : (msg.length > 50 ? msg.substring(0, 47) + '...' : msg),
-            type: 'chat',
-            isRead: false,
-            createdAt: serverTimestamp(),
-            metadata: { chatId }
-          });
-        } catch (e) {
-          console.warn('Notification failed', e);
-        }
-      }
+      // If we sent an image with text, clear text now
+      if (imageUrl) setText('');
+      
     } catch (err) {
+      console.error('CRITICAL: Failed to send message:', err);
       handleFirestoreError(err, OperationType.CREATE, `chats/${chatId}/messages`);
+      // Restore text if it failed
+      if (!imageUrl) setText(currentText);
+      alert('عذراً، فشل إرسال الرسالة. يرجى المحاولة مرة أخرى.');
     } finally {
       setSending(false);
     }
@@ -170,31 +169,45 @@ export default function ChatRoomScreen() {
     const file = e.target.files?.[0];
     if (!file || !chatId || !user) return;
 
+    // Use a temporary uploading state
     setSending(true);
+    
     try {
+      console.log('Starting file upload:', file.name, file.size);
       const path = `chats/${chatId}/${Date.now()}_${file.name}`;
       const fileRef = ref(storage, path);
-      await uploadBytes(fileRef, file);
-      const url = await getDownloadURL(fileRef);
+      
+      // Explicitly set content type to help storage rules and preview
+      const metadata = { contentType: file.type };
+      
+      const uploadResult = await uploadBytes(fileRef, file, metadata);
+      const url = await getDownloadURL(uploadResult.ref);
+      
+      console.log('File uploaded successfully, URL:', url);
+      
+      // Send the message with the image URL
       await sendMessage(url);
+      
+      // Reset the file input
+      if (fileInputRef.current) fileInputRef.current.value = '';
     } catch (err) {
-      console.error('File upload failed', err);
-      alert('فشل رفع الصورة');
+      console.error('CRITICAL: Upload flow failed:', err);
+      alert('فشل رفع الصورة. تأكد من جودة الاتصال بالإنترنت وحاول مرة أخرى.');
     } finally {
       setSending(false);
     }
   };
 
   return (
-    <div className="bg-slate-50 text-slate-800 h-screen flex flex-col">
+    <div className="bg-white text-slate-800 h-screen flex flex-col">
       <div className="w-full bg-white h-screen relative flex flex-col shadow-sm overflow-hidden">
-        <header className="flex items-center justify-between px-8 py-6 bg-white border-b border-slate-100 z-10 sticky top-0">
+        <header className="shrink-0 flex items-center justify-between px-8 py-6 bg-white border-b border-slate-100 z-50 sticky top-0">
           <button onClick={() => navigate(-1)} className="w-10 h-10 rounded-xl border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-50 transition-colors">
             <span className="material-symbols-outlined">arrow_forward</span>
           </button>
           <div className="flex flex-col items-center flex-1">
             <h1 className="text-lg md:text-xl font-black text-slate-900 tracking-tight">
-              محادثة
+              {recipient?.name || 'محادثة'}
             </h1>
             <div className="flex items-center gap-1.5 mt-0.5">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
@@ -206,19 +219,29 @@ export default function ChatRoomScreen() {
           </button>
         </header>
 
-        <main className="flex-1 overflow-y-auto px-8 py-8 pb-32 flex flex-col gap-6">
+        <main className="flex-1 overflow-y-auto px-8 py-8 flex flex-col gap-6">
 
           {messages.map((msg) => (
             <div key={msg.id} className={`flex flex-col gap-2 max-w-[85%] ${msg.senderId === user?.uid ? 'self-start items-start text-right' : 'self-end items-end text-left'}`}>
               <div className={`p-5 rounded-[24px] shadow-sm text-sm font-medium leading-relaxed ${msg.senderId === user?.uid ? 'bg-[#E31E24] text-white rounded-tr-none shadow-red-100' : 'bg-slate-100 text-slate-700 rounded-tl-none border border-slate-200/50'}`}>
                 {msg.imageUrl && (
-                  <img src={msg.imageUrl} alt="Uploaded" className="max-w-full rounded-xl mb-2 cursor-pointer hover:opacity-90" onClick={() => window.open(msg.imageUrl)} />
+                  <div className="mb-2">
+                    <img 
+                      src={msg.imageUrl} 
+                      alt="Uploaded" 
+                      className="max-w-full rounded-xl cursor-pointer hover:opacity-90 transition-opacity" 
+                      onClick={() => window.open(msg.imageUrl)} 
+                    />
+                  </div>
                 )}
-                <p>{msg.text}</p>
+                {msg.text && <p>{msg.text}</p>}
               </div>
               <div className="flex items-center gap-2 px-1">
                 <span className="text-[10px] font-bold text-slate-300">
-                  {new Date(msg.timestamp).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
+                  {msg.timestamp?.toDate ? 
+                    msg.timestamp.toDate().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : 
+                    new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })
+                  }
                 </span>
                 {msg.senderId === user?.uid && (
                   <span className="material-symbols-outlined text-[14px] text-[#E31E24]">done_all</span>
@@ -229,7 +252,7 @@ export default function ChatRoomScreen() {
           <div ref={scrollRef} />
         </main>
 
-        <div className="absolute bottom-0 left-0 w-full bg-white border-t border-slate-100 p-6 z-20">
+        <div className="shrink-0 bg-white border-t border-slate-100 p-6">
           <div className="flex items-center gap-4">
             <input 
               type="file" 

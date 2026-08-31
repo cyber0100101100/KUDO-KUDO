@@ -71,7 +71,7 @@ export default function EmployeeHomeScreen() {
   if (!user) return null;
 
   return (
-    <div className="bg-slate-50 text-slate-800 min-h-screen pb-24 pt-16 md:pt-20">
+    <div className="bg-white text-slate-800 min-h-screen pb-24 pt-16 md:pt-20">
       <header className="bg-white/80 backdrop-blur-xl px-4 py-3 md:px-6 md:py-4 flex items-center justify-between fixed top-0 left-0 right-0 z-50 border-b border-slate-100/50 shadow-sm">
         <div className="relative">
           <button 
@@ -238,7 +238,7 @@ export default function EmployeeHomeScreen() {
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: idx * 0.05 }}
-                      className="flex items-center gap-5 p-5 rounded-[28px] bg-slate-50/50 border border-slate-100/50 hover:bg-white hover:shadow-xl hover:shadow-slate-200/50 hover:border-slate-100 transition-all cursor-default group"
+                      className="flex items-center gap-5 p-5 rounded-[28px] bg-white border border-slate-100 hover:shadow-xl hover:shadow-slate-200/50 transition-all cursor-default group"
                     >
                       <div className={`w-12 h-12 ${record.status === 'late' ? 'bg-amber-50 text-amber-500' : 'bg-green-50 text-green-500'} rounded-2xl flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform`}>
                         <span className="material-symbols-outlined filled-icon text-2xl">

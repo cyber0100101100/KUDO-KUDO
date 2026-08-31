@@ -233,8 +233,13 @@ export default function AdminHomeScreen() {
         }
       },
       (error) => {
-        console.error('GPS Error:', error);
-        alert('تعذر الحصول على موقعك الحالي. تأكد من تفعيل الـ GPS.');
+        if (error.code === 1) {
+          console.info('GPS access denied by admin during calibration');
+          alert('يرجى السماح بالوصول إلى الموقع الجغرافي لمعايرة موقع العمل.');
+        } else {
+          console.error('GPS Error:', error);
+          alert('تعذر الحصول على موقعك الحالي. تأكد من تفعيل الـ GPS.');
+        }
         setIsCalibrating(false);
       },
       { enableHighAccuracy: true, timeout: 10000 }
@@ -272,7 +277,7 @@ export default function AdminHomeScreen() {
   }, [recentActivity.map(a => a.id).join(',')]);
 
   return (
-    <div className="min-h-screen flex flex-col font-sans rtl">
+    <div className="min-h-screen flex flex-col font-sans rtl bg-white">
       <AdminTopHeader />
       
       <div className="flex-1 space-y-4 md:space-y-8 p-4 md:p-8 antialiased pb-24 md:pb-10 pt-16 md:pt-20">
@@ -340,7 +345,7 @@ export default function AdminHomeScreen() {
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 md:gap-6">
-        <MetricCard label="إجمالي الموظفين" value={stats.totalEmployees} icon="groups" trend="+2" color="bg-slate-50 text-slate-900" />
+        <MetricCard label="إجمالي الموظفين" value={stats.totalEmployees} icon="groups" trend="+2" color="bg-white text-slate-900" />
         <MetricCard label="الحضور اليوم" value={stats.presentToday} icon="task_alt" trend="98%" color="bg-emerald-50 text-emerald-600" />
         <MetricCard label="المتأخرون" value={stats.lateToday} icon="history" trend={`${stats.lateToday > 0 ? '+' : ''}${stats.lateToday}`} color="bg-amber-50 text-amber-600" />
         <MetricCard 
@@ -351,7 +356,7 @@ export default function AdminHomeScreen() {
           color={stats.pendingRequests > 0 ? "bg-red-50 text-[#E31E24] animate-pulse cursor-pointer" : "bg-slate-50 text-slate-400"}
           onClick={() => navigate('/admin/notifications')}
         />
-        <MetricCard label="الغيابات" value={stats.absentToday} icon="block" trend="0" color="bg-slate-50 text-slate-500" />
+        <MetricCard label="الغيابات" value={stats.absentToday} icon="block" trend="0" color="bg-white text-slate-500" />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

@@ -37,7 +37,12 @@ export function useLocationTracking(user: User | null) {
             }
           },
           (error) => {
-            console.error('Geolocation tracking error:', error.code, error.message);
+            if (error.code === 1) {
+              // User denied Geolocation - log once as info and don't spam errors
+              console.info('Geolocation access denied by user for background tracking.');
+            } else {
+              console.error('Geolocation tracking error:', error.code, error.message);
+            }
           },
           {
             enableHighAccuracy: false, // Use cellular/WiFi for background tracking to save battery and reduce timeouts

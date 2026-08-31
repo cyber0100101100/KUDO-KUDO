@@ -121,7 +121,12 @@ export default function AttendanceScreen() {
           }
         },
         (error) => {
-          console.error('Geolocation error in AttendanceScreen:', error.code, error.message);
+          if (error.code === 1) {
+            // User denied Geolocation
+            console.info('Geolocation access denied in AttendanceScreen');
+          } else {
+            console.error('Geolocation error in AttendanceScreen:', error.code, error.message);
+          }
           setIsStabilizing(false);
           if (error.code === 1) {
             setLocationStatus('denied');

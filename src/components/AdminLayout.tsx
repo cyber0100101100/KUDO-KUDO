@@ -1,10 +1,11 @@
-import { Outlet, Navigate } from 'react-router-dom';
+import { Outlet, Navigate, useLocation } from 'react-router-dom';
 import AdminBottomNav from './AdminBottomNav';
 import AdminSidebar from './AdminSidebar';
 import { useAuth } from '../hooks/useAuth';
 
 export default function AdminLayout() {
   const { user, loading } = useAuth();
+  const location = useLocation();
 
   if (loading) {
     return (
@@ -25,19 +26,21 @@ export default function AdminLayout() {
     return <Navigate to="/employee/home" replace />;
   }
 
+  const isChatRoom = location.pathname.includes('/chat/') && location.pathname.split('/').length > 3;
+
   return (
-    <div className="min-h-screen bg-[#F8FAFC] flex flex-row overflow-x-hidden antialiased">
+    <div className="min-h-screen bg-white flex flex-row overflow-x-hidden antialiased">
       {/* Desktop Sidebar */}
-      <AdminSidebar />
+      {!isChatRoom && <AdminSidebar />}
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col relative min-h-screen pb-20 md:pb-0 overflow-y-auto">
-        <div className="w-full max-w-[1400px] mx-auto flex-1 p-4 md:p-10 pb-10">
+      <div className={`flex-1 flex flex-col relative min-h-screen ${!isChatRoom ? 'pb-20 md:pb-0' : ''} overflow-y-auto`}>
+        <div className={`w-full max-w-[1400px] mx-auto flex-1 ${!isChatRoom ? 'p-4 md:p-10 pb-10' : ''}`}>
           <Outlet />
         </div>
         
         {/* Mobile Navigation */}
-        <AdminBottomNav />
+        {!isChatRoom && <AdminBottomNav />}
       </div>
     </div>
   );

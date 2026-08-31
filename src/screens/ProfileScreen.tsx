@@ -152,7 +152,7 @@ export default function ProfileScreen() {
   if (!user) return null;
 
   return (
-    <div className="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased pt-16 md:pt-20" dir="rtl">
+    <div className="bg-white text-slate-800 min-h-screen flex flex-col antialiased pt-16 md:pt-20" dir="rtl">
       {/* Header */}
       <header className="bg-white/90 backdrop-blur-xl px-4 py-3 md:px-6 md:py-4 flex items-center justify-between fixed top-0 left-0 right-0 z-50 border-b border-slate-100/50 shadow-sm">
         <button onClick={() => navigate(-1)} className="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-slate-100 transition-all active:scale-95">
@@ -425,7 +425,7 @@ function InfoItem({ label, value, icon }: { label: string, value: string, icon: 
 
 function WorkCard({ label, value, icon, isStatus }: { label: string, value: string, icon: string, isStatus?: boolean }) {
   return (
-    <div className="bg-slate-50 p-5 rounded-3xl border border-slate-100 flex flex-col gap-3 shadow-sm">
+    <div className="bg-white p-5 rounded-3xl border border-slate-100 flex flex-col gap-3 shadow-sm">
       <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center text-slate-300 border border-slate-100">
         <span className="material-symbols-outlined text-lg">{icon}</span>
       </div>

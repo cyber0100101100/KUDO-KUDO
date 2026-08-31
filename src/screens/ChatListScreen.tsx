@@ -41,7 +41,7 @@ export default function ChatListScreen() {
   };
 
   return (
-    <div className="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+    <div className="bg-white text-slate-800 min-h-screen flex flex-col">
       <div className="w-full bg-white min-h-screen relative flex flex-col shadow-sm">
         <header className="flex items-center justify-between px-8 py-6 bg-white border-b border-slate-100 z-10 sticky top-0">
           <button className="w-10 h-10 rounded-xl border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-50 transition-colors">

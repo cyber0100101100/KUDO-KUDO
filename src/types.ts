@@ -116,7 +116,7 @@ export interface ChatMessage {
   text?: string;
   imageUrl?: string;
   type?: 'text' | 'image';
-  timestamp: string;
+  timestamp: any;
   read?: boolean;
 }
 
