@@ -14,18 +14,8 @@ export default function Sidebar() {
   ];
 
   return (
-    <aside className="hidden md:flex flex-col w-72 bg-white border-l border-slate-50 h-screen sticky top-0 z-50">
-      <div className="p-8">
-        <div className="flex items-center justify-center mb-12 w-full">
-          <div className="h-12 w-full">
-            <img 
-              src="./logo_upscayl_4x_upscayl-standard-4x.png" 
-              alt="KUDO KUDO" 
-              className="h-full w-full object-contain"
-            />
-          </div>
-        </div>
-
+    <aside className="hidden md:flex flex-col w-72 bg-white border-l border-slate-50 h-screen fixed top-0 right-0 z-50">
+      <div className="p-8 pt-24">
         <nav className="flex flex-col gap-1">
           {navItems.map((item) => (
             <Link

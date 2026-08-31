@@ -483,29 +483,13 @@ export default function AdminWorkforceScreen() {
                             <span>الملف الشخصي</span>
                             <span className="material-symbols-outlined text-sm">person</span>
                           </button>
-                          <button onClick={() => handleAction(emp.uid, 'edit_name')} className="w-full px-4 py-3 text-right hover:bg-slate-50 text-slate-900 font-black text-xs flex items-center justify-between border-t border-slate-50">
-                            <span>تعديل الاسم</span>
-                            <span className="material-symbols-outlined text-sm">badge</span>
-                          </button>
                           <button onClick={() => handleAction(emp.uid, 'edit_profile')} className="w-full px-4 py-3 text-right hover:bg-slate-50 text-slate-900 font-black text-xs flex items-center justify-between border-t border-slate-50">
                             <span>تعديل المسمى الوظيفي</span>
                             <span className="material-symbols-outlined text-sm">edit</span>
                           </button>
-                          <button onClick={() => handleAction(emp.uid, 'bonus')} className="w-full px-4 py-3 text-right hover:bg-emerald-50 text-emerald-600 font-black text-xs flex items-center justify-between border-t border-slate-50">
-                            <span>مكافأة</span>
-                            <span className="material-symbols-outlined text-sm">stars</span>
-                          </button>
-                          <button onClick={() => handleAction(emp.uid, 'deduction')} className="w-full px-4 py-3 text-right hover:bg-amber-50 text-amber-600 font-black text-xs flex items-center justify-between border-t border-slate-50">
-                            <span>خصم</span>
-                            <span className="material-symbols-outlined text-sm">money_off</span>
-                          </button>
                           <button onClick={() => handleAction(emp.uid, 'leave')} className="w-full px-4 py-3 text-right hover:bg-blue-50 text-blue-600 font-black text-xs flex items-center justify-between border-t border-slate-50">
                             <span>تسجيل إجازة</span>
                             <span className="material-symbols-outlined text-sm">event_available</span>
-                          </button>
-                          <button onClick={() => handleAction(emp.uid, 'absent')} className="w-full px-4 py-3 text-right hover:bg-red-50 text-red-600 font-black text-xs flex items-center justify-between border-t border-slate-50">
-                            <span>تسجيل غياب</span>
-                            <span className="material-symbols-outlined text-sm">event_busy</span>
                           </button>
                           {(isSuperManager || user?.role === 'admin' || user?.role === 'supervisor') && (
                             (emp.role === 'admin' || emp.role === 'supervisor') ? (

@@ -45,7 +45,7 @@ export default function EmployeeLayout() {
       {!hideNav && <Sidebar />}
 
       {/* Main Content Area */}
-      <div className={`flex-1 flex flex-col relative min-h-screen ${!hideNav ? 'pb-20 md:pb-0' : ''}`}>
+      <div className={`flex-1 flex flex-col relative min-h-screen ${!hideNav ? 'pb-20 md:pb-0 md:pr-72' : ''}`}>
         <div className={`w-full max-w-6xl mx-auto flex-1 ${!hideNav ? 'px-4 md:px-8 pb-10' : ''}`}>
           <Outlet />
         </div>

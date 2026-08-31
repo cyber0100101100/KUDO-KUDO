@@ -34,7 +34,7 @@ export default function AdminLayout() {
       {!isChatRoom && <AdminSidebar />}
 
       {/* Main Content Area */}
-      <div className={`flex-1 flex flex-col relative min-h-screen ${!isChatRoom ? 'pb-20 md:pb-0' : ''} overflow-y-auto`}>
+      <div className={`flex-1 flex flex-col relative min-h-screen ${!isChatRoom ? 'pb-20 md:pb-0 md:pr-72' : ''} overflow-y-auto`}>
         <div className={`w-full max-w-[1400px] mx-auto flex-1 ${!isChatRoom ? 'p-4 md:p-10 pb-10' : ''}`}>
           <Outlet />
         </div>
