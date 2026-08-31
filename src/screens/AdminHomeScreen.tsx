@@ -410,10 +410,10 @@ export default function AdminHomeScreen() {
               </div>
               
               <div className="space-y-4">
-                <FinancialMetric label="صافي الرواتب" value={financialTotals.net.toLocaleString()} subValue="د.ع / شهر" icon="payments" color="text-emerald-500" />
-                <FinancialMetric label="إجمالي المكافآت" value={financialTotals.bonuses.toLocaleString()} subValue="د.ع / شهر" icon="add_circle" color="text-emerald-400" />
-                <FinancialMetric label="إجمالي السلف" value={financialTotals.advances.toLocaleString()} subValue="د.ع / شهر" icon="payments" color="text-orange-500" />
-                <FinancialMetric label="إجمالي الخصومات" value={financialTotals.deductions.toLocaleString()} subValue="د.ع / شهر" icon="remove_circle" color="text-[#E31E24]" />
+                <FinancialMetric label="صافي الرواتب" value={Math.trunc(financialTotals.net).toLocaleString()} subValue="د.ع / شهر" icon="payments" color="text-emerald-500" />
+                <FinancialMetric label="إجمالي المكافآت" value={Math.trunc(financialTotals.bonuses).toLocaleString()} subValue="د.ع / شهر" icon="add_circle" color="text-emerald-400" />
+                <FinancialMetric label="إجمالي السلف" value={Math.trunc(financialTotals.advances).toLocaleString()} subValue="د.ع / شهر" icon="payments" color="text-orange-500" />
+                <FinancialMetric label="إجمالي الخصومات" value={Math.trunc(financialTotals.deductions).toLocaleString()} subValue="د.ع / شهر" icon="remove_circle" color="text-[#E31E24]" />
               </div>
 
               <button 

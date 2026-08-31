@@ -216,7 +216,7 @@ export default function AdminEmployeeProfileScreen() {
               </div>
               <div className="flex flex-col gap-1">
                 <span className="text-[9px] font-black text-white/40 uppercase  ">الراتب الأساسي</span>
-                <span className="text-xs font-bold">{(employee.baseSalary || 0).toLocaleString()} د.ع</span>
+                <span className="text-xs font-bold">{Math.trunc(employee.baseSalary || 0).toLocaleString()} د.ع</span>
               </div>
             </div>
           </div>

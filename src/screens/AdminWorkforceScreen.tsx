@@ -194,7 +194,7 @@ export default function AdminWorkforceScreen() {
               amount: amountNum,
               status: 'pending',
               createdAt: serverTimestamp(),
-              reason: `طلب ${modalType === 'bonus' ? 'مكافأة' : 'خصم'} بقيمة ${amountNum.toLocaleString()} للموظف ${targetUser?.displayName}`
+              reason: `طلب ${modalType === 'bonus' ? 'مكافأة' : 'خصم'} بقيمة ${Math.trunc(amountNum).toLocaleString()} للموظف ${targetUser?.displayName}`
             });
           } else {
             const userRef = doc(db, 'users', selectedUserId);
@@ -220,7 +220,7 @@ export default function AdminWorkforceScreen() {
             });
 
             const title = modalType === 'bonus' ? 'تم منحك مكافأة' : 'تم تطبيق خصم';
-            const message = `تم ${modalType === 'bonus' ? 'منحك مكافأة' : 'تطبيق خصم'} بقيمة ${amountNum.toLocaleString()} دينار عراقي من قبل ${user?.displayName || 'الإدارة'}`;
+            const message = `تم ${modalType === 'bonus' ? 'منحك مكافأة' : 'تطبيق خصم'} بقيمة ${Math.trunc(amountNum).toLocaleString()} دينار عراقي من قبل ${user?.displayName || 'الإدارة'}`;
             
             await sendNotification(selectedUserId, title, message, 'salary');
 
@@ -230,7 +230,7 @@ export default function AdminWorkforceScreen() {
               const managerQuery = query(collection(db, 'users'), where('role', '==', 'manager'));
               const managerSnap = await getDocs(managerQuery);
               for (const mDoc of managerSnap.docs) {
-                await sendNotification(mDoc.id, 'إشعار إداري', `قام ${user.role === 'admin' ? 'المسؤول' : 'المشرف'} ${user.displayName} بتنفيذ ${modalType === 'bonus' ? 'مكافأة' : 'خصم'} للموظف ${targetUser?.displayName} بقيمة ${amountNum.toLocaleString()} د.ع`, 'salary');
+                await sendNotification(mDoc.id, 'إشعار إداري', `قام ${user.role === 'admin' ? 'المسؤول' : 'المشرف'} ${user.displayName} بتنفيذ ${modalType === 'bonus' ? 'مكافأة' : 'خصم'} للموظف ${targetUser?.displayName} بقيمة ${Math.trunc(amountNum).toLocaleString()} د.ع`, 'salary');
               }
             }
 
@@ -273,7 +273,7 @@ export default function AdminWorkforceScreen() {
         case 'absent':
           const todayDate = new Date().toISOString().split('T')[0];
           const emp = employees.find(e => e.uid === selectedUserId);
-          const dailyDeduction = Math.round((emp?.baseSalary || 0) / 30);
+          const dailyDeduction = Math.trunc((emp?.baseSalary || 0) / 30);
           
           // 1. Record the absence
           await addDoc(collection(db, 'attendance'), {

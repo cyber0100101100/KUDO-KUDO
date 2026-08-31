@@ -271,7 +271,7 @@ export default function AdminSalaryScreen() {
         await addDoc(collection(db, 'notifications'), {
           userId: selectedEmployee.uid,
           title: 'تم منحك مكافأة',
-          message: `تم منحك مكافأة بقيمة ${bonusNum.toLocaleString()} دينار عراقي من قبل ${user.displayName || 'الإدارة'}`,
+          message: `تم منحك مكافأة بقيمة ${Math.trunc(bonusNum).toLocaleString()} دينار عراقي من قبل ${user.displayName || 'الإدارة'}`,
           type: 'salary',
           createdAt: serverTimestamp(),
           isRead: false
@@ -281,7 +281,7 @@ export default function AdminSalaryScreen() {
         await addDoc(collection(db, 'notifications'), {
           userId: selectedEmployee.uid,
           title: 'تم صرف سلفة مالية',
-          message: `تم صرف سلفة مالية لك بقيمة ${advanceNum.toLocaleString()} دينار عراقي من قبل ${user.displayName || 'الإدارة'}، سيتم خصمها من الراتب النهائي.`,
+          message: `تم صرف سلفة مالية لك بقيمة ${Math.trunc(advanceNum).toLocaleString()} دينار عراقي من قبل ${user.displayName || 'الإدارة'}، سيتم خصمها من الراتب النهائي.`,
           type: 'salary',
           createdAt: serverTimestamp(),
           isRead: false
@@ -291,7 +291,7 @@ export default function AdminSalaryScreen() {
         await addDoc(collection(db, 'notifications'), {
           userId: selectedEmployee.uid,
           title: 'تم تطبيق خصم',
-          message: `تم تطبيق خصم بقيمة ${deductionNum.toLocaleString()} دينار عراقي من قبل ${user.displayName || 'الإدارة'}`,
+          message: `تم تطبيق خصم بقيمة ${Math.trunc(deductionNum).toLocaleString()} دينار عراقي من قبل ${user.displayName || 'الإدارة'}`,
           type: 'salary',
           createdAt: serverTimestamp(),
           isRead: false
@@ -301,7 +301,7 @@ export default function AdminSalaryScreen() {
         await addDoc(collection(db, 'notifications'), {
           userId: selectedEmployee.uid,
           title: 'إضافة أجور إضافية (Overtime)',
-          message: `تم إضافة أجور إضافية بقيمة ${overtimeNum.toLocaleString()} دينار عراقي لمجهودك الإضافي`,
+          message: `تم إضافة أجور إضافية بقيمة ${Math.trunc(overtimeNum).toLocaleString()} دينار عراقي لمجهودك الإضافي`,
           type: 'salary',
           createdAt: serverTimestamp(),
           isRead: false
@@ -411,12 +411,12 @@ export default function AdminSalaryScreen() {
         (attendanceStats[emp.uid]?.attended || 0).toString(),
         (attendanceStats[emp.uid]?.absent || 0).toString(),
         (emp.lateCount || 0).toString(),
-        base.toLocaleString(),
-        stats.bonus.toLocaleString(),
-        stats.advance.toLocaleString(),
-        totalDeduction.toLocaleString(),
-        stats.overtime.toLocaleString(),
-        net.toLocaleString()
+        Math.trunc(base).toLocaleString(),
+        Math.trunc(stats.bonus).toLocaleString(),
+        Math.trunc(stats.advance).toLocaleString(),
+        Math.trunc(totalDeduction).toLocaleString(),
+        Math.trunc(stats.overtime).toLocaleString(),
+        Math.trunc(net).toLocaleString()
       ];
     });
 
@@ -550,15 +550,15 @@ export default function AdminSalaryScreen() {
                             <>
                               <div className="text-center bg-white p-3 rounded-2xl border border-slate-100 shadow-sm min-w-[80px]">
                                 <p className="text-[7px] font-black text-emerald-400 uppercase  er mb-1">مكافآت</p>
-                                <p className="text-xs font-black text-emerald-600">+{s.bonus.toLocaleString()}</p>
+                                <p className="text-xs font-black text-emerald-600">+{Math.trunc(s.bonus).toLocaleString()}</p>
                               </div>
                               <div className="text-center bg-white p-3 rounded-2xl border border-slate-100 shadow-sm min-w-[80px]">
                                 <p className="text-[7px] font-black text-red-400 uppercase  er mb-1">خصومات</p>
-                                <p className="text-xs font-black text-[#E31E24]">-{totalDeductions.toLocaleString()}</p>
+                                <p className="text-xs font-black text-[#E31E24]">-{Math.trunc(totalDeductions).toLocaleString()}</p>
                               </div>
                               <div className="text-center bg-white p-3 rounded-2xl border border-slate-100 shadow-sm min-w-[80px]">
                                 <p className="text-[7px] font-black text-orange-400 uppercase  er mb-1">سلف</p>
-                                <p className="text-xs font-black text-orange-600">-{s.advance.toLocaleString()}</p>
+                                <p className="text-xs font-black text-orange-600">-{Math.trunc(s.advance).toLocaleString()}</p>
                               </div>
                             </>
                           );
@@ -708,27 +708,27 @@ export default function AdminSalaryScreen() {
                 </div>
                 <div className="bg-white p-6 rounded-[32px] border border-slate-50 shadow-sm">
                   <p className="text-[10px] font-black text-slate-400 uppercase   mb-1">إجمالي الأساسي</p>
-                  <p className="text-xl font-black text-slate-900">{totals.base.toLocaleString()} <span className="text-xs text-slate-300">د.ع</span></p>
+                  <p className="text-xl font-black text-slate-900">{Math.trunc(totals.base).toLocaleString()} <span className="text-xs text-slate-300">د.ع</span></p>
                 </div>
                 <div className="bg-white p-6 rounded-[32px] border border-slate-50 shadow-sm">
                   <p className="text-[10px] font-black text-emerald-400 uppercase   mb-1">المكافآت</p>
-                  <p className="text-xl font-black text-emerald-600">+{totals.bonus.toLocaleString()} <span className="text-xs text-emerald-300">د.ع</span></p>
+                  <p className="text-xl font-black text-emerald-600">+{Math.trunc(totals.bonus).toLocaleString()} <span className="text-xs text-emerald-300">د.ع</span></p>
                 </div>
                 <div className="bg-white p-6 rounded-[32px] border border-slate-50 shadow-sm">
                   <p className="text-[10px] font-black text-blue-400 uppercase   mb-1">الإضافي</p>
-                  <p className="text-xl font-black text-blue-600">+{totals.overtime.toLocaleString()} <span className="text-xs text-blue-300">د.ع</span></p>
+                  <p className="text-xl font-black text-blue-600">+{Math.trunc(totals.overtime).toLocaleString()} <span className="text-xs text-blue-300">د.ع</span></p>
                 </div>
                 <div className="bg-white p-6 rounded-[32px] border border-slate-50 shadow-sm">
                   <p className="text-[10px] font-black text-red-400 uppercase   mb-1">الخصومات</p>
-                  <p className="text-xl font-black text-[#E31E24]">-{totals.deduction.toLocaleString()} <span className="text-xs text-red-300">د.ع</span></p>
+                  <p className="text-xl font-black text-[#E31E24]">-{Math.trunc(totals.deduction).toLocaleString()} <span className="text-xs text-red-300">د.ع</span></p>
                 </div>
                 <div className="bg-white p-6 rounded-[32px] border border-slate-50 shadow-sm">
                   <p className="text-[10px] font-black text-orange-400 uppercase   mb-1">السلف</p>
-                  <p className="text-xl font-black text-orange-600">-{totals.advance.toLocaleString()} <span className="text-xs text-orange-300">د.ع</span></p>
+                  <p className="text-xl font-black text-orange-600">-{Math.trunc(totals.advance).toLocaleString()} <span className="text-xs text-orange-300">د.ع</span></p>
                 </div>
                 <div className="bg-slate-900 p-6 rounded-[32px] border border-slate-800 shadow-xl shadow-slate-200">
                   <p className="text-[10px] font-black text-slate-400 uppercase   mb-1">الصافي النهائي</p>
-                  <p className="text-xl font-black text-white">{(totals.base + totals.bonus + totals.overtime - totals.deduction - totals.advance).toLocaleString()} <span className="text-xs text-white/40">د.ع</span></p>
+                  <p className="text-xl font-black text-white">{Math.trunc(totals.base + totals.bonus + totals.overtime - totals.deduction - totals.advance).toLocaleString()} <span className="text-xs text-white/40">د.ع</span></p>
                 </div>
               </div>
 
@@ -796,43 +796,43 @@ export default function AdminSalaryScreen() {
                               </div>
                             </td>
                             <td className="py-4 px-4 text-center bg-slate-50/30 group-hover:bg-white border-y border-slate-50/50 group-hover:border-slate-100 transition-all">
-                              <span className="text-xs font-black text-slate-600">{(base).toLocaleString()}</span>
+                              <span className="text-xs font-black text-slate-600">{Math.trunc(base).toLocaleString()}</span>
                               <span className="text-[8px] font-bold text-slate-300 mr-1 uppercase">د.ع</span>
                             </td>
                             <td className="py-4 px-4 text-center bg-slate-50/30 group-hover:bg-white border-y border-slate-50/50 group-hover:border-slate-100 transition-all">
                               <span className={`text-xs font-black ${bonusVal > 0 ? 'text-emerald-500' : 'text-slate-300'}`}>
-                                {bonusVal > 0 ? `+${bonusVal.toLocaleString()}` : '0'}
+                                {bonusVal > 0 ? `+${Math.trunc(bonusVal).toLocaleString()}` : '0'}
                               </span>
                               {bonusVal > 0 && <span className="text-[8px] font-bold text-emerald-300 mr-1 uppercase">د.ع</span>}
                             </td>
                             <td className="py-4 px-4 text-center bg-slate-50/30 group-hover:bg-white border-y border-slate-50/50 group-hover:border-slate-100 transition-all">
                               <span className={`text-xs font-black ${overtimeVal > 0 ? 'text-blue-500' : 'text-slate-300'}`}>
-                                {overtimeVal > 0 ? `+${overtimeVal.toLocaleString()}` : '0'}
+                                {overtimeVal > 0 ? `+${Math.trunc(overtimeVal).toLocaleString()}` : '0'}
                               </span>
                               {overtimeVal > 0 && <span className="text-[8px] font-bold text-blue-300 mr-1 uppercase">د.ع</span>}
                             </td>
                             <td className="py-4 px-4 text-center bg-slate-50/30 group-hover:bg-white border-y border-slate-50/50 group-hover:border-slate-100 transition-all">
                               <span className={`text-xs font-black ${advanceVal > 0 ? 'text-orange-500' : 'text-slate-300'}`}>
-                                {advanceVal > 0 ? `-${advanceVal.toLocaleString()}` : '0'}
+                                {advanceVal > 0 ? `-${Math.trunc(advanceVal).toLocaleString()}` : '0'}
                               </span>
                               {advanceVal > 0 && <span className="text-[8px] font-bold text-orange-300 mr-1 uppercase">د.ع</span>}
                             </td>
                             <td className="py-4 px-4 text-center bg-slate-50/30 group-hover:bg-white border-y border-slate-50/50 group-hover:border-slate-100 transition-all">
                               <span className={`text-xs font-black ${deductionVal > 0 ? 'text-[#E31E24]' : 'text-slate-300'}`}>
-                                {deductionVal > 0 ? `-${deductionVal.toLocaleString()}` : '0'}
+                                {deductionVal > 0 ? `-${Math.trunc(deductionVal).toLocaleString()}` : '0'}
                               </span>
                               {deductionVal > 0 && <span className="text-[8px] font-bold text-red-300 mr-1 uppercase">د.ع</span>}
                             </td>
                             <td className="py-4 px-4 text-center bg-slate-50/30 group-hover:bg-white border-y border-slate-50/50 group-hover:border-slate-100 transition-all">
                               <span className={`text-xs font-black ${absenceDeductionVal > 0 ? 'text-red-400' : 'text-slate-300'}`}>
-                                {absenceDeductionVal > 0 ? `-${absenceDeductionVal.toLocaleString()}` : '0'}
+                                {absenceDeductionVal > 0 ? `-${Math.trunc(absenceDeductionVal).toLocaleString()}` : '0'}
                               </span>
                               {absenceDeductionVal > 0 && <span className="text-[8px] font-bold text-red-200 mr-1 uppercase">د.ع</span>}
                             </td>
                             <td className="py-4 pl-6 text-left rounded-l-3xl bg-slate-50/30 group-hover:bg-white border-y border-l border-slate-50/50 group-hover:border-slate-100 transition-all">
                               <div className="flex flex-col items-start">
                                 <div className="flex items-baseline gap-1">
-                                  <span className="text-sm font-black text-slate-900  ">{(net).toLocaleString()}</span>
+                                  <span className="text-sm font-black text-slate-900  ">{Math.trunc(net).toLocaleString()}</span>
                                   <span className="text-[9px] font-black text-[#E31E24] uppercase">د.ع</span>
                                 </div>
                                 <div className="w-16 h-1 bg-slate-100 rounded-full mt-1.5 overflow-hidden">

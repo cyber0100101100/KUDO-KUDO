@@ -277,7 +277,7 @@ export default function NotificationsScreen() {
               await addDoc(collection(db, 'notifications'), {
                 userId: mDoc.id,
                 title: 'إشعار إداري: موافقة على سلفة',
-                message: `قام ${user.role === 'admin' ? 'المسؤول' : 'المشرف'} ${user.displayName} بالموافقة على سلفة للموظف بقيمة ${amount.toLocaleString()} د.ع`,
+                message: `قام ${user.role === 'admin' ? 'المسؤول' : 'المشرف'} ${user.displayName} بالموافقة على سلفة للموظف بقيمة ${Math.trunc(amount).toLocaleString()} د.ع`,
                 type: 'salary',
                 createdAt: serverTimestamp(),
                 isRead: false
@@ -361,7 +361,7 @@ export default function NotificationsScreen() {
       }
 
       if (action === 'approved' && type === 'absence_deduction' && amount) {
-        notifMessage = `تم خصم مبلغ ${amount.toLocaleString()} دينار من راتبك بسبب غيابك عن العمل وفقاً للنظام التلقائي (بواسطة ${user?.displayName}).`;
+        notifMessage = `تم خصم مبلغ ${Math.trunc(amount).toLocaleString()} دينار من راتبك بسبب غيابك عن العمل وفقاً للنظام التلقائي (بواسطة ${user?.displayName}).`;
       }
 
       await addDoc(collection(db, 'notifications'), {
@@ -409,13 +409,13 @@ export default function NotificationsScreen() {
     switch (req.type) {
       case 'leave': 
         return `طلب إجازة لمدة ${req.daysCount} أيام (${req.startDate} إلى ${req.endDate})`;
-      case 'advance': return `طلب سلفة مالية (${req.amount?.toLocaleString()} IQD)`;
+      case 'advance': return `طلب سلفة مالية (${req.amount ? Math.trunc(req.amount).toLocaleString() : 0} IQD)`;
       case 'automated_deduction': return `خصم تلقائي (تأخير متكرر: ${req.lateOccurrences} مرات)`;
-      case 'absence_deduction': return `خصم غياب (${req.amount?.toLocaleString()} IQD)`;
+      case 'absence_deduction': return `خصم غياب (${req.amount ? Math.trunc(req.amount).toLocaleString() : 0} IQD)`;
       case 'group_join': return `طلب انضمام لمجموعة: ${req.groupName || 'Kudu Kudu'}`;
-      case 'bonus': return `طلب مكافأة (${req.amount?.toLocaleString()} IQD)`;
-      case 'deduction': return `طلب خصم مالي (${req.amount?.toLocaleString()} IQD)`;
-      case 'overtime': return `طلب أجور إضافية (${req.amount?.toLocaleString()} IQD)`;
+      case 'bonus': return `طلب مكافأة (${req.amount ? Math.trunc(req.amount).toLocaleString() : 0} IQD)`;
+      case 'deduction': return `طلب خصم مالي (${req.amount ? Math.trunc(req.amount).toLocaleString() : 0} IQD)`;
+      case 'overtime': return `طلب أجور إضافية (${req.amount ? Math.trunc(req.amount).toLocaleString() : 0} IQD)`;
       default: return 'طلب غير معروف';
     }
   };

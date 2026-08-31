@@ -46,7 +46,7 @@ export default function RequestsScreen() {
         title: type === 'leave' ? 'طلب إجازة جديد' : 'طلب سلفة جديد',
         message: type === 'leave' 
           ? `قام الموظف ${user!.displayName} بتقديم طلب إجازة لمدة ${daysCount} يوم.`
-          : `قام الموظف ${user!.displayName} بتقديم طلب سلفة بمبلغ ${amount} د.ع.`,
+          : `قام الموظف ${user!.displayName} بتقديم طلب سلفة بمبلغ ${Math.trunc(Number(amount))} د.ع.`,
         type: 'request',
         isRead: false,
         createdAt: serverTimestamp()
@@ -188,7 +188,7 @@ export default function RequestsScreen() {
                         onClick={() => setAmount(val.toString())}
                         className="px-3 py-1.5 rounded-lg border border-slate-100 text-[10px] font-black text-slate-500 hover:border-[#E31E24] hover:text-[#E31E24] transition-all"
                       >
-                        {val.toLocaleString()}
+                        {Math.trunc(val).toLocaleString()}
                       </button>
                     ))}
                   </div>

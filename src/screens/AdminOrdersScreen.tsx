@@ -146,7 +146,7 @@ export default function AdminOrdersScreen() {
                             <span className="text-xs font-black text-slate-900">{item.quantity}x</span>
                             <span className="text-xs font-bold text-slate-600">{item.name}</span>
                           </div>
-                          <span className="text-[10px] font-bold text-slate-400">{(item.price * item.quantity).toLocaleString()} د.ع</span>
+                          <span className="text-[10px] font-bold text-slate-400">{Math.trunc(item.price * item.quantity).toLocaleString()} د.ع</span>
                         </div>
                       ))}
                     </div>
@@ -156,7 +156,7 @@ export default function AdminOrdersScreen() {
                   <div className="p-4 bg-slate-50/50 border-t border-slate-50 flex items-center justify-between">
                     <div>
                       <span className="text-[10px] font-bold text-slate-400 block">الإجمالي</span>
-                      <span className="text-sm font-black text-slate-900">{order.total.toLocaleString()} د.ع</span>
+                      <span className="text-sm font-black text-slate-900">{Math.trunc(order.total).toLocaleString()} د.ع</span>
                     </div>
                     <div className="flex gap-2">
                       {order.status === 'pending' && (

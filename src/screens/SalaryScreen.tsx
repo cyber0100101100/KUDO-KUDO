@@ -111,7 +111,7 @@ export default function SalaryScreen() {
               <div className="text-center space-y-1 mb-6 md:mb-10">
                 <p className="text-[9px] font-black opacity-40 uppercase  ">إجمالي المستحق الصافي</p>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-4xl md:text-6xl font-black  er leading-none">{netSalary.toLocaleString()}</span>
+                  <span className="text-4xl md:text-6xl font-black  er leading-none">{Math.trunc(netSalary).toLocaleString()}</span>
                   <span className="text-xs md:text-sm font-black opacity-30 uppercase  ">IQD</span>
                 </div>
               </div>
@@ -127,7 +127,7 @@ export default function SalaryScreen() {
           </div>
 
           <div className="bg-white rounded-[32px] md:rounded-[48px] shadow-sm border border-slate-50 overflow-hidden flex flex-col">
-            <SalaryRow label="الراتب الأساسي" sub="قيمة العقد الشهرية" value={baseSalary.toLocaleString()} />
+            <SalaryRow label="الراتب الأساسي" sub="قيمة العقد الشهرية" value={Math.trunc(baseSalary).toLocaleString()} />
             
             <SalaryRow 
               label="أيام الحضور" 
@@ -148,35 +148,35 @@ export default function SalaryScreen() {
             <SalaryRow 
               label="المكافآت" 
               sub="حوافز الأداء والانضباط" 
-              value={bonus > 0 ? `+${bonus.toLocaleString()}` : '0'} 
+              value={bonus > 0 ? `+${Math.trunc(bonus).toLocaleString()}` : '0'} 
               valueColor="text-emerald-600" 
             />
 
             <SalaryRow 
               label="أجور إضافية" 
               sub="أجور العمل خارج أوقات المناوبة" 
-              value={overtime > 0 ? `+${overtime.toLocaleString()}` : '0'} 
+              value={overtime > 0 ? `+${Math.trunc(overtime).toLocaleString()}` : '0'} 
               valueColor="text-blue-600" 
             />
 
             <SalaryRow 
               label="السلف المالية" 
               sub="المبالغ المسحوبة خلال الشهر" 
-              value={advance > 0 ? `-${advance.toLocaleString()}` : '0'} 
+              value={advance > 0 ? `-${Math.trunc(advance).toLocaleString()}` : '0'} 
               valueColor="text-orange-600" 
             />
 
             <SalaryRow 
               label="الخصومات" 
               sub="العقوبات والتأخيرات المتكررة" 
-              value={deduction > 0 ? `-${deduction.toLocaleString()}` : '0'} 
+              value={deduction > 0 ? `-${Math.trunc(deduction).toLocaleString()}` : '0'} 
               valueColor="text-red-600" 
             />
             
             <div className="flex justify-between items-center p-6 md:p-8 bg-white">
               <span className="text-sm md:text-lg font-black text-slate-900 uppercase  ">صافي الراتب النهائي</span>
               <div className="flex items-baseline gap-1.5">
-                <span className="text-2xl md:text-3xl font-black text-[#E31E24]  er">{netSalary.toLocaleString()}</span>
+                <span className="text-2xl md:text-3xl font-black text-[#E31E24]  er">{Math.trunc(netSalary).toLocaleString()}</span>
                 <span className="text-[10px] md:text-xs font-black text-[#E31E24] opacity-40 uppercase  ">IQD</span>
               </div>
             </div>
