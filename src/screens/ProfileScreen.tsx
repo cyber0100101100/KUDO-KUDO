@@ -19,6 +19,7 @@ export default function ProfileScreen() {
     profileImageUrl: ''
   });
   const [isSaving, setIsSaving] = useState(false);
+  const [notificationsEnabled, setNotificationsEnabled] = useState(user?.notificationsEnabled || false);
 
   const [stats, setStats] = useState({
     workingDays: 0,
@@ -71,6 +72,48 @@ export default function ProfileScreen() {
       };
       fetchStats();
   }, [user, authLoading]);
+
+  useEffect(() => {
+    if (user) {
+      setNotificationsEnabled(user.notificationsEnabled || false);
+    }
+  }, [user]);
+
+  const handleToggleNotifications = async () => {
+    if (!user) return;
+
+    if (!notificationsEnabled) {
+      // Trying to enable
+      try {
+        if (!('Notification' in window)) {
+          alert('هذا المتصفح لا يدعم الإشعارات');
+          return;
+        }
+
+        const permission = await Notification.requestPermission();
+        if (permission === 'granted') {
+          await updateDoc(doc(db, 'users', user.uid), {
+            notificationsEnabled: true
+          });
+          setNotificationsEnabled(true);
+        } else {
+          alert('يرجى تفعيل صلاحية الإشعارات من إعدادات المتصفح/الهاتف لتتمكن من تلقي التنبيهات.');
+        }
+      } catch (err) {
+        console.error('Error requesting notification permission:', err);
+      }
+    } else {
+      // Disabling
+      try {
+        await updateDoc(doc(db, 'users', user.uid), {
+          notificationsEnabled: false
+        });
+        setNotificationsEnabled(false);
+      } catch (err) {
+        console.error('Error disabling notifications:', err);
+      }
+    }
+  };
 
   const handleSave = async () => {
     if (!user) return;
@@ -249,26 +292,19 @@ export default function ProfileScreen() {
                     <span className="material-symbols-outlined text-xl">notifications_active</span>
                   </div>
                   <div className="text-right">
-                    <span className="block text-sm font-black text-slate-800">تنبيهات الرواتب</span>
-                    <span className="block text-[10px] font-bold text-slate-400 uppercase  ">إشعارات الخصومات والمكافآت</span>
+                    <span className="block text-sm font-black text-slate-800">تفعيل تنبيهات التطبيق</span>
+                    <span className="block text-[10px] font-bold text-slate-400 uppercase  ">إشعارات الرواتب والدوام والتعميمات</span>
                   </div>
                 </div>
-                <div className="w-12 h-6 bg-emerald-500 rounded-full relative p-1 cursor-pointer">
-                  <div className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full shadow-sm"></div>
-                </div>
-              </div>
-              <div className="flex items-center justify-between p-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-slate-50 rounded-xl flex items-center justify-center text-slate-400">
-                    <span className="material-symbols-outlined text-xl">calendar_today</span>
-                  </div>
-                  <div className="text-right">
-                    <span className="block text-sm font-black text-slate-800">تنبيهات الدوام</span>
-                    <span className="block text-[10px] font-bold text-slate-400 uppercase  ">إشعارات جدول العمل والحضور</span>
-                  </div>
-                </div>
-                <div className="w-12 h-6 bg-emerald-500 rounded-full relative p-1 cursor-pointer">
-                  <div className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full shadow-sm"></div>
+                <div 
+                  onClick={handleToggleNotifications}
+                  className={`w-12 h-6 rounded-full relative p-1 cursor-pointer transition-all duration-300 ${notificationsEnabled ? 'bg-emerald-500' : 'bg-slate-200'}`}
+                >
+                  <motion.div 
+                    animate={{ x: notificationsEnabled ? 24 : 0 }}
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                    className="w-4 h-4 bg-white rounded-full shadow-sm"
+                  />
                 </div>
               </div>
             </div>
