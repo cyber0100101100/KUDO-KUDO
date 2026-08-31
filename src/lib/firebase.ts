@@ -22,8 +22,9 @@ import {
   persistentMultipleTabManager
 } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
+import { getMessaging, getToken, onMessage } from 'firebase/messaging';
 import firebaseConfig from '../../firebase-applet-config.json';
-import { User, Attendance, LeaveRequest, Notification, ChatMessage } from '../types';
+import { User, Attendance, LeaveRequest, Notification as AppNotification, ChatMessage } from '../types';
 
 // Initialize Firebase
 if (!firebaseConfig || !firebaseConfig.apiKey) {
@@ -58,6 +59,46 @@ testConnection();
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
 export const storage = getStorage(app);
+
+// Initialize Messaging
+let messaging: any = null;
+try {
+  // Only initialize messaging if supported (fails in some iframe/incognito contexts)
+  messaging = getMessaging(app);
+} catch (err) {
+  console.warn('FCM not supported in this browser context:', err);
+}
+
+export async function requestNotificationPermission(userId: string) {
+  if (!messaging) return;
+  
+  try {
+    const permission = await window.Notification.requestPermission();
+    if (permission === 'granted') {
+      const token = await getToken(messaging, {
+        vapidKey: 'YOUR_PUBLIC_VAPID_KEY' // I'll need to generate or provide one
+      });
+      
+      if (token) {
+        await updateDoc(doc(db, 'users', userId), {
+          fcmToken: token
+        });
+        console.log('FCM Token saved:', token);
+      }
+    }
+  } catch (err) {
+    console.error('Error requesting notification permission:', err);
+  }
+}
+
+export function onMessageListener() {
+  if (!messaging) return null;
+  return new Promise((resolve) => {
+    onMessage(messaging, (payload) => {
+      resolve(payload);
+    });
+  });
+}
 
 // Error handler based on skill
 export enum OperationType {

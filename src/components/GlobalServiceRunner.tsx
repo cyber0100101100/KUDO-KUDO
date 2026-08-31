@@ -1,12 +1,16 @@
 import { useEffect } from 'react';
 import { NotificationService } from '../services/NotificationService';
 import { useAuthContext } from '../context/AuthContext';
+import { requestNotificationPermission } from '../lib/firebase';
 
 export default function GlobalServiceRunner() {
   const { user } = useAuthContext();
 
   useEffect(() => {
     if (!user) return;
+
+    // Request notification permissions and save token
+    requestNotificationPermission(user.uid);
 
     const isManagement = user.role === 'admin' || user.role === 'manager' || user.role === 'supervisor' || user.email === 'antrippy1@gmail.com' || user.email === 'ath222139@gmail.com';
 
