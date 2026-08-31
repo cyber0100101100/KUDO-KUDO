@@ -36,7 +36,24 @@ const databaseId = (firebaseConfig as any).firestoreDatabaseId || '(default)';
 
 export const db = initializeFirestore(app, {
   experimentalForceLongPolling: true,
+  ignoreUndefinedProperties: true,
 }, databaseId === '(default)' ? undefined : databaseId);
+
+// Test connection on boot as per skill
+async function testConnection() {
+  try {
+    const { getDocFromServer, doc } = await import('firebase/firestore');
+    await getDocFromServer(doc(db, '_connection_test_', 'check'));
+    console.log('Firestore connection verified.');
+  } catch (error: any) {
+    if (error?.code === 'unavailable' || error?.message?.includes('the client is offline')) {
+      console.warn('Firestore is operating in offline mode. Checking connection...');
+    } else {
+      console.error('Firestore connection error:', error);
+    }
+  }
+}
+testConnection();
 
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
@@ -64,7 +81,9 @@ interface FirestoreErrorInfo {
   }
 }
 
-export function handleFirestoreError(error: unknown, operationType: OperationType, path: string | null) {
+export function handleFirestoreError(error: any, operationType: OperationType, path: string | null) {
+  const isUnavailable = error?.code === 'unavailable' || error?.message?.includes('the client is offline');
+  
   const errInfo: FirestoreErrorInfo = {
     error: error instanceof Error ? error.message : String(error),
     authInfo: {
@@ -76,8 +95,14 @@ export function handleFirestoreError(error: unknown, operationType: OperationTyp
     operationType,
     path
   };
-  console.error('Firestore Error: ', JSON.stringify(errInfo));
-  // Don't throw to prevent crashing the app, just log it
+
+  if (isUnavailable) {
+    console.warn('Firestore connection unavailable (offline mode). Operation will be retried automatically when online.', errInfo);
+  } else {
+    console.error('Firestore Error: ', JSON.stringify(errInfo));
+  }
+  
+  // Optionally notify the user or UI via a global state/event if needed
 }
 
 // User helpers

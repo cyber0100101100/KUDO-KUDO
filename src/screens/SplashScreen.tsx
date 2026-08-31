@@ -66,7 +66,7 @@ export default function SplashScreen() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-[32px] md:text-[40px] leading-none font-black text-white tracking-tight"
+            className="text-[32px] md:text-[40px] leading-none font-black text-white  "
           >
             Smart Attendance
           </motion.h1>
@@ -82,7 +82,7 @@ export default function SplashScreen() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="text-[18px] md:text-[22px] leading-relaxed text-white font-medium tracking-wide"
+            className="text-[18px] md:text-[22px] leading-relaxed text-white font-medium  "
           >
             إدارة فريقك بكل احترافية
           </motion.p>

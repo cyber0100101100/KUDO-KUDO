@@ -61,8 +61,8 @@ export default function ManagerTools({ manager }: ManagerToolsProps) {
             <span className="material-symbols-outlined">admin_panel_settings</span>
           </div>
           <div>
-            <h3 className="text-xl font-black text-slate-900 tracking-tight">أدوات الإدارة</h3>
-            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest opacity-60">صلاحيات المسؤول مفعلة</p>
+            <h3 className="text-xl font-black text-slate-900  ">أدوات الإدارة</h3>
+            <p className="text-[10px] font-bold text-slate-400 uppercase   opacity-60">صلاحيات المسؤول مفعلة</p>
           </div>
         </div>
       </div>
@@ -95,7 +95,7 @@ export default function ManagerTools({ manager }: ManagerToolsProps) {
               <div className="space-y-4">
                 <div className="flex items-center gap-2 px-2">
                   <span className="material-symbols-outlined text-slate-400">rebase_edit</span>
-                  <h4 className="text-xs font-black text-slate-900 uppercase tracking-widest">طلبات الموظفين المعلقة</h4>
+                  <h4 className="text-xs font-black text-slate-900 uppercase  ">طلبات الموظفين المعلقة</h4>
                 </div>
                 <RequestsTool manager={manager} requests={requests} />
               </div>
@@ -119,7 +119,7 @@ function TabButton({ active, onClick, icon, label, count }: { active: boolean; o
       }`}
     >
       <span className="material-symbols-outlined text-xl">{icon}</span>
-      <span className="text-[11px] font-black uppercase tracking-widest">{label}</span>
+      <span className="text-[11px] font-black uppercase  ">{label}</span>
       {count !== undefined && count > 0 && (
         <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black ${active ? 'bg-[#E31E24] text-white' : 'bg-slate-200 text-slate-500'}`}>
           {count}
@@ -228,7 +228,7 @@ function ScheduleTool({ manager, employees }: { manager: User; employees: User[]
             className="bg-transparent font-black text-xs outline-none"
           />
         </div>
-        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">تاريخ الجدول</p>
+        <p className="text-[10px] font-black text-slate-400 uppercase  ">تاريخ الجدول</p>
       </div>
 
       <div className="space-y-3">
@@ -244,7 +244,7 @@ function ScheduleTool({ manager, employees }: { manager: User; employees: User[]
             >
               <div className="text-right">
                 <h4 className="text-xs font-black text-slate-900">{entry.userName}</h4>
-                <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{entry.startTime} - {entry.endTime}</p>
+                <p className="text-[9px] font-bold text-slate-400 uppercase  ">{entry.startTime} - {entry.endTime}</p>
               </div>
               <button 
                 onClick={() => setSelectedEntries(prev => prev.filter(e => e.userId !== entry.userId))}
@@ -261,7 +261,7 @@ function ScheduleTool({ manager, employees }: { manager: User; employees: User[]
           className="w-full py-4 border-2 border-dashed border-slate-200 rounded-2xl text-slate-400 hover:border-[#E31E24] hover:text-[#E31E24] transition-all flex items-center justify-center gap-2 group"
         >
           <span className="material-symbols-outlined group-hover:scale-110 transition-transform">add_circle</span>
-          <span className="text-xs font-black uppercase tracking-widest">إضافة موظف للجدول</span>
+          <span className="text-xs font-black uppercase  ">إضافة موظف للجدول</span>
         </button>
       </div>
       
@@ -293,7 +293,7 @@ function ScheduleTool({ manager, employees }: { manager: User; employees: User[]
 
               <div className="space-y-6">
                 <div className="space-y-2 text-right">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mr-2">الموظف</label>
+                  <label className="text-[10px] font-black text-slate-400 uppercase   mr-2">الموظف</label>
                   <select 
                     value={modalUserId}
                     onChange={(e) => setModalUserId(e.target.value)}
@@ -308,7 +308,7 @@ function ScheduleTool({ manager, employees }: { manager: User; employees: User[]
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2 text-right">
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mr-2">من</label>
+                    <label className="text-[10px] font-black text-slate-400 uppercase   mr-2">من</label>
                     <input 
                       type="time" 
                       value={modalStartTime}
@@ -317,7 +317,7 @@ function ScheduleTool({ manager, employees }: { manager: User; employees: User[]
                     />
                   </div>
                   <div className="space-y-2 text-right">
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mr-2">إلى</label>
+                    <label className="text-[10px] font-black text-slate-400 uppercase   mr-2">إلى</label>
                     <input 
                       type="time" 
                       value={modalEndTime}
@@ -447,7 +447,7 @@ function RequestsTool({ manager, requests }: { manager: User; requests: LeaveReq
                 </div>
                 <div>
                   <h4 className="text-xs font-black text-slate-900">{req.reason}</h4>
-                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{new Date(req.createdAt).toLocaleDateString('ar-EG')}</p>
+                  <p className="text-[10px] font-bold text-slate-400 uppercase  ">{new Date(req.createdAt).toLocaleDateString('ar-EG')}</p>
                 </div>
               </div>
 
@@ -455,7 +455,7 @@ function RequestsTool({ manager, requests }: { manager: User; requests: LeaveReq
                 {isAdvanceOverLimit ? (
                   <button 
                     onClick={() => handleAction(req, 'forwarded_to_admin')}
-                    className="px-6 py-2.5 bg-blue-600 text-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-blue-100 active:scale-95 transition-all"
+                    className="px-6 py-2.5 bg-blue-600 text-white rounded-xl text-[10px] font-black uppercase   shadow-lg shadow-blue-100 active:scale-95 transition-all"
                   >
                     تحويل للمدير
                   </button>
@@ -463,13 +463,13 @@ function RequestsTool({ manager, requests }: { manager: User; requests: LeaveReq
                   <>
                     <button 
                       onClick={() => handleAction(req, 'approved')}
-                      className="px-6 py-2.5 bg-emerald-500 text-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-emerald-100 active:scale-95 transition-all"
+                      className="px-6 py-2.5 bg-emerald-500 text-white rounded-xl text-[10px] font-black uppercase   shadow-lg shadow-emerald-100 active:scale-95 transition-all"
                     >
                       موافقة
                     </button>
                     <button 
                       onClick={() => handleAction(req, 'rejected')}
-                      className="px-6 py-2.5 bg-white text-slate-400 border border-slate-100 rounded-xl text-[10px] font-black uppercase tracking-widest active:scale-95 transition-all"
+                      className="px-6 py-2.5 bg-white text-slate-400 border border-slate-100 rounded-xl text-[10px] font-black uppercase   active:scale-95 transition-all"
                     >
                       رفض
                     </button>
@@ -549,7 +549,7 @@ function EmployeesTool({ manager, employees }: { manager: User; employees: User[
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <div className="space-y-4">
-        <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest">قائمة الموظفين</h4>
+        <h4 className="text-[10px] font-black text-slate-400 uppercase  ">قائمة الموظفين</h4>
         <div className="max-h-[300px] overflow-y-auto no-scrollbar space-y-2">
           {employees.map(emp => (
             <div 
@@ -577,13 +577,13 @@ function EmployeesTool({ manager, employees }: { manager: User; employees: User[
       </div>
 
       <div className="bg-slate-50/50 p-6 rounded-3xl border border-slate-100 space-y-4">
-        <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest">إجراء مالي: {selectedEmp?.displayName || 'اختر موظفاً'}</h4>
+        <h4 className="text-[10px] font-black text-slate-400 uppercase  ">إجراء مالي: {selectedEmp?.displayName || 'اختر موظفاً'}</h4>
         <div className="flex gap-2">
           {(['bonus', 'deduction', 'overtime', 'advance'] as const).map(t => (
             <button 
               key={t}
               onClick={() => setActionType(t)}
-              className={`flex-1 py-2 rounded-xl text-[8px] font-black uppercase tracking-widest transition-all ${
+              className={`flex-1 py-2 rounded-xl text-[8px] font-black uppercase   transition-all ${
                 actionType === t ? 'bg-slate-900 text-white' : 'bg-white text-slate-400 border border-slate-100'
               }`}
             >
@@ -647,7 +647,7 @@ function AlertsTool({ manager }: { manager: User }) {
   return (
     <div className="bg-slate-50/50 p-6 rounded-3xl border border-slate-100 space-y-4">
       <div className="space-y-2">
-        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mr-2">عنوان التنبيه</label>
+        <label className="text-[10px] font-black text-slate-400 uppercase   mr-2">عنوان التنبيه</label>
         <input 
           type="text" 
           placeholder="مثلاً: اجتماع عاجل، تعليمات جديدة..." 
@@ -657,7 +657,7 @@ function AlertsTool({ manager }: { manager: User }) {
         />
       </div>
       <div className="space-y-2">
-        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mr-2">نص الرسالة</label>
+        <label className="text-[10px] font-black text-slate-400 uppercase   mr-2">نص الرسالة</label>
         <textarea 
           placeholder="اكتب تفاصيل التنبيه هنا..." 
           value={message}

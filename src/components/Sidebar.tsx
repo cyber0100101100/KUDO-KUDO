@@ -64,7 +64,7 @@ export default function Sidebar() {
 
       <div className="mt-auto p-8">
         <div className="bg-slate-50 rounded-3xl p-6 border border-slate-100/50">
-          <p className="text-[10px] font-bold text-slate-400 mb-3 uppercase tracking-widest text-center opacity-70">المساعدة والدعم</p>
+          <p className="text-[10px] font-bold text-slate-400 mb-3 uppercase   text-center opacity-70">المساعدة والدعم</p>
           <button className="w-full py-3.5 bg-white border border-slate-200 rounded-2xl text-slate-600 font-bold text-xs shadow-sm hover:bg-white/80 transition-all active:scale-[0.98]">
             اتصل بالدعم
           </button>

@@ -446,11 +446,11 @@ export default function AdminSalaryScreen() {
       <div className="p-6 md:p-12 max-w-7xl mx-auto w-full space-y-10 md:space-y-16">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-slate-100 pb-10">
           <div className="space-y-2 md:space-y-4">
-            <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter leading-tight">إدارة الرواتب</h1>
+            <h1 className="text-3xl md:text-5xl font-black text-slate-900  er leading-tight">إدارة الرواتب</h1>
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-2xl border border-slate-100 shadow-sm">
                 <span className="w-2 h-2 bg-[#E31E24] rounded-full animate-pulse"></span>
-                <p className="text-[10px] md:text-[11px] font-black text-slate-500 uppercase tracking-[0.2em]">دورة مالية: {selectedMonth}</p>
+                <p className="text-[10px] md:text-[11px] font-black text-slate-500 uppercase  ">دورة مالية: {selectedMonth}</p>
               </div>
               <div className="relative group">
                 <input 
@@ -466,13 +466,13 @@ export default function AdminSalaryScreen() {
           <div className="flex bg-white p-1.5 rounded-2xl border border-slate-100 shadow-sm self-start">
             <button 
               onClick={() => setViewMode('management')}
-              className={`px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${viewMode === 'management' ? 'bg-[#E31E24] text-white shadow-lg shadow-red-100' : 'text-slate-400 hover:text-slate-600'}`}
+              className={`px-6 py-2 rounded-xl text-[10px] font-black uppercase   transition-all ${viewMode === 'management' ? 'bg-[#E31E24] text-white shadow-lg shadow-red-100' : 'text-slate-400 hover:text-slate-600'}`}
             >
               الإدارة
             </button>
             <button 
               onClick={() => setViewMode('reports')}
-              className={`px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${viewMode === 'reports' ? 'bg-[#E31E24] text-white shadow-lg shadow-red-100' : 'text-slate-400 hover:text-slate-600'}`}
+              className={`px-6 py-2 rounded-xl text-[10px] font-black uppercase   transition-all ${viewMode === 'reports' ? 'bg-[#E31E24] text-white shadow-lg shadow-red-100' : 'text-slate-400 hover:text-slate-600'}`}
             >
               التقارير
             </button>
@@ -491,7 +491,7 @@ export default function AdminSalaryScreen() {
               {/* Employee List Selection */}
               <div className="lg:col-span-1 bg-white rounded-[32px] md:rounded-[40px] p-6 md:p-8 border border-slate-50 shadow-sm flex flex-col">
                 <div className="flex items-center justify-between mb-6 md:mb-8 px-2">
-                  <h2 className="text-base md:text-lg font-black text-slate-900 tracking-tight">اختيار الموظف</h2>
+                  <h2 className="text-base md:text-lg font-black text-slate-900  ">اختيار الموظف</h2>
                   <div className="w-8 md:w-10 h-8 md:h-10 bg-slate-50 rounded-xl md:rounded-2xl flex items-center justify-center text-slate-400">
                     <span className="material-symbols-outlined text-lg md:text-xl">group</span>
                   </div>
@@ -513,7 +513,7 @@ export default function AdminSalaryScreen() {
                       </div>
                       <div className="flex-1">
                         <p className={`font-black text-xs md:text-sm mb-0.5 md:mb-1 ${selectedEmployee?.uid === emp.uid ? 'text-[#E31E24]' : 'text-slate-900'}`}>{emp.displayName}</p>
-                        <p className="text-[8px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest opacity-60">{emp.employeeId || 'KUDO-EMP'}</p>
+                        <p className="text-[8px] md:text-[10px] font-black text-slate-400 uppercase   opacity-60">{emp.employeeId || 'KUDO-EMP'}</p>
                       </div>
                     </button>
                   ))}
@@ -533,10 +533,10 @@ export default function AdminSalaryScreen() {
                         <img src={selectedEmployee.profileImageUrl || `https://ui-avatars.com/api/?name=${selectedEmployee.displayName}`} alt="" className="w-full h-full object-cover" />
                       </div>
                       <div className="flex-1 space-y-1">
-                        <h2 className="text-xl md:text-3xl font-black text-slate-900 tracking-tight">{selectedEmployee.displayName}</h2>
+                        <h2 className="text-xl md:text-3xl font-black text-slate-900  ">{selectedEmployee.displayName}</h2>
                         <div className="flex items-center gap-2 md:gap-3">
-                          <span className="text-[8px] md:text-[10px] font-black text-[#E31E24] bg-red-50 px-2.5 py-1 rounded-full uppercase tracking-widest">{selectedEmployee.jobTitle}</span>
-                          <span className="text-[8px] md:text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] opacity-60">{selectedEmployee.employeeId}</span>
+                          <span className="text-[8px] md:text-[10px] font-black text-[#E31E24] bg-red-50 px-2.5 py-1 rounded-full uppercase  ">{selectedEmployee.jobTitle}</span>
+                          <span className="text-[8px] md:text-[10px] font-black text-slate-400 uppercase   opacity-60">{selectedEmployee.employeeId}</span>
                         </div>
                       </div>
                       
@@ -549,15 +549,15 @@ export default function AdminSalaryScreen() {
                           return (
                             <>
                               <div className="text-center bg-white p-3 rounded-2xl border border-slate-100 shadow-sm min-w-[80px]">
-                                <p className="text-[7px] font-black text-emerald-400 uppercase tracking-tighter mb-1">مكافآت</p>
+                                <p className="text-[7px] font-black text-emerald-400 uppercase  er mb-1">مكافآت</p>
                                 <p className="text-xs font-black text-emerald-600">+{s.bonus.toLocaleString()}</p>
                               </div>
                               <div className="text-center bg-white p-3 rounded-2xl border border-slate-100 shadow-sm min-w-[80px]">
-                                <p className="text-[7px] font-black text-red-400 uppercase tracking-tighter mb-1">خصومات</p>
+                                <p className="text-[7px] font-black text-red-400 uppercase  er mb-1">خصومات</p>
                                 <p className="text-xs font-black text-[#E31E24]">-{totalDeductions.toLocaleString()}</p>
                               </div>
                               <div className="text-center bg-white p-3 rounded-2xl border border-slate-100 shadow-sm min-w-[80px]">
-                                <p className="text-[7px] font-black text-orange-400 uppercase tracking-tighter mb-1">سلف</p>
+                                <p className="text-[7px] font-black text-orange-400 uppercase  er mb-1">سلف</p>
                                 <p className="text-xs font-black text-orange-600">-{s.advance.toLocaleString()}</p>
                               </div>
                             </>
@@ -567,7 +567,7 @@ export default function AdminSalaryScreen() {
                     </div>
 
                     <div className="space-y-3 md:space-y-4 mb-8 md:mb-12 bg-white p-6 rounded-3xl border border-slate-100/50">
-                      <label className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest px-2 opacity-60">الراتب الأساسي (IQD)</label>
+                      <label className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase   px-2 opacity-60">الراتب الأساسي (IQD)</label>
                       <div className="relative group">
                         <div className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 transition-transform group-focus-within:scale-110">
                           <span className="material-symbols-outlined text-xl md:text-2xl">account_balance_wallet</span>
@@ -585,7 +585,7 @@ export default function AdminSalaryScreen() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 mb-8 md:mb-12">
                       <div className="space-y-3 md:space-y-4">
-                        <label className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest px-2 opacity-60">إضافة مكافأة (IQD)</label>
+                        <label className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase   px-2 opacity-60">إضافة مكافأة (IQD)</label>
                         <div className="relative group">
                           <div className="absolute left-6 top-1/2 -translate-y-1/2 text-green-500 transition-transform group-focus-within:scale-110">
                             <span className="material-symbols-outlined text-xl md:text-2xl">add_circle</span>
@@ -601,7 +601,7 @@ export default function AdminSalaryScreen() {
                       </div>
 
                       <div className="space-y-3 md:space-y-4">
-                        <label className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest px-2 opacity-60">صرف سلفة (Advance - IQD)</label>
+                        <label className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase   px-2 opacity-60">صرف سلفة (Advance - IQD)</label>
                         <div className="relative group">
                           <div className="absolute left-6 top-1/2 -translate-y-1/2 text-orange-500 transition-transform group-focus-within:scale-110">
                             <span className="material-symbols-outlined text-xl md:text-2xl">payments</span>
@@ -617,7 +617,7 @@ export default function AdminSalaryScreen() {
                       </div>
 
                       <div className="space-y-3 md:space-y-4">
-                        <label className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest px-2 opacity-60">خصم مالي (IQD)</label>
+                        <label className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase   px-2 opacity-60">خصم مالي (IQD)</label>
                         <div className="relative group">
                           <div className="absolute left-6 top-1/2 -translate-y-1/2 text-[#E31E24] transition-transform group-focus-within:scale-110">
                             <span className="material-symbols-outlined text-xl md:text-2xl">remove_circle</span>
@@ -633,7 +633,7 @@ export default function AdminSalaryScreen() {
                       </div>
 
                       <div className="space-y-3 md:space-y-4">
-                        <label className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest px-2 opacity-60">أجور إضافية (Overtime - IQD)</label>
+                        <label className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase   px-2 opacity-60">أجور إضافية (Overtime - IQD)</label>
                         <div className="relative group">
                           <div className="absolute left-6 top-1/2 -translate-y-1/2 text-blue-500 transition-transform group-focus-within:scale-110">
                             <span className="material-symbols-outlined text-xl md:text-2xl">timer</span>
@@ -650,7 +650,7 @@ export default function AdminSalaryScreen() {
                     </div>
 
                     <div className="space-y-3 md:space-y-4 mb-8 md:mb-12">
-                      <label className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest px-2 opacity-60">السبب أو الملاحظات</label>
+                      <label className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase   px-2 opacity-60">السبب أو الملاحظات</label>
                       <textarea 
                         value={reason}
                         onChange={(e) => setReason(e.target.value)}
@@ -663,13 +663,13 @@ export default function AdminSalaryScreen() {
                     <div className="flex flex-col md:flex-row gap-4 md:gap-6">
                       <button 
                         onClick={handleApply}
-                        className="flex-1 py-4 md:py-6 bg-[#E31E24] text-white rounded-2xl md:rounded-[32px] font-black text-base md:text-lg shadow-xl shadow-red-100 hover:bg-red-700 transition-all active:scale-[0.98] uppercase tracking-widest"
+                        className="flex-1 py-4 md:py-6 bg-[#E31E24] text-white rounded-2xl md:rounded-[32px] font-black text-base md:text-lg shadow-xl shadow-red-100 hover:bg-red-700 transition-all active:scale-[0.98] uppercase  "
                       >
                         تطبيق التغييرات المالية
                       </button>
                       <button 
                         onClick={() => setSelectedEmployee(null)}
-                        className="px-8 md:px-12 py-4 md:py-6 bg-white border-2 border-slate-100 text-slate-400 rounded-2xl md:rounded-[32px] font-black text-[10px] md:text-sm uppercase tracking-widest hover:bg-slate-50 transition-all active:scale-[0.98]"
+                        className="px-8 md:px-12 py-4 md:py-6 bg-white border-2 border-slate-100 text-slate-400 rounded-2xl md:rounded-[32px] font-black text-[10px] md:text-sm uppercase   hover:bg-slate-50 transition-all active:scale-[0.98]"
                       >
                         إلغاء
                       </button>
@@ -681,8 +681,8 @@ export default function AdminSalaryScreen() {
                       <span className="material-symbols-outlined text-4xl md:text-6xl">payments</span>
                     </div>
                     <div className="text-center space-y-2 px-6">
-                      <h3 className="text-lg md:text-2xl font-black text-slate-400 tracking-tight">إدارة المستحقات المالية</h3>
-                      <p className="text-[9px] md:text-xs font-black uppercase tracking-widest">اختر موظفاً من القائمة الجانبية لتعديل راتبه</p>
+                      <h3 className="text-lg md:text-2xl font-black text-slate-400  ">إدارة المستحقات المالية</h3>
+                      <p className="text-[9px] md:text-xs font-black uppercase  ">اختر موظفاً من القائمة الجانبية لتعديل راتبه</p>
                     </div>
                   </div>
                 )}
@@ -699,35 +699,35 @@ export default function AdminSalaryScreen() {
               {/* Summary Cards */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 gap-4">
                 <div className="bg-white p-6 rounded-[32px] border border-slate-50 shadow-sm">
-                  <p className="text-[10px] font-black text-emerald-400 uppercase tracking-widest mb-1">إجمالي الحضور</p>
+                  <p className="text-[10px] font-black text-emerald-400 uppercase   mb-1">إجمالي الحضور</p>
                   <p className="text-xl font-black text-emerald-600">{totals.attended} <span className="text-xs text-emerald-300">يوم</span></p>
                 </div>
                 <div className="bg-white p-6 rounded-[32px] border border-slate-50 shadow-sm">
-                  <p className="text-[10px] font-black text-red-400 uppercase tracking-widest mb-1">إجمالي الغياب</p>
+                  <p className="text-[10px] font-black text-red-400 uppercase   mb-1">إجمالي الغياب</p>
                   <p className="text-xl font-black text-[#E31E24]">{totals.absent} <span className="text-xs text-red-300">يوم</span></p>
                 </div>
                 <div className="bg-white p-6 rounded-[32px] border border-slate-50 shadow-sm">
-                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">إجمالي الأساسي</p>
+                  <p className="text-[10px] font-black text-slate-400 uppercase   mb-1">إجمالي الأساسي</p>
                   <p className="text-xl font-black text-slate-900">{totals.base.toLocaleString()} <span className="text-xs text-slate-300">د.ع</span></p>
                 </div>
                 <div className="bg-white p-6 rounded-[32px] border border-slate-50 shadow-sm">
-                  <p className="text-[10px] font-black text-emerald-400 uppercase tracking-widest mb-1">المكافآت</p>
+                  <p className="text-[10px] font-black text-emerald-400 uppercase   mb-1">المكافآت</p>
                   <p className="text-xl font-black text-emerald-600">+{totals.bonus.toLocaleString()} <span className="text-xs text-emerald-300">د.ع</span></p>
                 </div>
                 <div className="bg-white p-6 rounded-[32px] border border-slate-50 shadow-sm">
-                  <p className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-1">الإضافي</p>
+                  <p className="text-[10px] font-black text-blue-400 uppercase   mb-1">الإضافي</p>
                   <p className="text-xl font-black text-blue-600">+{totals.overtime.toLocaleString()} <span className="text-xs text-blue-300">د.ع</span></p>
                 </div>
                 <div className="bg-white p-6 rounded-[32px] border border-slate-50 shadow-sm">
-                  <p className="text-[10px] font-black text-red-400 uppercase tracking-widest mb-1">الخصومات</p>
+                  <p className="text-[10px] font-black text-red-400 uppercase   mb-1">الخصومات</p>
                   <p className="text-xl font-black text-[#E31E24]">-{totals.deduction.toLocaleString()} <span className="text-xs text-red-300">د.ع</span></p>
                 </div>
                 <div className="bg-white p-6 rounded-[32px] border border-slate-50 shadow-sm">
-                  <p className="text-[10px] font-black text-orange-400 uppercase tracking-widest mb-1">السلف</p>
+                  <p className="text-[10px] font-black text-orange-400 uppercase   mb-1">السلف</p>
                   <p className="text-xl font-black text-orange-600">-{totals.advance.toLocaleString()} <span className="text-xs text-orange-300">د.ع</span></p>
                 </div>
                 <div className="bg-slate-900 p-6 rounded-[32px] border border-slate-800 shadow-xl shadow-slate-200">
-                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">الصافي النهائي</p>
+                  <p className="text-[10px] font-black text-slate-400 uppercase   mb-1">الصافي النهائي</p>
                   <p className="text-xl font-black text-white">{(totals.base + totals.bonus + totals.overtime - totals.deduction - totals.advance).toLocaleString()} <span className="text-xs text-white/40">د.ع</span></p>
                 </div>
               </div>
@@ -735,8 +735,8 @@ export default function AdminSalaryScreen() {
               <div className="bg-white rounded-[32px] md:rounded-[40px] p-6 md:p-8 border border-slate-50 shadow-sm overflow-hidden">
                 <div className="flex items-center justify-between mb-8 px-2">
                   <div className="space-y-1">
-                    <h2 className="text-lg md:text-xl font-black text-slate-900 tracking-tight">تقرير رواتب الموظفين</h2>
-                    <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest opacity-60">كشف الرواتب الصافية بعد المكافآت والخصومات</p>
+                    <h2 className="text-lg md:text-xl font-black text-slate-900  ">تقرير رواتب الموظفين</h2>
+                    <p className="text-[9px] font-black text-slate-400 uppercase   opacity-60">كشف الرواتب الصافية بعد المكافآت والخصومات</p>
                   </div>
                   <div className="flex items-center gap-3">
                     <button 
@@ -744,7 +744,7 @@ export default function AdminSalaryScreen() {
                       className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#E31E24] text-white hover:bg-red-700 transition-all shadow-lg shadow-red-100 border border-red-50"
                     >
                       <span className="material-symbols-outlined text-xl">download</span>
-                      <span className="text-[10px] font-black uppercase tracking-widest">تصدير التقارير</span>
+                      <span className="text-[10px] font-black uppercase  ">تصدير التقارير</span>
                     </button>
                   </div>
                 </div>
@@ -752,7 +752,7 @@ export default function AdminSalaryScreen() {
                 <div className="overflow-x-auto no-scrollbar">
                   <table className="w-full text-right border-separate border-spacing-y-3">
                     <thead>
-                      <tr className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                      <tr className="text-[10px] font-black text-slate-400 uppercase  ">
                         <th className="pb-4 pr-6 text-right">الموظف</th>
                         <th className="pb-4 px-4 text-center">الحضور/الغياب</th>
                         <th className="pb-4 px-4 text-center">الراتب الأساسي</th>
@@ -785,7 +785,7 @@ export default function AdminSalaryScreen() {
                                 </div>
                                 <div>
                                   <p className="text-xs font-black text-slate-900 leading-none mb-1">{emp.displayName}</p>
-                                  <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest opacity-60">{emp.jobTitle}</p>
+                                  <p className="text-[9px] font-bold text-slate-400 uppercase   opacity-60">{emp.jobTitle}</p>
                                 </div>
                               </div>
                             </td>
@@ -832,7 +832,7 @@ export default function AdminSalaryScreen() {
                             <td className="py-4 pl-6 text-left rounded-l-3xl bg-slate-50/30 group-hover:bg-white border-y border-l border-slate-50/50 group-hover:border-slate-100 transition-all">
                               <div className="flex flex-col items-start">
                                 <div className="flex items-baseline gap-1">
-                                  <span className="text-sm font-black text-slate-900 tracking-tight">{(net).toLocaleString()}</span>
+                                  <span className="text-sm font-black text-slate-900  ">{(net).toLocaleString()}</span>
                                   <span className="text-[9px] font-black text-[#E31E24] uppercase">د.ع</span>
                                 </div>
                                 <div className="w-16 h-1 bg-slate-100 rounded-full mt-1.5 overflow-hidden">

@@ -158,7 +158,7 @@ export default function ProfileScreen() {
         <button onClick={() => navigate(-1)} className="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-slate-100 transition-all active:scale-95">
           <span className="material-symbols-outlined text-lg md:text-xl">chevron_right</span>
         </button>
-        <h1 className="text-sm md:text-base font-black text-slate-900 tracking-tight">الملف الشخصي</h1>
+        <h1 className="text-sm md:text-base font-black text-slate-900  ">الملف الشخصي</h1>
         <div className="h-9 px-3 flex items-center justify-center">
           <img src="./logo_upscayl_4x_upscayl-standard-4x.png" alt="KUDO" className="h-4 md:h-5 object-contain grayscale opacity-40" />
         </div>
@@ -201,14 +201,14 @@ export default function ProfileScreen() {
             />
           </div>
           <div className="text-center">
-            <h2 className="text-xl font-black text-slate-900 tracking-tight">{user.displayName}</h2>
-            <p className="text-[10px] font-black text-[#E31E24] uppercase tracking-[0.2em] mt-1">{user.jobTitle || 'موظف'}</p>
+            <h2 className="text-xl font-black text-slate-900  ">{user.displayName}</h2>
+            <p className="text-[10px] font-black text-[#E31E24] uppercase   mt-1">{user.jobTitle || 'موظف'}</p>
           </div>
         </section>
 
         {/* Personal Information Section */}
         <section className="space-y-4">
-          <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] px-4 opacity-60">المعلومات الشخصية</h3>
+          <h3 className="text-[10px] font-black text-slate-400 uppercase   px-4 opacity-60">المعلومات الشخصية</h3>
           <div className="bg-white rounded-[32px] border border-slate-50 shadow-sm overflow-hidden">
             <div className="flex flex-col divide-y divide-slate-50">
               <InfoItem label="الاسم الكامل" value={user.displayName} icon="person" />
@@ -229,7 +229,7 @@ export default function ProfileScreen() {
 
         {/* Work Information Section */}
         <section className="space-y-4">
-          <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] px-4 opacity-60">معلومات العمل</h3>
+          <h3 className="text-[10px] font-black text-slate-400 uppercase   px-4 opacity-60">معلومات العمل</h3>
           <div className="grid grid-cols-2 gap-4">
             <WorkCard label="المجموعة" value={user.group || 'كودو ديالى'} icon="location_on" />
             <WorkCard label="الدور الوظيفي" value={user.jobTitle || 'موظف'} icon="person_pin" />
@@ -240,7 +240,7 @@ export default function ProfileScreen() {
 
         {/* Notification Settings Section */}
         <section className="space-y-4">
-          <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] px-4 opacity-60">إعدادات التنبيهات</h3>
+          <h3 className="text-[10px] font-black text-slate-400 uppercase   px-4 opacity-60">إعدادات التنبيهات</h3>
           <div className="bg-white rounded-[32px] border border-slate-50 shadow-sm overflow-hidden">
             <div className="flex flex-col divide-y divide-slate-50">
               <div className="flex items-center justify-between p-6">
@@ -250,7 +250,7 @@ export default function ProfileScreen() {
                   </div>
                   <div className="text-right">
                     <span className="block text-sm font-black text-slate-800">تنبيهات الرواتب</span>
-                    <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest">إشعارات الخصومات والمكافآت</span>
+                    <span className="block text-[10px] font-bold text-slate-400 uppercase  ">إشعارات الخصومات والمكافآت</span>
                   </div>
                 </div>
                 <div className="w-12 h-6 bg-emerald-500 rounded-full relative p-1 cursor-pointer">
@@ -264,7 +264,7 @@ export default function ProfileScreen() {
                   </div>
                   <div className="text-right">
                     <span className="block text-sm font-black text-slate-800">تنبيهات الدوام</span>
-                    <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest">إشعارات جدول العمل والحضور</span>
+                    <span className="block text-[10px] font-bold text-slate-400 uppercase  ">إشعارات جدول العمل والحضور</span>
                   </div>
                 </div>
                 <div className="w-12 h-6 bg-emerald-500 rounded-full relative p-1 cursor-pointer">
@@ -277,7 +277,7 @@ export default function ProfileScreen() {
 
         {/* Attendance Summary Section */}
         <section className="space-y-4">
-          <h3 className="text-[9px] font-black text-slate-400 uppercase tracking-[0.3em] px-4 opacity-60">سجل الحضور الشهري</h3>
+          <h3 className="text-[9px] font-black text-slate-400 uppercase   px-4 opacity-60">سجل الحضور الشهري</h3>
           <div className="bg-slate-900 rounded-[32px] md:rounded-[48px] p-6 md:p-10 text-white relative overflow-hidden shadow-2xl shadow-slate-300">
             <div className="absolute top-0 left-0 w-32 h-32 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2 blur-2xl opacity-20"></div>
             <div className="grid grid-cols-2 gap-x-6 gap-y-8 relative z-10">
@@ -300,8 +300,8 @@ export default function ProfileScreen() {
                 <span className="material-symbols-outlined text-2xl">edit_note</span>
               </div>
               <div className="text-right">
-                <span className="block text-sm font-black text-slate-800 tracking-tight">تعديل البيانات</span>
-                <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest opacity-60">تحديث معلوماتك الشخصية</span>
+                <span className="block text-sm font-black text-slate-800  ">تعديل البيانات</span>
+                <span className="block text-[10px] font-bold text-slate-400 uppercase   opacity-60">تحديث معلوماتك الشخصية</span>
               </div>
             </div>
             <span className="material-symbols-outlined text-slate-300 text-xl">chevron_left</span>
@@ -309,7 +309,7 @@ export default function ProfileScreen() {
 
           <button 
             onClick={handleSignOut}
-            className="flex items-center justify-center gap-3 p-6 bg-[#E31E24] rounded-[32px] shadow-xl shadow-red-100 text-white font-black transition-all active:scale-[0.98] mt-2 uppercase tracking-widest text-sm"
+            className="flex items-center justify-center gap-3 p-6 bg-[#E31E24] rounded-[32px] shadow-xl shadow-red-100 text-white font-black transition-all active:scale-[0.98] mt-2 uppercase   text-sm"
           >
             <span className="material-symbols-outlined text-2xl">logout</span>
             <span>تسجيل الخروج</span>

@@ -1,13 +1,23 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    
+    // 1. Global Safety Net (As per skill requirements)
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
     // ---------------------------------------------------------
-    // 3. Primitive Definition (Global Helpers)
+    // Primitive Definition (Global Helpers)
     // ---------------------------------------------------------
     function isSignedIn() {
       return request.auth != null;
     }
     
+    function isVerified() {
+      return isSignedIn() && request.auth.token.email_verified == true;
+    }
+
     function isOwner(userId) {
       return isSignedIn() && request.auth.uid == userId;
     }
@@ -38,6 +48,11 @@ service cloud.firestore {
         (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
          get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'manager', 'supervisor'])
       );
+    }
+
+    // Connection Test
+    match /_connection_test_/{docId} {
+      allow read: if true;
     }
 
     match /users/{userId} {
@@ -112,3 +127,4 @@ service cloud.firestore {
     }
   }
 }
+

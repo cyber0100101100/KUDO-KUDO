@@ -81,8 +81,8 @@ export default function SalaryScreen() {
             <span className="material-symbols-outlined text-lg md:text-xl">arrow_forward</span>
           </button>
           <div className="flex flex-col items-center">
-            <h1 className="text-xs md:text-sm font-black text-slate-900 tracking-tight">تقرير المستحقات المالية</h1>
-            <span className="text-[8px] md:text-[9px] font-black text-slate-400 uppercase tracking-widest">{selectedMonth}</span>
+            <h1 className="text-xs md:text-sm font-black text-slate-900  ">تقرير المستحقات المالية</h1>
+            <span className="text-[8px] md:text-[9px] font-black text-slate-400 uppercase  ">{selectedMonth}</span>
           </div>
           <div className="relative">
             <input 
@@ -103,25 +103,25 @@ export default function SalaryScreen() {
             
             <div className="relative z-10 w-full flex flex-col items-center">
               <div className="px-4 py-1.5 bg-white/10 rounded-full border border-white/5 mb-6">
-                <span className="text-[9px] font-black uppercase tracking-[0.2em] opacity-60">
+                <span className="text-[9px] font-black uppercase   opacity-60">
                   {new Date(selectedMonth).toLocaleString('ar-EG', { month: 'long', year: 'numeric' })}
                 </span>
               </div>
               
               <div className="text-center space-y-1 mb-6 md:mb-10">
-                <p className="text-[9px] font-black opacity-40 uppercase tracking-[0.3em]">إجمالي المستحق الصافي</p>
+                <p className="text-[9px] font-black opacity-40 uppercase  ">إجمالي المستحق الصافي</p>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-4xl md:text-6xl font-black tracking-tighter leading-none">{netSalary.toLocaleString()}</span>
-                  <span className="text-xs md:text-sm font-black opacity-30 uppercase tracking-widest">IQD</span>
+                  <span className="text-4xl md:text-6xl font-black  er leading-none">{netSalary.toLocaleString()}</span>
+                  <span className="text-xs md:text-sm font-black opacity-30 uppercase  ">IQD</span>
                 </div>
               </div>
 
               <div className="w-full flex justify-between items-center px-2 md:px-6 opacity-40">
                 <div className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
-                  <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.3em]">حساب دقيق</span>
+                  <span className="text-[8px] md:text-[10px] font-black uppercase  ">حساب دقيق</span>
                 </div>
-                <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.3em]">{new Date().toLocaleDateString('ar-EG')}</span>
+                <span className="text-[8px] md:text-[10px] font-black uppercase  ">{new Date().toLocaleDateString('ar-EG')}</span>
               </div>
             </div>
           </div>
@@ -174,15 +174,15 @@ export default function SalaryScreen() {
             />
             
             <div className="flex justify-between items-center p-6 md:p-8 bg-white">
-              <span className="text-sm md:text-lg font-black text-slate-900 uppercase tracking-widest">صافي الراتب النهائي</span>
+              <span className="text-sm md:text-lg font-black text-slate-900 uppercase  ">صافي الراتب النهائي</span>
               <div className="flex items-baseline gap-1.5">
-                <span className="text-2xl md:text-3xl font-black text-[#E31E24] tracking-tighter">{netSalary.toLocaleString()}</span>
-                <span className="text-[10px] md:text-xs font-black text-[#E31E24] opacity-40 uppercase tracking-widest">IQD</span>
+                <span className="text-2xl md:text-3xl font-black text-[#E31E24]  er">{netSalary.toLocaleString()}</span>
+                <span className="text-[10px] md:text-xs font-black text-[#E31E24] opacity-40 uppercase  ">IQD</span>
               </div>
             </div>
           </div>
 
-          <button className="w-full py-5 border-2 border-dashed border-slate-200 text-slate-400 rounded-2xl md:rounded-[32px] font-black text-[10px] uppercase tracking-[0.3em] hover:border-slate-300 hover:text-slate-900 hover:bg-white transition-all flex items-center justify-center gap-3 active:scale-[0.98]">
+          <button className="w-full py-5 border-2 border-dashed border-slate-200 text-slate-400 rounded-2xl md:rounded-[32px] font-black text-[10px] uppercase   hover:border-slate-300 hover:text-slate-900 hover:bg-white transition-all flex items-center justify-center gap-3 active:scale-[0.98]">
             <span className="material-symbols-outlined text-lg">receipt_long</span>
             تحميل كشف الراتب (PDF)
           </button>
@@ -196,16 +196,16 @@ function SalaryRow({ label, sub, value, valueColor = 'text-slate-900', badge, ba
   return (
     <div className="flex justify-between items-center p-6 md:p-8 border-b border-slate-50 group hover:bg-white transition-colors">
       <div className="flex flex-col text-right">
-        <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em] mb-1">{label}</span>
-        <span className="text-xs md:text-sm font-black text-slate-900 tracking-tight">{sub}</span>
+        <span className="text-[9px] font-black text-slate-400 uppercase   mb-1">{label}</span>
+        <span className="text-xs md:text-sm font-black text-slate-900  ">{sub}</span>
       </div>
       <div className="flex flex-col items-end gap-1">
         <div className="flex items-baseline gap-1">
-          <span className={`text-sm md:text-lg font-black ${valueColor} tracking-tighter`}>{value}</span>
-          {!badge && <span className="text-[9px] font-black opacity-30 uppercase tracking-widest">IQD</span>}
+          <span className={`text-sm md:text-lg font-black ${valueColor}  er`}>{value}</span>
+          {!badge && <span className="text-[9px] font-black opacity-30 uppercase  ">IQD</span>}
         </div>
         {badge && (
-          <span className={`px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest ${badgeColor}`}>
+          <span className={`px-3 py-1 rounded-full text-[8px] font-black uppercase   ${badgeColor}`}>
             {badge}
           </span>
         )}

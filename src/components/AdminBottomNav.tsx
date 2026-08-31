@@ -47,8 +47,8 @@ export default function AdminBottomNav() {
               className="fixed top-0 right-0 h-full w-4/5 max-w-[300px] bg-white z-[70] shadow-2xl md:hidden flex flex-col font-sans rtl"
             >
               <div className="p-8 border-b border-slate-100 flex flex-col gap-2">
-                <h2 className="text-xl font-black text-slate-900 tracking-tight">القائمة الإدارية</h2>
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest opacity-70">إدارة العمليات والبيانات</p>
+                <h2 className="text-xl font-black text-slate-900  ">القائمة الإدارية</h2>
+                <p className="text-[10px] font-black text-slate-400 uppercase   opacity-70">إدارة العمليات والبيانات</p>
               </div>
 
               <div className="flex-1 p-4 flex flex-col gap-2">
@@ -72,7 +72,7 @@ export default function AdminBottomNav() {
               <div className="p-8 border-t border-slate-100">
                 <button 
                   onClick={() => setIsMenuOpen(false)}
-                  className="w-full py-4 bg-slate-50 text-slate-400 rounded-2xl text-xs font-black uppercase tracking-widest active:scale-95 transition-all"
+                  className="w-full py-4 bg-slate-50 text-slate-400 rounded-2xl text-xs font-black uppercase   active:scale-95 transition-all"
                 >
                   إغلاق القائمة
                 </button>
@@ -94,7 +94,7 @@ export default function AdminBottomNav() {
               <span className={`material-symbols-outlined text-2xl ${path === item.to ? 'filled-icon' : ''}`}>
                 {item.icon}
               </span>
-              <span className="text-[8px] font-black uppercase tracking-tighter text-center">{item.name}</span>
+              <span className="text-[8px] font-black uppercase  er text-center">{item.name}</span>
             </Link>
           ))}
         </div>
@@ -106,7 +106,7 @@ export default function AdminBottomNav() {
             className={`flex flex-col items-center gap-1 transition-all px-1 ${isMenuOpen ? 'text-[#E31E24]' : 'text-slate-400'}`}
           >
             <span className={`material-symbols-outlined text-2xl ${isMenuOpen ? 'filled-icon' : ''}`}>menu</span>
-            <span className="text-[8px] font-black uppercase tracking-tighter text-center">المزيد</span>
+            <span className="text-[8px] font-black uppercase  er text-center">المزيد</span>
           </button>
         </div>
       </nav>

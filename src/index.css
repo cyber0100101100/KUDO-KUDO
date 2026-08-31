@@ -28,6 +28,15 @@ body {
   color: #1E293B;
   direction: rtl;
   -webkit-font-smoothing: antialiased;
+  /* Fix for Arabic letters separation on mobile */
+  letter-spacing: normal !important;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1;
+}
+
+/* Global override to ensure no element breaks Arabic cursive joining */
+* {
+  letter-spacing: normal !important;
 }
 
 #root {

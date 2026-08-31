@@ -35,7 +35,7 @@ export default function AdminTopHeader({
           </button>
         )}
         {title && !centerTitle && (
-          <h1 className="text-sm md:text-base font-black text-slate-900 tracking-tight truncate mr-2">{title}</h1>
+          <h1 className="text-sm md:text-base font-black text-slate-900   truncate mr-2">{title}</h1>
         )}
         {!title && !centerTitle && (
           <div className="flex items-center gap-2 md:gap-3">
@@ -50,7 +50,7 @@ export default function AdminTopHeader({
               <span className="text-[10px] md:text-[11px] font-black text-slate-900 leading-tight truncate max-w-[100px] md:max-w-[120px]">
                 {user?.displayName || 'المدير العام'}
               </span>
-              <span className="text-[8px] md:text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none mt-0.5">
+              <span className="text-[8px] md:text-[9px] font-bold text-slate-400 uppercase   leading-none mt-0.5">
                 {user?.jobTitle || 'إدارة النظام'}
               </span>
             </div>
@@ -60,7 +60,7 @@ export default function AdminTopHeader({
 
       <div className="flex-shrink-0 px-2 md:px-4 flex items-center justify-center">
         {centerTitle && title ? (
-          <h1 className="text-sm md:text-base font-black text-slate-900 tracking-tight">{title}</h1>
+          <h1 className="text-sm md:text-base font-black text-slate-900  ">{title}</h1>
         ) : !hideLogo ? (
           <motion.img 
             initial={{ opacity: 0, y: -10 }}

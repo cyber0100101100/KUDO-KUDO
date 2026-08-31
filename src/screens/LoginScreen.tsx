@@ -154,10 +154,10 @@ export default function LoginScreen() {
           <div className="w-full h-24 flex items-center justify-center mb-10 px-8">
             <img src="./logo_upscayl_4x_upscayl-standard-4x.png" alt="KUDO KUDO" className="h-full object-contain" />
           </div>
-          <h1 className="text-3xl font-black text-slate-800 mb-2 tracking-tight">
+          <h1 className="text-3xl font-black text-slate-800 mb-2  ">
             {role === 'manager' ? 'مدير كودو' : 'موظف كودو'}
           </h1>
-          <p className="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] opacity-70">أهلاً بك، يرجى تسجيل الدخول</p>
+          <p className="text-[11px] font-bold text-slate-400 uppercase   opacity-70">أهلاً بك، يرجى تسجيل الدخول</p>
         </div>
 
         {error && (
@@ -177,7 +177,7 @@ export default function LoginScreen() {
 
         <form onSubmit={handleLogin} className="w-full space-y-6">
           <div className="space-y-2">
-            <label className="text-[10px] font-black text-slate-400 mr-2 uppercase tracking-widest opacity-60">البريد الإلكتروني</label>
+            <label className="text-[10px] font-black text-slate-400 mr-2 uppercase   opacity-60">البريد الإلكتروني</label>
             <div className="relative group">
               <input 
                 className="w-full p-4.5 border border-slate-100 rounded-2xl text-base font-bold bg-slate-50/50 focus:outline-none focus:border-red-100 focus:bg-white focus:shadow-lg focus:shadow-red-500/5 transition-all text-right pr-4 pl-12"
@@ -193,7 +193,7 @@ export default function LoginScreen() {
           </div>
 
           <div className="space-y-2">
-            <label className="text-[10px] font-black text-slate-400 mr-2 uppercase tracking-widest opacity-60">كلمة المرور</label>
+            <label className="text-[10px] font-black text-slate-400 mr-2 uppercase   opacity-60">كلمة المرور</label>
             <div className="relative group">
               <input 
                 className="w-full p-4.5 border border-slate-100 rounded-2xl text-base font-bold bg-slate-50/50 focus:outline-none focus:border-red-100 focus:bg-white focus:shadow-lg focus:shadow-red-500/5 transition-all text-right pr-4 pl-12"
@@ -218,7 +218,7 @@ export default function LoginScreen() {
               <input className="ml-2 w-4.5 h-4.5 rounded-lg border-slate-200 accent-[#E31E24]" type="checkbox" />
               <span>تذكرني</span>
             </label>
-            <Link className="text-xs text-[#E31E24] font-black hover:underline uppercase tracking-tighter" to="/forgot-password">نسيت كلمة المرور؟</Link>
+            <Link className="text-xs text-[#E31E24] font-black hover:underline uppercase  er" to="/forgot-password">نسيت كلمة المرور؟</Link>
           </div>
 
           <button 
@@ -230,14 +230,14 @@ export default function LoginScreen() {
           </button>
 
           <div className="text-center pt-4">
-            <p className="text-slate-400 font-bold text-xs uppercase tracking-tight">
+            <p className="text-slate-400 font-bold text-xs uppercase  ">
               ليس لديك حساب؟{' '}
               <Link to={`/signup/${role}`} className="text-[#E31E24] font-black hover:underline mr-1">إنشاء حساب جديد</Link>
             </p>
           </div>
         </form>
 
-        <div className="w-full flex items-center text-center my-10 text-slate-200 text-[10px] font-black before:content-[''] before:flex-1 before:border-b before:border-slate-50 before:ml-4 after:content-[''] after:flex-1 after:border-b after:border-slate-50 after:mr-4 uppercase tracking-[0.3em]">
+        <div className="w-full flex items-center text-center my-10 text-slate-200 text-[10px] font-black before:content-[''] before:flex-1 before:border-b before:border-slate-50 before:ml-4 after:content-[''] after:flex-1 after:border-b after:border-slate-50 after:mr-4 uppercase  ">
           أو
         </div>
 

@@ -90,7 +90,7 @@ export default function EmployeeHomeScreen() {
         <div className="flex items-center gap-2 md:gap-3">
           <div className="text-right hidden sm:block">
             <h4 className="text-xs font-bold text-slate-800 leading-none mb-1">{user.displayName || 'موظف كودو'}</h4>
-            <p className="text-[10px] font-bold text-slate-400 opacity-70 uppercase tracking-widest">{user.jobTitle || 'موظف'}</p>
+            <p className="text-[10px] font-bold text-slate-400 opacity-70 uppercase  ">{user.jobTitle || 'موظف'}</p>
           </div>
           <div className="w-8 h-8 md:w-9 md:h-9 rounded-xl overflow-hidden border border-slate-100 shadow-sm bg-slate-50">
             <img className="w-full h-full object-cover" src={user.profileImageUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || 'User')}&background=f8fafc&color=cbd5e1`} alt="Profile" />
@@ -110,8 +110,8 @@ export default function EmployeeHomeScreen() {
                 <span className="material-symbols-outlined text-white">admin_panel_settings</span>
               </div>
               <div className="text-right">
-                <h3 className="font-black text-sm md:text-lg tracking-tight">وضع {user.role === 'admin' ? 'المسؤول' : 'المشرف'} مفعل</h3>
-                <p className="text-[10px] md:text-xs font-bold opacity-70 uppercase tracking-widest">لديك صلاحيات إدارية محددة للنظام</p>
+                <h3 className="font-black text-sm md:text-lg  ">وضع {user.role === 'admin' ? 'المسؤول' : 'المشرف'} مفعل</h3>
+                <p className="text-[10px] md:text-xs font-bold opacity-70 uppercase  ">لديك صلاحيات إدارية محددة للنظام</p>
               </div>
             </div>
             <button 
@@ -142,13 +142,13 @@ export default function EmployeeHomeScreen() {
                 <span className="material-symbols-outlined text-4xl md:text-6xl text-[#E31E24] filled-icon">face</span>
               </div>
               <div className="space-y-2">
-                <h2 className="text-lg md:text-3xl font-black text-slate-900 tracking-tight">تسجيل الحضور</h2>
-                <p className="text-[10px] md:text-sm text-slate-400 font-bold px-2 leading-relaxed opacity-60 uppercase tracking-widest">يرجى استخدام بصمة الوجه لتسجيل حضورك اليوم داخل نطاق الفرع.</p>
+                <h2 className="text-lg md:text-3xl font-black text-slate-900  ">تسجيل الحضور</h2>
+                <p className="text-[10px] md:text-sm text-slate-400 font-bold px-2 leading-relaxed opacity-60 uppercase  ">يرجى استخدام بصمة الوجه لتسجيل حضورك اليوم داخل نطاق الفرع.</p>
               </div>
               
               <button 
                 onClick={() => navigate('/employee/attendance')}
-                className="w-full py-4 md:py-6 bg-[#E31E24] text-white rounded-2xl md:rounded-3xl font-black text-sm md:text-xl shadow-xl shadow-red-100 hover:bg-red-700 transition-all active:scale-[0.98] uppercase tracking-widest"
+                className="w-full py-4 md:py-6 bg-[#E31E24] text-white rounded-2xl md:rounded-3xl font-black text-sm md:text-xl shadow-xl shadow-red-100 hover:bg-red-700 transition-all active:scale-[0.98] uppercase  "
               >
                 تفعيل البصمة الآن
               </button>
@@ -165,15 +165,15 @@ export default function EmployeeHomeScreen() {
               
               <div className="relative z-10 flex flex-col items-center">
                 <div className="w-full flex justify-between items-center mb-8 md:mb-12">
-                  <span className="text-[9px] md:text-[10px] font-black opacity-40 uppercase tracking-[0.3em]">تحليلات الأداء</span>
-                  <h3 className="text-base md:text-xl font-black tracking-tight opacity-90">مؤشر 30 يوم</h3>
+                  <span className="text-[9px] md:text-[10px] font-black opacity-40 uppercase  ">تحليلات الأداء</span>
+                  <h3 className="text-base md:text-xl font-black   opacity-90">مؤشر 30 يوم</h3>
                 </div>
                 
                 <div className="text-center mb-6 md:mb-10">
-                  <div className="text-5xl md:text-7xl font-black text-white mb-2 tracking-tighter">
+                  <div className="text-5xl md:text-7xl font-black text-white mb-2  er">
                     {last30DaysAttendance} <span className="text-xl md:text-3xl font-black opacity-20 mx-1">/</span> <span className="text-2xl md:text-4xl opacity-40 font-black">30</span>
                   </div>
-                  <div className="text-[9px] md:text-[10px] font-black opacity-40 uppercase tracking-[0.3em]">أيام العمل المنجزة</div>
+                  <div className="text-[9px] md:text-[10px] font-black opacity-40 uppercase  ">أيام العمل المنجزة</div>
                 </div>
 
                 <div className="w-full bg-white/10 h-2.5 md:h-3.5 rounded-full mb-8 md:mb-12 overflow-hidden border border-white/5">
@@ -220,10 +220,10 @@ export default function EmployeeHomeScreen() {
             <section className="bg-white rounded-[32px] md:rounded-[48px] p-6 md:p-10 shadow-sm border border-slate-50 flex-1 flex flex-col min-h-[400px]">
               <div className="flex justify-between items-start mb-8 md:mb-12">
                 <div className="space-y-1">
-                  <h3 className="text-xl md:text-2xl font-black text-slate-900 tracking-tight">سجل الحضور الشهري</h3>
+                  <h3 className="text-xl md:text-2xl font-black text-slate-900  ">سجل الحضور الشهري</h3>
                   <div className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
-                    <p className="text-[10px] text-slate-400 font-black uppercase tracking-[0.2em] opacity-60">
+                    <p className="text-[10px] text-slate-400 font-black uppercase   opacity-60">
                       البدء: {user?.shiftStart || "09:00"} ص
                     </p>
                   </div>
@@ -250,7 +250,7 @@ export default function EmployeeHomeScreen() {
                           <span className="font-bold text-slate-700 text-sm">
                             {new Date(record.date).toLocaleDateString('ar-EG', { weekday: 'long', day: 'numeric', month: 'short' })}
                           </span>
-                          <span className={`px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-tighter ${record.status === 'late' ? 'bg-amber-100 text-amber-700' : 'bg-green-100 text-green-700'}`}>
+                          <span className={`px-3 py-1 rounded-full text-[9px] font-black uppercase  er ${record.status === 'late' ? 'bg-amber-100 text-amber-700' : 'bg-green-100 text-green-700'}`}>
                             {record.status === 'late' ? 'متأخر' : 'منتظم'}
                           </span>
                         </div>
@@ -288,7 +288,7 @@ function StatusItem({ color, label, shadow }: { color: string; label: string; sh
   return (
     <div className="flex flex-col items-center gap-2">
       <div className={`w-3.5 h-3.5 rounded-full ${color} ${shadow} border-2 border-white/10`}></div>
-      <span className="text-[10px] font-bold opacity-40 uppercase tracking-widest">{label}</span>
+      <span className="text-[10px] font-bold opacity-40 uppercase  ">{label}</span>
     </div>
   );
 }
@@ -304,7 +304,7 @@ function QuickAction({ onClick, icon, label, color }: { onClick: () => void; ico
       <div className={`w-11 h-11 md:w-14 md:h-14 ${color} rounded-xl md:rounded-2xl flex items-center justify-center transition-transform group-hover:scale-105`}>
         <span className="material-symbols-outlined text-xl md:text-2xl">{icon}</span>
       </div>
-      <span className="text-[9px] md:text-[11px] font-black text-slate-600 uppercase tracking-wider">{label}</span>
+      <span className="text-[9px] md:text-[11px] font-black text-slate-600 uppercase  ">{label}</span>
     </motion.button>
   );
 }

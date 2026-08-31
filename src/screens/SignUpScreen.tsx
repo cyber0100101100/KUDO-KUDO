@@ -146,8 +146,8 @@ export default function SignUpScreen() {
 
         <div className="bg-white rounded-[48px] p-10 shadow-[0_32px_64px_-12px_rgba(15,23,42,0.08)] w-full border border-slate-100/50">
           <div className="text-center mb-10 space-y-2">
-            <h1 className="text-3xl font-black text-slate-800 tracking-tight">إنشاء حساب</h1>
-            <p className="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] opacity-70">
+            <h1 className="text-3xl font-black text-slate-800  ">إنشاء حساب</h1>
+            <p className="text-[11px] font-bold text-slate-400 uppercase   opacity-70">
               {role === 'manager' ? 'التسجيل كمدير نظام' : 'التسجيل كموظف كودو'}
             </p>
           </div>
@@ -169,7 +169,7 @@ export default function SignUpScreen() {
 
           <form onSubmit={handleSignUp} className="space-y-6">
             <div className="space-y-2">
-              <label className="text-[10px] font-black text-slate-400 mr-2 uppercase tracking-widest opacity-60" htmlFor="fullName">الاسم الكامل</label>
+              <label className="text-[10px] font-black text-slate-400 mr-2 uppercase   opacity-60" htmlFor="fullName">الاسم الكامل</label>
               <div className="relative group">
                 <input 
                   className="w-full p-4.5 bg-slate-50/50 border border-slate-100 rounded-2xl text-base font-bold text-slate-800 focus:outline-none focus:border-red-100 focus:bg-white focus:shadow-lg focus:shadow-red-500/5 transition-all text-right pr-4 pl-12" 
@@ -185,7 +185,7 @@ export default function SignUpScreen() {
             </div>
 
             <div className="space-y-2">
-              <label className="text-[10px] font-black text-slate-400 mr-2 uppercase tracking-widest opacity-60" htmlFor="email">البريد الإلكتروني</label>
+              <label className="text-[10px] font-black text-slate-400 mr-2 uppercase   opacity-60" htmlFor="email">البريد الإلكتروني</label>
               <div className="relative group">
                 <input 
                   className="w-full p-4.5 bg-slate-50/50 border border-slate-100 rounded-2xl text-base font-bold text-slate-800 focus:outline-none focus:border-red-100 focus:bg-white focus:shadow-lg focus:shadow-red-500/5 transition-all text-left pr-12 pl-4" 
@@ -202,7 +202,7 @@ export default function SignUpScreen() {
             </div>
 
             <div className="space-y-2">
-              <label className="text-[10px] font-black text-slate-400 mr-2 uppercase tracking-widest opacity-60" htmlFor="phone">رقم الهاتف</label>
+              <label className="text-[10px] font-black text-slate-400 mr-2 uppercase   opacity-60" htmlFor="phone">رقم الهاتف</label>
               <div className="relative group">
                 <input 
                   className="w-full p-4.5 bg-slate-50/50 border border-slate-100 rounded-2xl text-base font-bold text-slate-800 focus:outline-none focus:border-red-100 focus:bg-white focus:shadow-lg focus:shadow-red-500/5 transition-all text-left pr-12 pl-4" 
@@ -220,7 +220,7 @@ export default function SignUpScreen() {
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label className="text-[10px] font-black text-slate-400 mr-2 uppercase tracking-widest opacity-60" htmlFor="password">كلمة المرور</label>
+                <label className="text-[10px] font-black text-slate-400 mr-2 uppercase   opacity-60" htmlFor="password">كلمة المرور</label>
                 <div className="relative group">
                   <input 
                     className="w-full p-4.5 bg-slate-50/50 border border-slate-100 rounded-2xl text-base font-bold text-slate-800 focus:outline-none focus:border-red-100 focus:bg-white focus:shadow-lg focus:shadow-red-500/5 transition-all text-left pl-4" 
@@ -236,7 +236,7 @@ export default function SignUpScreen() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] font-black text-slate-400 mr-2 uppercase tracking-widest opacity-60" htmlFor="confirmPassword">تأكيد المرور</label>
+                <label className="text-[10px] font-black text-slate-400 mr-2 uppercase   opacity-60" htmlFor="confirmPassword">تأكيد المرور</label>
                 <div className="relative group">
                   <input 
                     className="w-full p-4.5 bg-slate-50/50 border border-slate-100 rounded-2xl text-base font-bold text-slate-800 focus:outline-none focus:border-red-100 focus:bg-white focus:shadow-lg focus:shadow-red-500/5 transition-all text-left pl-4" 
@@ -264,13 +264,13 @@ export default function SignUpScreen() {
           </form>
 
           <div className="mt-10 text-center">
-            <p className="text-xs font-bold text-slate-400 uppercase tracking-tight">
+            <p className="text-xs font-bold text-slate-400 uppercase  ">
               لديك حساب بالفعل؟{' '}
               <Link to={`/login/${role}`} className="text-[#E31E24] font-black hover:underline mr-2">تسجيل الدخول</Link>
             </p>
           </div>
 
-          <div className="w-full flex items-center text-center my-10 text-slate-200 text-[10px] font-black before:content-[''] before:flex-1 before:border-b before:border-slate-50 before:ml-4 after:content-[''] after:flex-1 after:border-b after:border-slate-50 after:mr-4 uppercase tracking-[0.3em]">
+          <div className="w-full flex items-center text-center my-10 text-slate-200 text-[10px] font-black before:content-[''] before:flex-1 before:border-b before:border-slate-50 before:ml-4 after:content-[''] after:flex-1 after:border-b after:border-slate-50 after:mr-4 uppercase  ">
             أو
           </div>
 

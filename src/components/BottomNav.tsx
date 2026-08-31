@@ -23,7 +23,7 @@ export default function BottomNav() {
           <span className={`material-symbols-outlined text-2xl transition-transform ${path === item.path ? 'filled-icon scale-110' : 'group-active:scale-90'}`}>
             {item.icon}
           </span>
-          <span className={`text-[8px] font-black uppercase tracking-tighter text-center transition-colors ${path === item.path ? 'text-[#E31E24]' : 'text-slate-400'}`}>{item.label}</span>
+          <span className={`text-[8px] font-black uppercase  er text-center transition-colors ${path === item.path ? 'text-[#E31E24]' : 'text-slate-400'}`}>{item.label}</span>
         </Link>
       ))}
     </nav>

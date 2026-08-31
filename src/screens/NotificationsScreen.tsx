@@ -474,7 +474,7 @@ export default function NotificationsScreen() {
                     <div className="flex items-center gap-2 mb-1">
                       <h3 className="text-sm font-black text-slate-900">{req.userName}</h3>
                       {req.status === 'forwarded_to_admin' && (
-                        <span className="bg-blue-50 text-blue-600 text-[8px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter">محول من المسؤول</span>
+                        <span className="bg-blue-50 text-blue-600 text-[8px] font-black px-2 py-0.5 rounded-full uppercase  er">محول من المسؤول</span>
                       )}
                     </div>
                     <p className="text-[10px] font-bold text-slate-400">{getRequestLabel(req)}</p>
@@ -646,7 +646,7 @@ export default function NotificationsScreen() {
                           </div>
                           <div className="text-right">
                             <h4 className="text-sm font-black text-slate-900">{u.displayName}</h4>
-                            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                            <p className="text-[10px] font-bold text-slate-400 uppercase  ">
                               {u.role === 'manager' ? 'مدير' : u.role === 'admin' ? 'مسؤول' : u.jobTitle || 'موظف'}
                             </p>
                           </div>
@@ -692,7 +692,7 @@ export default function NotificationsScreen() {
 
                 <div className="p-8 flex flex-col gap-6 overflow-y-auto">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-1">عنوان التنبيه</label>
+                    <label className="text-[10px] font-black text-slate-400 uppercase   px-1">عنوان التنبيه</label>
                     <input 
                       type="text"
                       value={newNotifTitle}
@@ -703,7 +703,7 @@ export default function NotificationsScreen() {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-1">محتوى التنبيه</label>
+                    <label className="text-[10px] font-black text-slate-400 uppercase   px-1">محتوى التنبيه</label>
                     <textarea 
                       value={newNotifMessage}
                       onChange={(e) => setNewNotifMessage(e.target.value)}
@@ -714,7 +714,7 @@ export default function NotificationsScreen() {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-1">نوع التنبيه</label>
+                    <label className="text-[10px] font-black text-slate-400 uppercase   px-1">نوع التنبيه</label>
                     <div className="grid grid-cols-2 gap-3">
                       {[
                         { id: 'announcement', label: 'إعلان عام', icon: 'campaign' },
@@ -759,7 +759,7 @@ export default function NotificationsScreen() {
                 {/* Header Section */}
                 <div className="p-8 border-b border-slate-50 flex justify-between items-start bg-white relative">
                   <div className="text-right">
-                    <span className="text-[10px] font-black text-[#E31E24] uppercase tracking-widest bg-red-50 px-3 py-1 rounded-full mb-3 inline-block">
+                    <span className="text-[10px] font-black text-[#E31E24] uppercase   bg-red-50 px-3 py-1 rounded-full mb-3 inline-block">
                       جدول عمل رسمي
                     </span>
                     <h3 className="text-2xl font-black text-slate-900 leading-tight">
@@ -785,7 +785,7 @@ export default function NotificationsScreen() {
                     <div className="mb-8 p-6 bg-amber-50/50 rounded-[30px] border border-amber-100/50">
                       <div className="flex items-center gap-2 mb-2">
                         <span className="material-symbols-outlined text-amber-600 text-sm">lightbulb</span>
-                        <h4 className="text-[10px] font-black text-amber-700 uppercase tracking-widest">ملاحظات الإدارة</h4>
+                        <h4 className="text-[10px] font-black text-amber-700 uppercase  ">ملاحظات الإدارة</h4>
                       </div>
                       <p className="text-sm font-bold text-amber-900/70 leading-relaxed">
                         {selectedSchedule.metadata.notes}
@@ -794,7 +794,7 @@ export default function NotificationsScreen() {
                   )}
 
                   <div className="space-y-4">
-                    <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-1">قائمة الموظفين والمناوبات</h4>
+                    <h4 className="text-[10px] font-black text-slate-400 uppercase   px-1">قائمة الموظفين والمناوبات</h4>
                     {selectedSchedule.metadata?.scheduleEntries?.map((entry: any, idx: number) => (
                       <div key={idx} className="group relative">
                         <div className="flex items-center justify-between p-5 bg-white rounded-[24px] border border-slate-100 transition-all hover:shadow-md hover:border-slate-200">
@@ -804,7 +804,7 @@ export default function NotificationsScreen() {
                             </div>
                             <div className="text-right">
                               <h4 className="text-sm font-black text-slate-900 group-hover:text-[#E31E24] transition-colors">{entry.userName}</h4>
-                              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-0.5">{entry.role}</p>
+                              <p className="text-[10px] font-black text-slate-400 uppercase   mt-0.5">{entry.role}</p>
                             </div>
                           </div>
                           <div className="text-left flex flex-col items-end gap-1">
@@ -823,7 +823,7 @@ export default function NotificationsScreen() {
                   <div className="mt-8 pt-8 border-t border-slate-50">
                     <div className="flex items-center justify-center gap-2 text-slate-300">
                       <div className="h-px w-8 bg-slate-100"></div>
-                      <p className="text-[10px] font-black uppercase tracking-[0.2em]">نهاية التقرير</p>
+                      <p className="text-[10px] font-black uppercase  ">نهاية التقرير</p>
                       <div className="h-px w-8 bg-slate-100"></div>
                     </div>
                   </div>

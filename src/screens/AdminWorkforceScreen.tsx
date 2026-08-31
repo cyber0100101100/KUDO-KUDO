@@ -432,7 +432,7 @@ export default function AdminWorkforceScreen() {
                   <div className="text-right">
                     <div className="flex items-center justify-end gap-2">
                       {(emp.role === 'admin' || emp.role === 'supervisor') && (
-                        <span className="bg-red-50 text-[#E31E24] text-[8px] font-black px-2 py-0.5 rounded-md border border-red-100 uppercase tracking-tighter">
+                        <span className="bg-red-50 text-[#E31E24] text-[8px] font-black px-2 py-0.5 rounded-md border border-red-100 uppercase  er">
                           {emp.role === 'admin' ? 'مسؤول' : 'مشرف'}
                         </span>
                       )}
@@ -449,7 +449,7 @@ export default function AdminWorkforceScreen() {
                         emp.status === 'late' ? 'bg-amber-50 text-amber-600' : 'bg-red-50 text-red-600'
                       }`}>
                         <span className="w-1.5 h-1.5 rounded-full bg-current"></span>
-                        <span className="text-[9px] font-black uppercase tracking-tight">
+                        <span className="text-[9px] font-black uppercase  ">
                           {emp.status === 'present' ? 'حاضر الآن' : 
                           emp.status === 'late' ? `متأخر ${emp.lateMinutes || 12} دقيقة` : 
                           'لم يسجل الحضور'}
@@ -607,7 +607,7 @@ export default function AdminWorkforceScreen() {
                 {modalType === 'create_group' && (
                   <div className="space-y-6 mb-8">
                     <div className="relative">
-                      <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest text-right mb-2 pr-2">اسم المجموعة</label>
+                      <label className="block text-[10px] font-black text-slate-400 uppercase   text-right mb-2 pr-2">اسم المجموعة</label>
                       <input 
                         type="text"
                         placeholder="مثال: طاقم المطبخ"
@@ -618,7 +618,7 @@ export default function AdminWorkforceScreen() {
                     </div>
                     
                     <div className="flex flex-col items-center gap-4">
-                      <label className="block w-full text-[10px] font-black text-slate-400 uppercase tracking-widest text-right mb-2 pr-2">صورة المجموعة</label>
+                      <label className="block w-full text-[10px] font-black text-slate-400 uppercase   text-right mb-2 pr-2">صورة المجموعة</label>
                       <input 
                         type="file"
                         ref={fileInputRef}
@@ -653,7 +653,7 @@ export default function AdminWorkforceScreen() {
 
                 {modalType === 'edit_name' && (
                   <div className="relative mb-8">
-                    <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest text-right mb-2 pr-2">الاسم الكامل</label>
+                    <label className="block text-[10px] font-black text-slate-400 uppercase   text-right mb-2 pr-2">الاسم الكامل</label>
                     <input 
                       type="text"
                       placeholder="أدخل الاسم الكامل"
@@ -666,7 +666,7 @@ export default function AdminWorkforceScreen() {
 
                 {modalType === 'edit_profile' && (
                   <div className="relative mb-8">
-                    <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest text-right mb-2 pr-2">المسمى الوظيفي</label>
+                    <label className="block text-[10px] font-black text-slate-400 uppercase   text-right mb-2 pr-2">المسمى الوظيفي</label>
                     <input 
                       type="text"
                       placeholder="مثال: مدير مبيعات"
@@ -686,7 +686,7 @@ export default function AdminWorkforceScreen() {
                       value={modalAmount}
                       onChange={(e) => setModalAmount(e.target.value)}
                     />
-                    <div className="mt-2 text-[10px] font-black text-slate-400 uppercase tracking-widest">دينار عراقي</div>
+                    <div className="mt-2 text-[10px] font-black text-slate-400 uppercase  ">دينار عراقي</div>
                   </div>
                 )}
 

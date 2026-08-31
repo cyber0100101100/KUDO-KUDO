@@ -16,8 +16,8 @@ export default function AccountTypeSelection() {
 
       <main className="w-full max-w-md px-6 z-10 flex flex-col gap-6 mt-16">
         <div className="text-center mb-4 space-y-2">
-          <h1 className="text-3xl font-black text-slate-800 tracking-tight">مرحباً بك</h1>
-          <p className="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] opacity-70">اختر نوع حسابك للمتابعة</p>
+          <h1 className="text-3xl font-black text-slate-800  ">مرحباً بك</h1>
+          <p className="text-[11px] font-bold text-slate-400 uppercase   opacity-70">اختر نوع حسابك للمتابعة</p>
         </div>
 
         <div className="flex flex-col gap-5 w-full">
@@ -31,7 +31,7 @@ export default function AccountTypeSelection() {
               </span>
             </div>
             <div className="flex-1">
-              <h3 className="text-xl font-black text-slate-900 mb-1 tracking-tight">أنا مدير</h3>
+              <h3 className="text-xl font-black text-slate-900 mb-1  ">أنا مدير</h3>
               <p className="text-sm font-bold text-slate-400 leading-tight">إدارة الموظفين، الجداول، والرواتب</p>
             </div>
             <div className={`w-7 h-7 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${selectedRole === 'manager' ? 'bg-[#E31E24] border-[#E31E24] scale-110 shadow-lg shadow-red-500/30' : 'border-slate-100'}`}>
@@ -47,7 +47,7 @@ export default function AccountTypeSelection() {
               <span className="material-symbols-outlined text-4xl text-slate-400 group-hover:text-slate-600 transition-colors">person</span>
             </div>
             <div className="flex-1">
-              <h3 className="text-xl font-black text-slate-900 mb-1 tracking-tight">أنا موظف</h3>
+              <h3 className="text-xl font-black text-slate-900 mb-1  ">أنا موظف</h3>
               <p className="text-sm font-bold text-slate-400 leading-tight">تسجيل الحضور اليومي ومتابعة الطلبات</p>
             </div>
             <div className={`w-7 h-7 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${selectedRole === 'employee' ? 'bg-[#E31E24] border-[#E31E24] scale-110 shadow-lg shadow-red-500/30' : 'border-slate-100'}`}>
@@ -60,7 +60,7 @@ export default function AccountTypeSelection() {
           <button 
             disabled={!selectedRole}
             onClick={() => selectedRole && navigate(`/login/${selectedRole}`)}
-            className={`w-full h-16 ${selectedRole ? 'bg-[#E31E24] shadow-xl shadow-red-100' : 'bg-slate-200 cursor-not-allowed'} text-white text-lg font-black rounded-2xl transition-all active:scale-[0.98] flex items-center justify-center uppercase tracking-widest`}
+            className={`w-full h-16 ${selectedRole ? 'bg-[#E31E24] shadow-xl shadow-red-100' : 'bg-slate-200 cursor-not-allowed'} text-white text-lg font-black rounded-2xl transition-all active:scale-[0.98] flex items-center justify-center uppercase  `}
           >
             متابعة
           </button>

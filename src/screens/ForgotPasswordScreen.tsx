@@ -46,8 +46,8 @@ export default function ForgotPasswordScreen() {
           <div className="w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center text-[#E31E24] mb-8 shadow-sm">
             <span className="material-symbols-outlined text-2xl">lock_reset</span>
           </div>
-          <h1 className="text-3xl font-black text-slate-800 mb-2 tracking-tight">استعادة كلمة المرور</h1>
-          <p className="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] opacity-70 text-center px-4">
+          <h1 className="text-3xl font-black text-slate-800 mb-2  ">استعادة كلمة المرور</h1>
+          <p className="text-[11px] font-bold text-slate-400 uppercase   opacity-70 text-center px-4">
             أدخل بريدك الإلكتروني لإرسال رابط إعادة تعيين كلمة المرور
           </p>
         </div>
@@ -77,7 +77,7 @@ export default function ForgotPasswordScreen() {
 
         <form onSubmit={handleReset} className="w-full space-y-6">
           <div className="space-y-2">
-            <label className="text-[10px] font-black text-slate-400 mr-2 uppercase tracking-widest opacity-60">البريد الإلكتروني</label>
+            <label className="text-[10px] font-black text-slate-400 mr-2 uppercase   opacity-60">البريد الإلكتروني</label>
             <div className="relative group">
               <input 
                 className="w-full p-4.5 border border-slate-100 rounded-2xl text-base font-bold bg-slate-50/50 focus:outline-none focus:border-red-100 focus:bg-white focus:shadow-lg focus:shadow-red-500/5 transition-all text-right pr-4 pl-12"
@@ -101,7 +101,7 @@ export default function ForgotPasswordScreen() {
           </button>
 
           <div className="text-center pt-6">
-            <Link to="/login" className="flex items-center justify-center gap-2 text-[#E31E24] font-black hover:underline text-xs uppercase tracking-widest">
+            <Link to="/login" className="flex items-center justify-center gap-2 text-[#E31E24] font-black hover:underline text-xs uppercase  ">
               <span>العودة لتسجيل الدخول</span>
               <span className="material-symbols-outlined text-sm">arrow_back</span>
             </Link>

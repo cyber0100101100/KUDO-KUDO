@@ -499,7 +499,7 @@ export default function AttendanceScreen() {
           <button onClick={() => navigate('/employee/home')} className="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-slate-100 transition-all active:scale-95">
             <span className="material-symbols-outlined text-lg md:text-xl">arrow_forward</span>
           </button>
-          <h1 className="text-sm md:text-base font-black text-slate-900 tracking-tight">تسجيل الحضور</h1>
+          <h1 className="text-sm md:text-base font-black text-slate-900  ">تسجيل الحضور</h1>
           <div className="w-9"></div>
         </header>
 
@@ -507,11 +507,11 @@ export default function AttendanceScreen() {
           <div className="bg-white rounded-3xl md:rounded-[32px] p-5 md:p-6 border border-slate-50 shadow-sm flex flex-col items-center justify-center mb-8 md:mb-10">
             <div className="flex items-center gap-3 mb-2 md:mb-3">
               <div className={`w-2 h-2 md:w-2.5 md:h-2.5 rounded-full ${locationStatus === 'inside' ? 'bg-green-500 animate-pulse' : 'bg-red-500'} shadow-[0_0_10px_currentColor]`}></div>
-              <span className={`text-[9px] md:text-[11px] font-black uppercase tracking-widest ${locationStatus === 'inside' ? 'text-green-600' : 'text-red-600'}`}>
+              <span className={`text-[9px] md:text-[11px] font-black uppercase   ${locationStatus === 'inside' ? 'text-green-600' : 'text-red-600'}`}>
                 {locationStatus === 'checking' ? 'جاري التحقق...' : locationStatus === 'inside' ? 'داخل نطاق العمل' : 'خارج نطاق العمل'}
               </span>
             </div>
-            <p className="text-[9px] md:text-xs font-bold text-slate-400 opacity-60 uppercase tracking-widest">
+            <p className="text-[9px] md:text-xs font-bold text-slate-400 opacity-60 uppercase  ">
               {distance !== null && locationStatus !== 'inside' ? `المسافة الحالية: ${Math.round(distance)} متر 📍` : 'الفرع الرئيسي - KUDO Restaurant 📍'}
             </p>
           </div>
@@ -531,7 +531,7 @@ export default function AttendanceScreen() {
                 ) : (
                   <div className="w-full h-full flex items-center justify-center bg-slate-50">
                     <span className="material-symbols-outlined text-slate-200 text-8xl filled-icon">face</span>
-                    {!modelsLoaded && <p className="absolute bottom-10 text-[9px] font-bold text-slate-400 uppercase tracking-widest animate-pulse">جاري تحميل المحرك...</p>}
+                    {!modelsLoaded && <p className="absolute bottom-10 text-[9px] font-bold text-slate-400 uppercase   animate-pulse">جاري تحميل المحرك...</p>}
                   </div>
                 )}
                 {verifying && (
@@ -546,10 +546,10 @@ export default function AttendanceScreen() {
             </div>
             
             <div className="text-center space-y-2">
-              <h2 className="text-2xl font-black text-slate-800 tracking-tight">
+              <h2 className="text-2xl font-black text-slate-800  ">
                 {verifying ? 'جاري التحقق...' : stream ? 'انظر إلى الكاميرا' : 'بصمة الوجه'}
               </h2>
-              <p className="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] opacity-70">يرجى تثبيت الوجه داخل الإطار</p>
+              <p className="text-[11px] font-bold text-slate-400 uppercase   opacity-70">يرجى تثبيت الوجه داخل الإطار</p>
             </div>
           </div>
 
@@ -570,7 +570,7 @@ export default function AttendanceScreen() {
               <button 
                 onClick={handleAttendance}
                 disabled={verifying || locationStatus !== 'inside' || (!attendance && !canCheckIn()) || (attendance && !attendance.checkOutTime && !canCheckOut())}
-                className="w-full py-5 bg-[#E31E24] text-white rounded-[28px] font-black text-lg shadow-xl shadow-red-100 hover:bg-red-700 transition-all active:scale-[0.98] flex items-center justify-center gap-3 disabled:opacity-50 disabled:shadow-none uppercase tracking-widest"
+                className="w-full py-5 bg-[#E31E24] text-white rounded-[28px] font-black text-lg shadow-xl shadow-red-100 hover:bg-red-700 transition-all active:scale-[0.98] flex items-center justify-center gap-3 disabled:opacity-50 disabled:shadow-none uppercase  "
               >
                 <span className="material-symbols-outlined text-2xl filled-icon">
                   {attendance ? 'logout' : 'fingerprint'}
@@ -587,7 +587,7 @@ export default function AttendanceScreen() {
             {/* Schedule Info */}
             {todaySchedule && (
               <div className="bg-slate-100/50 rounded-[24px] p-4 text-center">
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">وقت دوامك اليوم</p>
+                <p className="text-[10px] font-black text-slate-400 uppercase   mb-1">وقت دوامك اليوم</p>
                 <p className="text-sm font-black text-slate-700">{todaySchedule.startTime} - {todaySchedule.endTime}</p>
                 {attendance && !attendance.checkOutTime && !canCheckOut() && (
                   <p className="text-[9px] font-bold text-red-500 mt-2">لا يمكنك تسجيل الانصراف قبل الساعة {todaySchedule.endTime}</p>
@@ -598,7 +598,7 @@ export default function AttendanceScreen() {
             {attendance && (
               <div className="bg-white rounded-[32px] p-6 flex justify-between items-center border border-slate-50 shadow-sm">
                 <div>
-                  <span className="block text-[10px] font-black text-slate-400 mb-1 uppercase tracking-widest opacity-60">آخر عملية: {attendance.checkOutTime ? 'انصراف' : 'دخول'}</span>
+                  <span className="block text-[10px] font-black text-slate-400 mb-1 uppercase   opacity-60">آخر عملية: {attendance.checkOutTime ? 'انصراف' : 'دخول'}</span>
                   <span className="block text-xl font-black text-slate-800">
                     {new Date(attendance.checkOutTime || attendance.checkInTime).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })}
                     <span className="text-xs font-bold text-slate-400 mr-2">اليوم</span>

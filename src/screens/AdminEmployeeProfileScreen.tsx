@@ -154,13 +154,13 @@ export default function AdminEmployeeProfileScreen() {
           </div>
           
           <div className="text-center space-y-1">
-            <h2 className="text-xl md:text-2xl font-black text-slate-900 tracking-tight">{employee.displayName}</h2>
+            <h2 className="text-xl md:text-2xl font-black text-slate-900  ">{employee.displayName}</h2>
             <div className="flex flex-col gap-2 items-center">
-              <span className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] opacity-60">ID: {employee.employeeId}</span>
+              <span className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase   opacity-60">ID: {employee.employeeId}</span>
               <div className="px-4 py-1.5 bg-red-50 rounded-full border border-red-100/50 mt-1">
-                <span className="text-[9px] md:text-[10px] font-black text-[#E31E24] uppercase tracking-widest">{employee.jobTitle}</span>
+                <span className="text-[9px] md:text-[10px] font-black text-[#E31E24] uppercase  ">{employee.jobTitle}</span>
               </div>
-              <span className="text-[9px] md:text-[10px] font-black text-slate-500 mt-1 opacity-40 uppercase tracking-widest">{employee.group}</span>
+              <span className="text-[9px] md:text-[10px] font-black text-slate-500 mt-1 opacity-40 uppercase  ">{employee.group}</span>
             </div>
           </div>
 
@@ -168,7 +168,7 @@ export default function AdminEmployeeProfileScreen() {
             <button 
               disabled={isStartingChat}
               onClick={handleSendMessage}
-              className="flex items-center justify-center gap-2 px-6 py-2.5 bg-slate-900 text-white rounded-xl font-black text-[11px] uppercase tracking-widest shadow-lg shadow-slate-200 active:scale-95 transition-all hover:bg-slate-800 disabled:opacity-70"
+              className="flex items-center justify-center gap-2 px-6 py-2.5 bg-slate-900 text-white rounded-xl font-black text-[11px] uppercase   shadow-lg shadow-slate-200 active:scale-95 transition-all hover:bg-slate-800 disabled:opacity-70"
             >
               <span className="material-symbols-outlined text-lg">forum</span>
               {isStartingChat ? 'جاري التحميل...' : 'إرسال رسالة'}
@@ -178,7 +178,7 @@ export default function AdminEmployeeProfileScreen() {
 
         {/* Personal Information Section */}
         <section className="space-y-4">
-          <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] px-4 opacity-60">المعلومات الشخصية</h3>
+          <h3 className="text-[10px] font-black text-slate-400 uppercase   px-4 opacity-60">المعلومات الشخصية</h3>
           <div className="bg-white rounded-[32px] border border-slate-50 shadow-sm overflow-hidden">
             <div className="flex flex-col divide-y divide-slate-50">
               <InfoItem label="الاسم الكامل" value={employee.displayName} icon="person" />
@@ -199,23 +199,23 @@ export default function AdminEmployeeProfileScreen() {
 
         {/* Statistics Section */}
         <section className="space-y-4">
-          <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] px-4 opacity-60">إحصائيات الدورة الحالية</h3>
+          <h3 className="text-[10px] font-black text-slate-400 uppercase   px-4 opacity-60">إحصائيات الدورة الحالية</h3>
           <div className="bg-slate-900 rounded-[32px] p-8 text-white">
             <div className="grid grid-cols-2 gap-8">
               <div className="flex flex-col gap-1">
-                <span className="text-[9px] font-black text-white/40 uppercase tracking-widest">أيام العمل المكتملة</span>
+                <span className="text-[9px] font-black text-white/40 uppercase  ">أيام العمل المكتملة</span>
                 <span className="text-xl font-black">{employee.workDaysCount || 0} / 30</span>
               </div>
               <div className="flex flex-col gap-1">
-                <span className="text-[9px] font-black text-white/40 uppercase tracking-widest">إجمالي التأخيرات</span>
+                <span className="text-[9px] font-black text-white/40 uppercase  ">إجمالي التأخيرات</span>
                 <span className={`text-xl font-black ${(employee.lateCount || 0) >= 4 ? 'text-red-400' : 'text-white'}`}>{employee.lateCount || 0} مرة</span>
               </div>
               <div className="flex flex-col gap-1">
-                <span className="text-[9px] font-black text-white/40 uppercase tracking-widest">بداية الدورة</span>
+                <span className="text-[9px] font-black text-white/40 uppercase  ">بداية الدورة</span>
                 <span className="text-xs font-bold">{employee.cycleStartDate || 'لم تبدأ بعد'}</span>
               </div>
               <div className="flex flex-col gap-1">
-                <span className="text-[9px] font-black text-white/40 uppercase tracking-widest">الراتب الأساسي</span>
+                <span className="text-[9px] font-black text-white/40 uppercase  ">الراتب الأساسي</span>
                 <span className="text-xs font-bold">{(employee.baseSalary || 0).toLocaleString()} د.ع</span>
               </div>
             </div>
@@ -249,7 +249,7 @@ export default function AdminEmployeeProfileScreen() {
                 <p className="text-xs font-bold text-slate-400 mb-8 px-4">قم بتحديث اسم الموظف ومسماه الوظيفي أدناه</p>
 
                 <div className="relative mb-6 text-right">
-                  <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 pr-2">الاسم الكامل</label>
+                  <label className="block text-[10px] font-black text-slate-400 uppercase   mb-2 pr-2">الاسم الكامل</label>
                   <input 
                     type="text"
                     placeholder="أدخل الاسم الكامل"
@@ -260,7 +260,7 @@ export default function AdminEmployeeProfileScreen() {
                 </div>
 
                 <div className="relative mb-8 text-right">
-                  <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 pr-2">المسمى الوظيفي</label>
+                  <label className="block text-[10px] font-black text-slate-400 uppercase   mb-2 pr-2">المسمى الوظيفي</label>
                   <input 
                     type="text"
                     placeholder="مثال: مدير مبيعات"

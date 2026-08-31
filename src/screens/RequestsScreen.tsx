@@ -97,7 +97,7 @@ export default function RequestsScreen() {
           <button onClick={() => navigate(-1)} className="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-slate-100 transition-all active:scale-95">
             <span className="material-symbols-outlined text-lg md:text-xl">arrow_forward</span>
           </button>
-          <h1 className="text-sm md:text-base font-black text-slate-900 tracking-tight">{type === 'leave' ? 'طلب إجازة' : 'طلب سلفة'}</h1>
+          <h1 className="text-sm md:text-base font-black text-slate-900  ">{type === 'leave' ? 'طلب إجازة' : 'طلب سلفة'}</h1>
           <div className="w-9"></div>
         </header>
 
@@ -105,13 +105,13 @@ export default function RequestsScreen() {
           <div className="flex bg-white rounded-[24px] p-1.5 border border-slate-200/40">
             <button 
               onClick={() => setType('leave')}
-              className={`flex-1 py-4 text-center rounded-[18px] text-[11px] font-black uppercase tracking-widest transition-all ${type === 'leave' ? 'bg-white text-slate-900 shadow-xl shadow-slate-200/50' : 'text-slate-400 hover:text-slate-600'}`}
+              className={`flex-1 py-4 text-center rounded-[18px] text-[11px] font-black uppercase   transition-all ${type === 'leave' ? 'bg-white text-slate-900 shadow-xl shadow-slate-200/50' : 'text-slate-400 hover:text-slate-600'}`}
             >
               طلب إجازة
             </button>
             <button 
               onClick={() => setType('advance')}
-              className={`flex-1 py-4 text-center rounded-[18px] text-[11px] font-black uppercase tracking-widest transition-all ${type === 'advance' ? 'bg-white text-[#E31E24] shadow-xl shadow-red-100/20' : 'text-slate-400 hover:text-slate-600'}`}
+              className={`flex-1 py-4 text-center rounded-[18px] text-[11px] font-black uppercase   transition-all ${type === 'advance' ? 'bg-white text-[#E31E24] shadow-xl shadow-red-100/20' : 'text-slate-400 hover:text-slate-600'}`}
             >
               طلب سلفة
             </button>
@@ -136,17 +136,17 @@ export default function RequestsScreen() {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-2">عدد أيام الإجازة المطلوبة</label>
+                    <label className="text-[10px] font-black text-slate-400 uppercase   px-2">عدد أيام الإجازة المطلوبة</label>
                     <div className="relative">
                       <input 
                         type="number" 
                         value={daysCount}
                         onChange={(e) => setDaysCount(e.target.value)}
                         placeholder="0"
-                        className="w-full bg-white border border-slate-100 text-slate-900 text-2xl font-black rounded-2xl p-5 focus:outline-none focus:border-[#E31E24] focus:ring-4 focus:ring-red-50/50 transition-all text-center tracking-tighter"
+                        className="w-full bg-white border border-slate-100 text-slate-900 text-2xl font-black rounded-2xl p-5 focus:outline-none focus:border-[#E31E24] focus:ring-4 focus:ring-red-50/50 transition-all text-center  er"
                         dir="ltr"
                       />
-                      <div className="absolute left-6 top-1/2 -translate-y-1/2 text-[10px] font-black text-slate-300 uppercase tracking-widest pointer-events-none">أيام</div>
+                      <div className="absolute left-6 top-1/2 -translate-y-1/2 text-[10px] font-black text-slate-300 uppercase   pointer-events-none">أيام</div>
                     </div>
                   </div>
                 </div>
@@ -172,14 +172,14 @@ export default function RequestsScreen() {
                 <div className="flex flex-col gap-2">
                   <div className="relative">
                     <input 
-                      className="w-full bg-white border border-slate-100 text-slate-900 text-3xl font-black rounded-2xl p-6 focus:outline-none focus:border-[#E31E24] focus:ring-4 focus:ring-red-50/50 transition-all text-center tracking-tighter" 
+                      className="w-full bg-white border border-slate-100 text-slate-900 text-3xl font-black rounded-2xl p-6 focus:outline-none focus:border-[#E31E24] focus:ring-4 focus:ring-red-50/50 transition-all text-center  er" 
                       dir="ltr" 
                       placeholder="0" 
                       type="number"
                       value={amount}
                       onChange={(e) => setAmount(e.target.value)}
                     />
-                    <div className="absolute left-6 top-1/2 -translate-y-1/2 text-[10px] font-black text-slate-300 uppercase tracking-widest pointer-events-none">IQD</div>
+                    <div className="absolute left-6 top-1/2 -translate-y-1/2 text-[10px] font-black text-slate-300 uppercase   pointer-events-none">IQD</div>
                   </div>
                   <div className="flex justify-center gap-2 mt-2">
                     {[25000, 50000, 100000, 250000].map(val => (
@@ -219,7 +219,7 @@ export default function RequestsScreen() {
               <button 
                 onClick={handleSubmit}
                 disabled={isButtonDisabled}
-                className="w-full py-6 bg-[#E31E24] text-white text-base font-black uppercase tracking-widest rounded-[24px] shadow-2xl shadow-red-200 active:scale-[0.98] transition-all disabled:opacity-50 disabled:bg-slate-300 disabled:shadow-none flex items-center justify-center gap-3" 
+                className="w-full py-6 bg-[#E31E24] text-white text-base font-black uppercase   rounded-[24px] shadow-2xl shadow-red-200 active:scale-[0.98] transition-all disabled:opacity-50 disabled:bg-slate-300 disabled:shadow-none flex items-center justify-center gap-3" 
                 type="button"
               >
                 {loading ? (
@@ -231,7 +231,7 @@ export default function RequestsScreen() {
                   </>
                 )}
               </button>
-              <p className="text-center text-[10px] font-black text-slate-300 uppercase tracking-[0.2em]">بإرسالك الطلب أنت توافق على شروط الخصم الإداري</p>
+              <p className="text-center text-[10px] font-black text-slate-300 uppercase  ">بإرسالك الطلب أنت توافق على شروط الخصم الإداري</p>
             </div>
           </form>
         </main>

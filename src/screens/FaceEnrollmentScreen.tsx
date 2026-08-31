@@ -263,7 +263,7 @@ export default function FaceEnrollmentScreen() {
           <button onClick={() => navigate('/employee/home')} className="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-slate-100 transition-all active:scale-95">
             <span className="material-symbols-outlined text-xl">arrow_forward</span>
           </button>
-          <h1 className="text-base font-black text-slate-900 tracking-tight">إعداد بصمة الوجه</h1>
+          <h1 className="text-base font-black text-slate-900  ">إعداد بصمة الوجه</h1>
           <div className="w-9"></div>
         </header>
 
@@ -275,7 +275,7 @@ export default function FaceEnrollmentScreen() {
           </div>
 
           <div className="text-center mb-8">
-            <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-1">الخطوة {currentStep} من 5</p>
+            <p className="text-[10px] font-black text-slate-400 uppercase   mb-1">الخطوة {currentStep} من 5</p>
             <h2 className="text-xl font-black text-slate-900">{steps.find(s => s.id === currentStep)?.label}</h2>
           </div>
 
@@ -287,7 +287,7 @@ export default function FaceEnrollmentScreen() {
               ) : (
                 <div className="flex flex-col items-center gap-4 text-slate-300">
                   <span className="material-symbols-outlined text-7xl filled-icon">face</span>
-                  <p className="text-[10px] font-black uppercase tracking-widest">{loading ? 'جاري التحميل...' : 'تجهيز الكاميرا'}</p>
+                  <p className="text-[10px] font-black uppercase  ">{loading ? 'جاري التحميل...' : 'تجهيز الكاميرا'}</p>
                 </div>
               )}
               <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
@@ -318,7 +318,7 @@ export default function FaceEnrollmentScreen() {
                          step.id === 4 ? 'arrow_upward' : 'arrow_downward'}
                       </span>
                     </div>
-                    <span className="text-[8px] font-black uppercase text-slate-400 tracking-tighter">{step.label.split(' ').pop()}</span>
+                    <span className="text-[8px] font-black uppercase text-slate-400  er">{step.label.split(' ').pop()}</span>
                   </div>
                 ))}
              </div>
@@ -327,7 +327,7 @@ export default function FaceEnrollmentScreen() {
           <div className="mt-auto">
             {error && <p className="bg-red-50 text-[#E31E24] p-4 rounded-2xl text-center mb-6 font-bold text-sm border border-red-100">{error}</p>}
             <div className={`w-full py-5 px-6 rounded-3xl flex flex-col items-center gap-2 transition-all ${poseValid ? 'bg-green-500 text-white' : 'bg-slate-100 text-slate-400'}`}>
-               <p className="text-xs font-black uppercase tracking-[0.2em]">{poseValid ? 'الوضعية صحيحة' : 'تعليمات التحقق'}</p>
+               <p className="text-xs font-black uppercase  ">{poseValid ? 'الوضعية صحيحة' : 'تعليمات التحقق'}</p>
                <p className="text-sm font-bold">{poseFeedback || 'جاري المسح...'}</p>
             </div>
           </div>

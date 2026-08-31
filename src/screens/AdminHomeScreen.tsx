@@ -283,13 +283,13 @@ export default function AdminHomeScreen() {
       <div className="flex-1 space-y-4 md:space-y-8 p-4 md:p-8 antialiased pb-24 md:pb-10 pt-16 md:pt-20">
         <header className="flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6">
         <div className="space-y-1">
-          <p className="text-[8px] md:text-[10px] font-black text-[#E31E24] uppercase tracking-[0.3em] opacity-80">نظام إدارة الكوادر المتقدم</p>
-          <h1 className="text-xl md:text-3xl font-black text-slate-900 tracking-tighter leading-tight">لوحة التحكم العملياتية</h1>
+          <p className="text-[8px] md:text-[10px] font-black text-[#E31E24] uppercase   opacity-80">نظام إدارة الكوادر المتقدم</p>
+          <h1 className="text-xl md:text-3xl font-black text-slate-900  er leading-tight">لوحة التحكم العملياتية</h1>
           <p className="text-[10px] md:text-sm font-bold text-slate-400 opacity-60">مرحباً بك، {user?.displayName?.split(' ')[0] || 'المدير'} {user?.role === 'supervisor' ? '(مشرف)' : ''}</p>
         </div>
         <div className="flex items-center gap-3 bg-white px-3 py-1.5 rounded-xl border border-slate-100 shadow-sm self-start md:self-auto">
           <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
-          <span className="text-[8px] font-black text-slate-900 tracking-tighter">LIVE PULSE</span>
+          <span className="text-[8px] font-black text-slate-900  er">LIVE PULSE</span>
         </div>
       </header>
 
@@ -306,7 +306,7 @@ export default function AdminHomeScreen() {
               <span className="material-symbols-outlined text-3xl">location_on</span>
             </div>
             <div className="text-right">
-              <h3 className="font-black text-slate-900 text-lg tracking-tight">معايرة موقع العمل</h3>
+              <h3 className="font-black text-slate-900 text-lg  ">معايرة موقع العمل</h3>
               <p className="text-xs font-bold text-slate-400 opacity-70 leading-relaxed max-w-md">
                 {currentWorkplace 
                   ? `الموقع الحالي مضبوط بدقة. آخر تحديث: ${new Date(currentWorkplace.updatedAt).toLocaleDateString('ar-EG')}`
@@ -363,8 +363,8 @@ export default function AdminHomeScreen() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className={`${user?.role === 'supervisor' ? 'col-span-full' : 'lg:col-span-2'} bg-white rounded-[32px] md:rounded-[40px] p-6 md:p-8 border border-slate-50 shadow-sm flex flex-col gap-8`}>
           <div className="flex items-center justify-between">
             <div className="space-y-1">
-              <h3 className="text-base md:text-lg font-black text-slate-900 tracking-tight">مؤشر الانضباط الأسبوعي</h3>
-              <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest opacity-60">تحليل الأداء خلال 7 أيام</p>
+              <h3 className="text-base md:text-lg font-black text-slate-900  ">مؤشر الانضباط الأسبوعي</h3>
+              <p className="text-[9px] font-black text-slate-400 uppercase   opacity-60">تحليل الأداء خلال 7 أيام</p>
             </div>
             <div className="flex gap-4">
               <div className="flex items-center gap-2">
@@ -401,8 +401,8 @@ export default function AdminHomeScreen() {
             <div className="bg-white rounded-[32px] md:rounded-[40px] p-6 md:p-8 border border-slate-50 shadow-sm flex flex-col gap-6">
               <div className="flex items-center justify-between">
                 <div className="space-y-1">
-                  <h3 className="text-base font-black text-slate-900 tracking-tight">التقارير المالية</h3>
-                  <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest opacity-60">ملخص الأداء المالي</p>
+                  <h3 className="text-base font-black text-slate-900  ">التقارير المالية</h3>
+                  <p className="text-[9px] font-black text-slate-400 uppercase   opacity-60">ملخص الأداء المالي</p>
                 </div>
                 <div className="px-3 py-1 bg-emerald-50 text-emerald-600 rounded-full text-[9px] font-black border border-emerald-100">
                   +12.5%
@@ -418,7 +418,7 @@ export default function AdminHomeScreen() {
 
               <button 
                 onClick={() => navigate('/admin/salary')}
-                className="w-full py-4 bg-slate-50 hover:bg-slate-900 hover:text-white text-slate-400 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all group flex items-center justify-center gap-2 border border-slate-100"
+                className="w-full py-4 bg-slate-50 hover:bg-slate-900 hover:text-white text-slate-400 rounded-2xl text-[10px] font-black uppercase   transition-all group flex items-center justify-center gap-2 border border-slate-100"
               >
                 استكشاف التقارير المفصلة
                 <span className="material-symbols-outlined text-sm group-hover:translate-x-[-4px] transition-transform">arrow_left</span>
@@ -431,10 +431,10 @@ export default function AdminHomeScreen() {
       <section className="bg-white rounded-[32px] md:rounded-[40px] p-6 md:p-8 border border-slate-50 shadow-sm overflow-hidden">
         <div className="flex items-center justify-between mb-8">
           <div className="space-y-1">
-            <h3 className="text-base md:text-lg font-black text-slate-900 tracking-tight">النشاط الميداني المباشر</h3>
-            <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest opacity-60">سجل الحضور والتحركات</p>
+            <h3 className="text-base md:text-lg font-black text-slate-900  ">النشاط الميداني المباشر</h3>
+            <p className="text-[9px] font-black text-slate-400 uppercase   opacity-60">سجل الحضور والتحركات</p>
           </div>
-          <button className="text-[10px] font-black text-slate-400 hover:text-slate-900 transition-colors uppercase tracking-widest border border-slate-100 px-4 py-2 rounded-xl">عرض السجل الكامل</button>
+          <button className="text-[10px] font-black text-slate-400 hover:text-slate-900 transition-colors uppercase   border border-slate-100 px-4 py-2 rounded-xl">عرض السجل الكامل</button>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <AnimatePresence>
@@ -444,10 +444,10 @@ export default function AdminHomeScreen() {
                   <span className="material-symbols-outlined text-2xl">person</span>
                 </div>
                 <div className="flex-1">
-                  <p className="text-sm font-black text-slate-800 tracking-tight">{activity.userName}</p>
+                  <p className="text-sm font-black text-slate-800  ">{activity.userName}</p>
                   <div className="flex items-center gap-2 mt-0.5">
                     <span className={`w-1.5 h-1.5 rounded-full ${activity.status === 'leave' ? 'bg-blue-500' : activity.status === 'present' ? 'bg-emerald-500' : 'bg-amber-500'}`}></span>
-                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest opacity-60">
+                    <p className="text-[10px] font-bold text-slate-400 uppercase   opacity-60">
                       {activity.status === 'leave' ? 'إجازة' : activity.status === 'present' ? 'حضور' : 'متأخر'} • {activity.time}
                     </p>
                   </div>
@@ -475,11 +475,11 @@ function MetricCard({ label, value, icon, trend, color, onClick }: { label: stri
         <div className="w-8 h-8 md:w-10 md:h-10 bg-white/20 rounded-lg md:rounded-xl flex items-center justify-center backdrop-blur-sm">
           <span className="material-symbols-outlined text-lg md:text-xl">{icon}</span>
         </div>
-        <span className="text-[8px] md:text-[10px] font-black opacity-40 tracking-widest">{trend}</span>
+        <span className="text-[8px] md:text-[10px] font-black opacity-40  ">{trend}</span>
       </div>
       <div>
-        <p className="text-[8px] md:text-[10px] font-black opacity-60 uppercase tracking-widest mb-1">{label}</p>
-        <p className="text-xl md:text-3xl font-black tracking-tighter leading-none">{value}</p>
+        <p className="text-[8px] md:text-[10px] font-black opacity-60 uppercase   mb-1">{label}</p>
+        <p className="text-xl md:text-3xl font-black  er leading-none">{value}</p>
       </div>
     </motion.div>
   );
@@ -493,9 +493,9 @@ function FinancialMetric({ label, value, subValue, icon, color }: { label: strin
           <span className="material-symbols-outlined text-xl">{icon}</span>
         </div>
         <div className="space-y-0.5">
-          <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{label}</p>
+          <p className="text-[10px] font-black text-slate-400 uppercase  ">{label}</p>
           <div className="flex items-baseline gap-1">
-            <span className="text-sm font-black text-slate-900 tracking-tight">{value}</span>
+            <span className="text-sm font-black text-slate-900  ">{value}</span>
             <span className="text-[9px] font-bold text-slate-400">{subValue}</span>
           </div>
         </div>

@@ -199,13 +199,13 @@ export default function AdminScheduleScreen() {
               >
                 <div className="text-right">
                   <h4 className="font-black text-slate-900 text-sm mb-0.5">{entry.userName}</h4>
-                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{entry.role}</p>
+                  <p className="text-[10px] font-black text-slate-400 uppercase  ">{entry.role}</p>
                   <p className="text-[9px] font-black text-red-500 mt-1">{formatTime12h(entry.startTime)} - {formatTime12h(entry.endTime)}</p>
                 </div>
 
                 <div className="flex items-center gap-4">
                   <div className="px-4 py-2 bg-slate-50 rounded-xl border border-slate-100">
-                    <span className="text-[10px] font-black text-slate-400 tracking-wider">
+                    <span className="text-[10px] font-black text-slate-400  ">
                       {entry.workType === 'shift' ? 'شفت كامل' : 'نص شفت'}
                     </span>
                   </div>
@@ -277,7 +277,7 @@ export default function AdminScheduleScreen() {
                 <div className="space-y-6">
                   {/* Employee Selection */}
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mr-2">اختيار الموظف</label>
+                    <label className="text-[10px] font-black text-slate-400 uppercase   block mr-2">اختيار الموظف</label>
                     <select 
                       value={modalUserId}
                       onChange={(e) => setModalUserId(e.target.value)}
@@ -292,7 +292,7 @@ export default function AdminScheduleScreen() {
 
                   {/* Job Title (Auto) */}
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mr-2">المنصب</label>
+                    <label className="text-[10px] font-black text-slate-400 uppercase   block mr-2">المنصب</label>
                     <input 
                       type="text"
                       readOnly
@@ -303,7 +303,7 @@ export default function AdminScheduleScreen() {
 
                   {/* Shift Type */}
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mr-2">نوع المناوبة</label>
+                    <label className="text-[10px] font-black text-slate-400 uppercase   block mr-2">نوع المناوبة</label>
                     <div className="flex gap-4">
                       <button 
                         onClick={() => setModalWorkType('shift')}
@@ -323,7 +323,7 @@ export default function AdminScheduleScreen() {
                   {/* Time Range */}
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mr-2">من</label>
+                      <label className="text-[10px] font-black text-slate-400 uppercase   block mr-2">من</label>
                       <input 
                         type="time"
                         value={modalStartTime}
@@ -332,7 +332,7 @@ export default function AdminScheduleScreen() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mr-2">إلى</label>
+                      <label className="text-[10px] font-black text-slate-400 uppercase   block mr-2">إلى</label>
                       <input 
                         type="time"
                         value={modalEndTime}

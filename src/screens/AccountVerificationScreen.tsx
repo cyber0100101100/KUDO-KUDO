@@ -128,8 +128,8 @@ export default function AccountVerificationScreen() {
 
           {/* Dev/Demo Mode Code Display */}
           <div className="bg-amber-50 border border-amber-100 rounded-2xl p-4 mb-8 text-center">
-            <p className="text-[10px] text-amber-600 font-bold uppercase tracking-wider mb-1">وضع التطوير (تجنب Gmail)</p>
-            <p className="text-lg font-mono font-bold text-amber-800 tracking-[0.5em]">
+            <p className="text-[10px] text-amber-600 font-bold uppercase   mb-1">وضع التطوير (تجنب Gmail)</p>
+            <p className="text-lg font-mono font-bold text-amber-800  ">
               {userData?.verificationCode || '------'}
             </p>
             <p className="text-[10px] text-amber-400 mt-1">استخدم هذا الرمز للتفعيل فوراً</p>

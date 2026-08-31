@@ -206,12 +206,12 @@ export default function ChatRoomScreen() {
             <span className="material-symbols-outlined">arrow_forward</span>
           </button>
           <div className="flex flex-col items-center flex-1">
-            <h1 className="text-lg md:text-xl font-black text-slate-900 tracking-tight">
+            <h1 className="text-lg md:text-xl font-black text-slate-900  ">
               {recipient?.name || 'محادثة'}
             </h1>
             <div className="flex items-center gap-1.5 mt-0.5">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">متصل الآن</span>
+              <span className="text-[10px] font-bold text-slate-400 uppercase  ">متصل الآن</span>
             </div>
           </div>
           <button className="w-10 h-10 rounded-xl border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-50 transition-colors">
