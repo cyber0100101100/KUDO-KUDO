@@ -440,8 +440,8 @@ export default function AdminSalaryScreen() {
   };
 
   return (
-    <div className="font-sans rtl flex flex-col min-h-screen antialiased bg-slate-50 pb-20">
-      <AdminTopHeader showBackButton />
+    <div className="font-sans rtl flex flex-col min-h-screen antialiased bg-white pb-20 pt-16 md:pt-20">
+      <AdminTopHeader title="إدارة الرواتب" />
       
       <div className="p-6 md:p-12 max-w-7xl mx-auto w-full space-y-10 md:space-y-16">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-slate-100 pb-10">
@@ -566,7 +566,7 @@ export default function AdminSalaryScreen() {
                       </div>
                     </div>
 
-                    <div className="space-y-3 md:space-y-4 mb-8 md:mb-12 bg-slate-50/30 p-6 rounded-3xl border border-slate-100/50">
+                    <div className="space-y-3 md:space-y-4 mb-8 md:mb-12 bg-white p-6 rounded-3xl border border-slate-100/50">
                       <label className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest px-2 opacity-60">الراتب الأساسي (IQD)</label>
                       <div className="relative group">
                         <div className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 transition-transform group-focus-within:scale-110">
@@ -595,7 +595,7 @@ export default function AdminSalaryScreen() {
                             value={bonus}
                             onChange={(e) => setBonus(e.target.value)}
                             placeholder="0.00"
-                            className="w-full pl-12 md:pl-16 pr-6 md:pr-8 py-4 md:py-5 bg-slate-50/50 border border-slate-100 rounded-2xl md:rounded-[28px] focus:outline-none focus:border-green-100 focus:bg-white focus:shadow-xl focus:shadow-green-500/5 transition-all font-black text-lg md:text-xl text-slate-900"
+                            className="w-full pl-12 md:pl-16 pr-6 md:pr-8 py-4 md:py-5 bg-white border border-slate-100 rounded-2xl md:rounded-[28px] focus:outline-none focus:border-green-100 focus:bg-white focus:shadow-xl focus:shadow-green-500/5 transition-all font-black text-lg md:text-xl text-slate-900"
                           />
                         </div>
                       </div>
@@ -611,7 +611,7 @@ export default function AdminSalaryScreen() {
                             value={advance}
                             onChange={(e) => setAdvance(e.target.value)}
                             placeholder="0.00"
-                            className="w-full pl-12 md:pl-16 pr-6 md:pr-8 py-4 md:py-5 bg-slate-50/50 border border-slate-100 rounded-2xl md:rounded-[28px] focus:outline-none focus:border-orange-100 focus:bg-white focus:shadow-xl focus:shadow-orange-500/5 transition-all font-black text-lg md:text-xl text-slate-900"
+                            className="w-full pl-12 md:pl-16 pr-6 md:pr-8 py-4 md:py-5 bg-white border border-slate-100 rounded-2xl md:rounded-[28px] focus:outline-none focus:border-orange-100 focus:bg-white focus:shadow-xl focus:shadow-orange-500/5 transition-all font-black text-lg md:text-xl text-slate-900"
                           />
                         </div>
                       </div>
@@ -627,7 +627,7 @@ export default function AdminSalaryScreen() {
                             value={deduction}
                             onChange={(e) => setDeduction(e.target.value)}
                             placeholder="0.00"
-                            className="w-full pl-12 md:pl-16 pr-6 md:pr-8 py-4 md:py-5 bg-slate-50/50 border border-slate-100 rounded-2xl md:rounded-[28px] focus:outline-none focus:border-red-100 focus:bg-white focus:shadow-xl focus:shadow-red-500/5 transition-all font-black text-lg md:text-xl text-slate-900"
+                            className="w-full pl-12 md:pl-16 pr-6 md:pr-8 py-4 md:py-5 bg-white border border-slate-100 rounded-2xl md:rounded-[28px] focus:outline-none focus:border-red-100 focus:bg-white focus:shadow-xl focus:shadow-red-500/5 transition-all font-black text-lg md:text-xl text-slate-900"
                           />
                         </div>
                       </div>
@@ -643,7 +643,7 @@ export default function AdminSalaryScreen() {
                             value={overtime}
                             onChange={(e) => setOvertime(e.target.value)}
                             placeholder="0.00"
-                            className="w-full pl-12 md:pl-16 pr-6 md:pr-8 py-4 md:py-5 bg-slate-50/50 border border-slate-100 rounded-2xl md:rounded-[28px] focus:outline-none focus:border-blue-100 focus:bg-white focus:shadow-xl focus:shadow-blue-500/5 transition-all font-black text-lg md:text-xl text-slate-900"
+                            className="w-full pl-12 md:pl-16 pr-6 md:pr-8 py-4 md:py-5 bg-white border border-slate-100 rounded-2xl md:rounded-[28px] focus:outline-none focus:border-blue-100 focus:bg-white focus:shadow-xl focus:shadow-blue-500/5 transition-all font-black text-lg md:text-xl text-slate-900"
                           />
                         </div>
                       </div>
@@ -656,7 +656,7 @@ export default function AdminSalaryScreen() {
                         onChange={(e) => setReason(e.target.value)}
                         placeholder="اكتب سبب المكافأة أو الخصم هنا للتوثيق..."
                         rows={4}
-                        className="w-full px-6 md:px-8 py-4 md:py-6 bg-slate-50/50 border border-slate-100 rounded-2xl md:rounded-[32px] focus:outline-none focus:border-[#E31E24] focus:bg-white focus:shadow-xl focus:shadow-red-500/5 transition-all font-black text-xs md:text-sm text-right text-slate-700 resize-none leading-relaxed"
+                        className="w-full px-6 md:px-8 py-4 md:py-6 bg-white border border-slate-100 rounded-2xl md:rounded-[32px] focus:outline-none focus:border-[#E31E24] focus:bg-white focus:shadow-xl focus:shadow-red-500/5 transition-all font-black text-xs md:text-sm text-right text-slate-700 resize-none leading-relaxed"
                       />
                     </div>
 

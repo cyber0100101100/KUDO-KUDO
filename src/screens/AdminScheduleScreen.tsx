@@ -4,6 +4,7 @@ import { collection, query, where, getDocs, addDoc, serverTimestamp } from 'fire
 import { db, auth, handleFirestoreError, OperationType } from '../lib/firebase';
 import { User } from '../types';
 import { useAuth } from '../hooks/useAuth';
+import AdminTopHeader from '../components/AdminTopHeader';
 
 interface ScheduleEntry {
   userId: string;
@@ -166,19 +167,8 @@ export default function AdminScheduleScreen() {
   const selectedEmployeeData = employees.find(e => e.uid === modalUserId);
 
   return (
-    <div className="font-sans rtl flex flex-col min-h-screen bg-slate-50 antialiased pb-24">
-      {/* Header */}
-      <div className="bg-white border-b border-slate-100 p-6 sticky top-0 z-20">
-        <div className="max-w-md mx-auto flex items-center justify-between">
-          <button onClick={() => window.history.back()} className="w-10 h-10 flex items-center justify-center text-slate-400">
-            <span className="material-symbols-outlined">arrow_forward</span>
-          </button>
-          <h1 className="text-xl font-black text-slate-900 tracking-tight">جدول المجموعة</h1>
-          <button className="w-10 h-10 flex items-center justify-center text-slate-400">
-            <span className="material-symbols-outlined">calendar_month</span>
-          </button>
-        </div>
-      </div>
+    <div className="font-sans rtl flex flex-col min-h-screen bg-white antialiased pb-24 pt-16 md:pt-20">
+      <AdminTopHeader title="جدول المجموعة" />
 
       <div className="max-w-md mx-auto w-full px-6 py-8 flex flex-col flex-1">
         {/* Date Selector */}
@@ -262,24 +252,23 @@ export default function AdminScheduleScreen() {
       {/* Add Employee Modal */}
       <AnimatePresence>
         {isModalOpen && (
-          <>
+          <div className="fixed inset-0 z-[100] flex items-center justify-center px-6">
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsModalOpen(false)}
-              className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-40"
+              className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
             />
             <motion.div 
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed bottom-0 left-0 right-0 bg-white rounded-t-[40px] p-8 z-50 shadow-2xl overflow-y-auto max-h-[90vh]"
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="bg-white rounded-[40px] w-full max-w-md p-8 shadow-2xl relative z-10 overflow-hidden max-h-[90vh] overflow-y-auto"
             >
               <div className="max-w-md mx-auto">
                 <div className="flex items-center justify-between mb-8">
-                  <button onClick={() => setIsModalOpen(false)} className="w-10 h-10 flex items-center justify-center text-slate-400">
+                  <button onClick={() => setIsModalOpen(false)} className="w-10 h-10 flex items-center justify-center text-slate-400 bg-slate-50 rounded-full">
                     <span className="material-symbols-outlined">close</span>
                   </button>
                   <h2 className="text-xl font-black text-slate-900">إضافة موظف إلى جدول غداً</h2>
@@ -363,7 +352,7 @@ export default function AdminScheduleScreen() {
                 </div>
               </div>
             </motion.div>
-          </>
+          </div>
         )}
       </AnimatePresence>
     </div>

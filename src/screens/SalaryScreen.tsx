@@ -74,8 +74,8 @@ export default function SalaryScreen() {
   const netSalary = baseSalary + bonus + overtime - deduction - advance;
 
   return (
-    <div className="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased font-sans rtl">
-      <div className="w-full bg-white min-h-screen relative flex flex-col pt-20">
+    <div className="bg-white text-slate-800 min-h-screen flex flex-col antialiased font-sans rtl pt-16 md:pt-20">
+      <div className="w-full bg-white min-h-screen relative flex flex-col">
         <header className="bg-white/90 backdrop-blur-xl px-4 py-3 md:px-6 md:py-4 flex items-center justify-between fixed top-0 left-0 right-0 z-50 border-b border-slate-100/50 shadow-sm">
           <button onClick={() => navigate(-1)} className="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-slate-100 transition-all active:scale-95">
             <span className="material-symbols-outlined text-lg md:text-xl">arrow_forward</span>
@@ -173,7 +173,7 @@ export default function SalaryScreen() {
               valueColor="text-red-600" 
             />
             
-            <div className="flex justify-between items-center p-6 md:p-8 bg-slate-50/50">
+            <div className="flex justify-between items-center p-6 md:p-8 bg-white">
               <span className="text-sm md:text-lg font-black text-slate-900 uppercase tracking-widest">صافي الراتب النهائي</span>
               <div className="flex items-baseline gap-1.5">
                 <span className="text-2xl md:text-3xl font-black text-[#E31E24] tracking-tighter">{netSalary.toLocaleString()}</span>
@@ -194,7 +194,7 @@ export default function SalaryScreen() {
 
 function SalaryRow({ label, sub, value, valueColor = 'text-slate-900', badge, badgeColor }: { label: string, sub: string, value: string, valueColor?: string, badge?: string, badgeColor?: string }) {
   return (
-    <div className="flex justify-between items-center p-6 md:p-8 border-b border-slate-50 group hover:bg-slate-50/30 transition-colors">
+    <div className="flex justify-between items-center p-6 md:p-8 border-b border-slate-50 group hover:bg-white transition-colors">
       <div className="flex flex-col text-right">
         <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em] mb-1">{label}</span>
         <span className="text-xs md:text-sm font-black text-slate-900 tracking-tight">{sub}</span>

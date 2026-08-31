@@ -275,7 +275,7 @@ export default function AdminHomeScreen() {
     <div className="min-h-screen flex flex-col font-sans rtl">
       <AdminTopHeader />
       
-      <div className="flex-1 space-y-4 md:space-y-8 p-4 md:p-8 antialiased pb-24 md:pb-10">
+      <div className="flex-1 space-y-4 md:space-y-8 p-4 md:p-8 antialiased pb-24 md:pb-10 pt-16 md:pt-20">
         <header className="flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6">
         <div className="space-y-1">
           <p className="text-[8px] md:text-[10px] font-black text-[#E31E24] uppercase tracking-[0.3em] opacity-80">نظام إدارة الكوادر المتقدم</p>

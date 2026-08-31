@@ -488,7 +488,7 @@ export default function AttendanceScreen() {
   }, [stream]);
 
   return (
-    <div className="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased pt-16">
+    <div className="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased pt-16 md:pt-20">
       <div className="w-full bg-white min-h-screen relative flex flex-col">
         <header className="bg-white/90 backdrop-blur-xl px-4 py-3 md:px-6 md:py-4 flex items-center justify-between fixed top-0 left-0 right-0 z-50 border-b border-slate-100/50 shadow-sm">
           <button onClick={() => navigate('/employee/home')} className="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-slate-100 transition-all active:scale-95">

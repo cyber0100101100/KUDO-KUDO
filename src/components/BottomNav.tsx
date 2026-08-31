@@ -18,12 +18,12 @@ export default function BottomNav() {
         <Link 
           key={item.path}
           to={item.path} 
-          className={`flex flex-col items-center gap-1 transition-all flex-1 px-1 ${path === item.path ? 'text-[#E31E24]' : 'text-slate-400'}`}
+          className={`flex flex-col items-center gap-1 transition-all flex-1 px-1 relative group ${path === item.path ? 'text-[#E31E24]' : 'text-slate-400'}`}
         >
-          <span className={`material-symbols-outlined text-2xl ${path === item.path ? 'filled-icon' : ''}`}>
+          <span className={`material-symbols-outlined text-2xl transition-transform ${path === item.path ? 'filled-icon scale-110' : 'group-active:scale-90'}`}>
             {item.icon}
           </span>
-          <span className="text-[8px] font-black uppercase tracking-tighter text-center">{item.label}</span>
+          <span className={`text-[8px] font-black uppercase tracking-tighter text-center transition-colors ${path === item.path ? 'text-[#E31E24]' : 'text-slate-400'}`}>{item.label}</span>
         </Link>
       ))}
     </nav>

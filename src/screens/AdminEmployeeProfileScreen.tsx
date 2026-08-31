@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { collection, query, where, getDocs, doc, getDoc, updateDoc, addDoc, serverTimestamp } from 'firebase/firestore';
 import { Attendance, User } from '../types';
 import { useAuth } from '../hooks/useAuth';
+import AdminTopHeader from '../components/AdminTopHeader';
 
 export default function AdminEmployeeProfileScreen() {
   const { id } = useParams<{ id: string }>();
@@ -119,24 +120,22 @@ export default function AdminEmployeeProfileScreen() {
   }
 
   return (
-    <div className="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased" dir="rtl">
-      {/* Header */}
-      <header className="bg-white/90 backdrop-blur-xl px-6 py-4 flex items-center justify-between sticky top-0 z-50 border-b border-slate-100/50 shadow-sm">
-        <button onClick={() => navigate(-1)} className="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-slate-100 transition-all active:scale-95">
-          <span className="material-symbols-outlined text-xl">chevron_right</span>
-        </button>
-        <h1 className="text-base font-black text-slate-900 tracking-tight">ملف الموظف</h1>
-        <button 
-          onClick={() => {
-            setNewJobTitle(employee.jobTitle || '');
-            setNewDisplayName(employee.displayName || '');
-            setIsEditing(true);
-          }}
-          className="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-50 text-[#E31E24] hover:bg-red-50 transition-all active:scale-95 border border-red-100/50"
-        >
-          <span className="material-symbols-outlined text-xl">edit_note</span>
-        </button>
-      </header>
+    <div className="bg-white text-slate-800 min-h-screen flex flex-col antialiased pt-16 md:pt-20" dir="rtl">
+      <AdminTopHeader 
+        title="ملف الموظف"
+        rightAction={
+          <button 
+            onClick={() => {
+              setNewJobTitle(employee.jobTitle || '');
+              setNewDisplayName(employee.displayName || '');
+              setIsEditing(true);
+            }}
+            className="w-9 h-9 md:w-10 md:h-10 flex-shrink-0 flex items-center justify-center rounded-xl bg-slate-50 text-[#E31E24] hover:bg-red-50 transition-all active:scale-95 border border-red-100/50"
+          >
+            <span className="material-symbols-outlined text-lg md:text-xl">edit_note</span>
+          </button>
+        }
+      />
 
       <main className="flex-1 p-6 pb-32 flex flex-col gap-6 max-w-2xl mx-auto w-full">
         {/* Employee Profile Section */}
@@ -145,7 +144,7 @@ export default function AdminEmployeeProfileScreen() {
           
           <div className="relative">
             <img 
-              className="w-28 h-28 md:w-32 md:h-32 rounded-3xl md:rounded-[40px] object-cover border-4 border-white shadow-xl" 
+              className="w-24 h-24 md:w-28 md:h-28 rounded-3xl object-cover border-4 border-white shadow-xl" 
               src={employee.profileImageUrl || "https://ui-avatars.com/api/?name=" + employee.displayName} 
               alt={employee.displayName} 
             />
@@ -186,7 +185,14 @@ export default function AdminEmployeeProfileScreen() {
               <InfoItem label="رقم الهاتف" value={employee.phoneNumber || 'غير متوفر'} icon="phone" />
               <InfoItem label="العنوان" value={employee.address || 'غير محدد'} icon="home" />
               <InfoItem label="المسمى الوظيفي" value={employee.jobTitle || 'غير محدد'} icon="work" />
-              <InfoItem label="تاريخ الانضمام" value="12 يناير 2024" icon="calendar_today" />
+              <InfoItem 
+                label="تاريخ الانضمام" 
+                value={employee.joinedAt ? 
+                  new Date(employee.joinedAt.seconds * 1000).toLocaleDateString('ar-EG', { day: 'numeric', month: 'long', year: 'numeric' }) : 
+                  '12 يناير 2024'
+                } 
+                icon="calendar_today" 
+              />
             </div>
           </div>
         </section>

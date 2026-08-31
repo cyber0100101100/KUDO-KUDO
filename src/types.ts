@@ -30,6 +30,7 @@ export interface User {
   cycleStartDate?: string; // ISO date when the 30-day cycle started
   workDaysCount?: number; // Current day in the 30-day cycle (1-30)
   lateCount?: number; // Number of times late in current 30-day cycle
+  joinedAt?: any; // Date when user joined the group
 }
 
 export interface Schedule {

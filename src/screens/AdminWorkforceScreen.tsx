@@ -6,6 +6,7 @@ import { getAuth } from 'firebase/auth';
 import { db, auth } from '../lib/firebase';
 import { User, Notification, Group } from '../types';
 import { useAuth } from '../hooks/useAuth';
+import AdminTopHeader from '../components/AdminTopHeader';
 
 type ModalType = 'none' | 'bonus' | 'deduction' | 'dismiss' | 'promote' | 'revoke' | 'leave' | 'absent' | 'edit_profile' | 'edit_name' | 'create_group';
 
@@ -344,29 +345,13 @@ export default function AdminWorkforceScreen() {
   ];
 
   return (
-    <div className="font-sans rtl flex flex-col min-h-screen bg-slate-50 antialiased pb-24">
-      {/* Top Navigation Bar */}
-      <div className="bg-white px-6 py-4 border-b border-slate-100 flex items-center justify-between sticky top-0 z-30">
-        <div className="w-10 h-10 rounded-full overflow-hidden border border-slate-200">
-           <img src="https://i.pravatar.cc/150?u=admin" alt="Admin" className="w-full h-full object-cover" />
-        </div>
-        <div className="text-center">
-          <h2 className="text-[#E31E24] font-black text-xl tracking-tight">كودو كودو</h2>
-          <p className="text-[10px] font-bold text-slate-400">مدير النظام</p>
-        </div>
-        <button 
-          onClick={() => navigate('/admin/notifications')}
-          className="w-10 h-10 flex items-center justify-center text-slate-400 relative"
-        >
-          <span className="material-symbols-outlined">notifications</span>
-          <div className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></div>
-        </button>
-      </div>
+    <div className="font-sans rtl flex flex-col min-h-screen bg-white antialiased pb-24 pt-16 md:pt-20">
+      <AdminTopHeader title="إدارة الموظفين" />
 
       <div className="max-w-4xl mx-auto w-full px-6 py-8 md:py-12">
         {/* Header Section */}
         <div className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-black text-slate-900">إدارة الموظفين</h1>
+          <h1 className="text-2xl md:text-3xl font-black text-slate-900">إدارة الموظفين</h1>
           
           <div className="relative group">
             <button 

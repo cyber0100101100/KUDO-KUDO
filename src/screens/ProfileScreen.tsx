@@ -152,7 +152,7 @@ export default function ProfileScreen() {
   if (!user) return null;
 
   return (
-    <div className="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased pt-16" dir="rtl">
+    <div className="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased pt-16 md:pt-20" dir="rtl">
       {/* Header */}
       <header className="bg-white/90 backdrop-blur-xl px-4 py-3 md:px-6 md:py-4 flex items-center justify-between fixed top-0 left-0 right-0 z-50 border-b border-slate-100/50 shadow-sm">
         <button onClick={() => navigate(-1)} className="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-slate-100 transition-all active:scale-95">
@@ -165,6 +165,46 @@ export default function ProfileScreen() {
       </header>
 
       <main className="flex-1 p-6 pb-32 flex flex-col gap-6 max-w-2xl mx-auto w-full">
+        {/* Profile Picture Section */}
+        <section className="flex flex-col items-center gap-4 py-4">
+          <div className="relative group">
+            <div className="w-24 h-24 md:w-28 md:h-28 rounded-3xl bg-white border-4 border-white shadow-xl overflow-hidden relative group-hover:scale-[1.02] transition-transform duration-500">
+              {editForm.profileImageUrl ? (
+                <img 
+                  src={editForm.profileImageUrl} 
+                  alt={user.displayName} 
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="w-full h-full bg-slate-100 flex items-center justify-center text-slate-300">
+                  <span className="material-symbols-outlined text-4xl">person</span>
+                </div>
+              )}
+              {isSaving && (
+                <div className="absolute inset-0 bg-white/60 backdrop-blur-sm flex items-center justify-center">
+                  <div className="w-6 h-6 border-3 border-[#E31E24]/30 border-t-[#E31E24] rounded-full animate-spin"></div>
+                </div>
+              )}
+            </div>
+            <button 
+              onClick={() => fileInputRef.current?.click()}
+              className="absolute -bottom-1 -right-1 w-9 h-9 bg-[#E31E24] text-white rounded-xl shadow-lg shadow-red-200 flex items-center justify-center active:scale-90 transition-all border-2 border-white"
+            >
+              <span className="material-symbols-outlined text-xl">add_a_photo</span>
+            </button>
+            <input 
+              type="file" 
+              ref={fileInputRef} 
+              onChange={handleFileChange} 
+              accept="image/*" 
+              className="hidden" 
+            />
+          </div>
+          <div className="text-center">
+            <h2 className="text-xl font-black text-slate-900 tracking-tight">{user.displayName}</h2>
+            <p className="text-[10px] font-black text-[#E31E24] uppercase tracking-[0.2em] mt-1">{user.jobTitle || 'موظف'}</p>
+          </div>
+        </section>
 
         {/* Personal Information Section */}
         <section className="space-y-4">
@@ -175,7 +215,14 @@ export default function ProfileScreen() {
               <InfoItem label="رقم الهاتف" value={user.phoneNumber || 'غير متوفر'} icon="phone" />
               <InfoItem label="العنوان" value={user.address || 'غير محدد'} icon="home" />
               <InfoItem label="المسمى الوظيفي" value={user.jobTitle || 'غير محدد'} icon="work" />
-              <InfoItem label="تاريخ الانضمام" value="12 يناير 2024" icon="calendar_today" />
+              <InfoItem 
+                label="تاريخ الانضمام" 
+                value={user.joinedAt ? 
+                  new Date(user.joinedAt.seconds * 1000).toLocaleDateString('ar-EG', { day: 'numeric', month: 'long', year: 'numeric' }) : 
+                  '12 يناير 2024'
+                } 
+                icon="calendar_today" 
+              />
             </div>
           </div>
         </section>

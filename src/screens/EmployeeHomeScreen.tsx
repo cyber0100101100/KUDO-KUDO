@@ -71,8 +71,8 @@ export default function EmployeeHomeScreen() {
   if (!user) return null;
 
   return (
-    <div className="bg-slate-50 text-slate-800 min-h-screen pb-24">
-      <header className="bg-white/80 backdrop-blur-xl px-4 py-3 md:px-6 md:py-4 flex items-center justify-between sticky top-0 z-50 border-b border-slate-100/50 shadow-sm">
+    <div className="bg-slate-50 text-slate-800 min-h-screen pb-24 pt-16 md:pt-20">
+      <header className="bg-white/80 backdrop-blur-xl px-4 py-3 md:px-6 md:py-4 flex items-center justify-between fixed top-0 left-0 right-0 z-50 border-b border-slate-100/50 shadow-sm">
         <div className="relative">
           <button 
             onClick={() => navigate('/employee/notifications')}

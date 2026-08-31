@@ -299,7 +299,8 @@ export default function NotificationsScreen() {
         } else if (type === 'group_join' && reqData.groupId) {
           await updateDoc(doc(db, 'users', userId), { 
             groupStatus: 'joined',
-            groupId: reqData.groupId
+            groupId: reqData.groupId,
+            joinedAt: serverTimestamp()
           });
           await updateDoc(doc(db, 'groups', reqData.groupId), {
             employeeCount: increment(1)
@@ -479,7 +480,7 @@ export default function NotificationsScreen() {
                     <p className="text-[10px] font-bold text-slate-400">{getRequestLabel(req)}</p>
                   </div>
                 </div>
-                <div className="bg-slate-50 p-4 rounded-2xl">
+                <div className="bg-white p-4 rounded-2xl border border-slate-100">
                   <p className="text-[10px] font-black text-slate-400 mb-1">السبب</p>
                   <p className="text-xs font-bold text-slate-700 italic">"{req.reason || 'لا يوجد'}"</p>
                 </div>
@@ -532,7 +533,7 @@ export default function NotificationsScreen() {
           >
             {!notif.isRead && <div className="absolute top-6 right-6 w-3 h-3 bg-[#E31E24] rounded-full border-2 border-white shadow-sm"></div>}
             <div className="flex gap-4 items-start pr-6">
-              <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 ${notif.isRead ? 'bg-slate-50 text-slate-400' : 'bg-red-50 text-[#E31E24]'}`}>
+              <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 ${notif.isRead ? 'bg-white border border-slate-100 text-slate-400' : 'bg-red-50 text-[#E31E24]'}`}>
                 <span className="material-symbols-outlined filled-icon">
                   {notif.type === 'attendance' ? 'schedule' : 
                    notif.type === 'salary' ? 'payments' : 
@@ -543,8 +544,8 @@ export default function NotificationsScreen() {
                 <h3 className="text-lg font-bold text-slate-800 mb-1 leading-tight">{notif.title}</h3>
                 <p className="text-sm text-slate-500 mb-4 font-medium leading-relaxed">{notif.message}</p>
                 <div className="flex justify-between items-center text-slate-400 text-xs font-bold">
-                  <span className="bg-slate-50 px-2 py-1 rounded-lg">{new Date(notif.createdAt?.seconds * 1000 || Date.now()).toLocaleDateString('ar-EG', { day: 'numeric', month: 'long' })}</span>
-                  <span className="bg-slate-50 px-2 py-1 rounded-lg">{new Date(notif.createdAt?.seconds * 1000 || Date.now()).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })}</span>
+                  <span className="bg-white border border-slate-100 px-2 py-1 rounded-lg">{new Date(notif.createdAt?.seconds * 1000 || Date.now()).toLocaleDateString('ar-EG', { day: 'numeric', month: 'long' })}</span>
+                  <span className="bg-white border border-slate-100 px-2 py-1 rounded-lg">{new Date(notif.createdAt?.seconds * 1000 || Date.now()).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })}</span>
                 </div>
               </div>
             </div>
@@ -561,13 +562,18 @@ export default function NotificationsScreen() {
   };
 
   return (
-    <div className="bg-slate-50 text-slate-800 min-h-screen flex flex-col font-sans rtl">
-      <AdminTopHeader showBackButton />
+    <div className="bg-white text-slate-800 min-h-screen flex flex-col font-sans rtl pt-16 md:pt-20">
+      <AdminTopHeader 
+        title="التنبيهات" 
+        centerTitle={true} 
+        hideLogo={true} 
+        hideNotifications={true} 
+      />
       
-      <div className="w-full bg-white min-h-screen relative flex flex-col shadow-sm">
+      <div className="w-full bg-white flex-1 relative flex flex-col">
 
         <main className="flex-1 px-8 py-8 pb-32 flex flex-col gap-6 max-w-2xl mx-auto w-full">
-          <div className="flex bg-slate-100 rounded-2xl p-1.5 w-full">
+          <div className="flex bg-white border border-slate-100 rounded-2xl p-1.5 w-full">
             <button 
               onClick={() => setTab('general')}
               className={`flex-1 py-3 text-center rounded-xl text-xs font-black transition-all active:scale-95 ${tab === 'general' ? 'bg-white text-[#E31E24] shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
@@ -629,7 +635,7 @@ export default function NotificationsScreen() {
                     </div>
                   ) : chatUsers.length > 0 ? (
                     chatUsers.map((u) => (
-                      <div key={u.uid} className="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                      <div key={u.uid} className="flex items-center justify-between p-4 bg-white rounded-2xl border border-slate-100">
                         <div className="flex items-center gap-4">
                           <div className="w-12 h-12 rounded-xl overflow-hidden border border-white shadow-sm">
                             <img 

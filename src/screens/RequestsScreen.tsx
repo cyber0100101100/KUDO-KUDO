@@ -91,8 +91,8 @@ export default function RequestsScreen() {
   }
 
   return (
-    <div className="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
-      <div className="w-full bg-white min-h-screen relative flex flex-col shadow-sm pt-20">
+    <div className="bg-white text-slate-800 min-h-screen flex flex-col pt-16 md:pt-20">
+      <div className="w-full bg-white min-h-screen relative flex flex-col shadow-sm">
         <header className="bg-white/90 backdrop-blur-xl px-4 py-3 md:px-6 md:py-4 flex items-center justify-between fixed top-0 left-0 right-0 z-50 border-b border-slate-100/50 shadow-sm">
           <button onClick={() => navigate(-1)} className="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:bg-slate-100 transition-all active:scale-95">
             <span className="material-symbols-outlined text-lg md:text-xl">arrow_forward</span>
@@ -102,7 +102,7 @@ export default function RequestsScreen() {
         </header>
 
         <main className="flex-1 p-6 pb-32 flex flex-col gap-8 max-w-2xl mx-auto w-full">
-          <div className="flex bg-slate-100/50 rounded-[24px] p-1.5 border border-slate-200/40">
+          <div className="flex bg-white rounded-[24px] p-1.5 border border-slate-200/40">
             <button 
               onClick={() => setType('leave')}
               className={`flex-1 py-4 text-center rounded-[18px] text-[11px] font-black uppercase tracking-widest transition-all ${type === 'leave' ? 'bg-white text-slate-900 shadow-xl shadow-slate-200/50' : 'text-slate-400 hover:text-slate-600'}`}
@@ -143,7 +143,7 @@ export default function RequestsScreen() {
                         value={daysCount}
                         onChange={(e) => setDaysCount(e.target.value)}
                         placeholder="0"
-                        className="w-full bg-slate-50 border border-slate-100 text-slate-900 text-2xl font-black rounded-2xl p-5 focus:outline-none focus:border-[#E31E24] focus:ring-4 focus:ring-red-50/50 transition-all text-center tracking-tighter"
+                        className="w-full bg-white border border-slate-100 text-slate-900 text-2xl font-black rounded-2xl p-5 focus:outline-none focus:border-[#E31E24] focus:ring-4 focus:ring-red-50/50 transition-all text-center tracking-tighter"
                         dir="ltr"
                       />
                       <div className="absolute left-6 top-1/2 -translate-y-1/2 text-[10px] font-black text-slate-300 uppercase tracking-widest pointer-events-none">أيام</div>
@@ -172,7 +172,7 @@ export default function RequestsScreen() {
                 <div className="flex flex-col gap-2">
                   <div className="relative">
                     <input 
-                      className="w-full bg-slate-50 border border-slate-100 text-slate-900 text-3xl font-black rounded-2xl p-6 focus:outline-none focus:border-[#E31E24] focus:ring-4 focus:ring-red-50/50 transition-all text-center tracking-tighter" 
+                      className="w-full bg-white border border-slate-100 text-slate-900 text-3xl font-black rounded-2xl p-6 focus:outline-none focus:border-[#E31E24] focus:ring-4 focus:ring-red-50/50 transition-all text-center tracking-tighter" 
                       dir="ltr" 
                       placeholder="0" 
                       type="number"
@@ -208,7 +208,7 @@ export default function RequestsScreen() {
               </div>
               
               <textarea 
-                className="w-full bg-slate-50 border border-slate-100 text-slate-900 text-sm font-bold rounded-2xl p-6 h-48 resize-none focus:outline-none focus:border-[#E31E24] focus:ring-4 focus:ring-red-50/50 transition-all leading-relaxed" 
+                className="w-full bg-white border border-slate-100 text-slate-900 text-sm font-bold rounded-2xl p-6 h-48 resize-none focus:outline-none focus:border-[#E31E24] focus:ring-4 focus:ring-red-50/50 transition-all leading-relaxed" 
                 placeholder={`اكتب هنا سبب طلبك بالتفصيل...`}
                 value={reason}
                 onChange={(e) => setReason(e.target.value)}
