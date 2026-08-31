@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import { createServer as createViteServer } from 'vite';
 import { initializeApp, getApps } from 'firebase-admin/app';
-import { getFirestore, Timestamp } from 'firebase-admin/firestore';
+import { getFirestore, Timestamp, Firestore } from 'firebase-admin/firestore';
 import { getMessaging } from 'firebase-admin/messaging';
 import cron from 'node-cron';
 import { fileURLToPath } from 'url';
@@ -11,14 +11,28 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Initialize Firebase Admin
-if (!getApps().length) {
-  initializeApp({
-    projectId: "ai-studio-kudokudoattendan-839c77d2-2360-43bc-8a31-47e7e530e50e",
-  });
-}
+const projectID = process.env.PROJECT_ID || "ai-studio-kudokudoattendan-839c77d2-2360-43bc-8a31-47e7e530e50e";
 
-const db = getFirestore();
-const fcm = getMessaging();
+const app = !getApps().length ? initializeApp({
+  projectId: projectID,
+}) : getApps()[0];
+
+// In this environment, the PROJECT_ID often points to a project where the database is (default)
+const db = getFirestore(app);
+const fcm = getMessaging(app);
+
+console.log(`Firebase Admin initialized with Project ID: ${projectID}`);
+
+// Debug route to check DB connection
+async function testConnection() {
+  try {
+    const snap = await db.collection('users').limit(1).get();
+    console.log(`DB Connection Test: Success. Found ${snap.size} users.`);
+  } catch (err: any) {
+    console.error(`DB Connection Test: Failed. ${err.message}`);
+  }
+}
+testConnection();
 
 async function sendPushNotification(userId: string, title: string, body: string, data = {}) {
   try {
@@ -152,17 +166,19 @@ cron.schedule('*/2 * * * *', async () => {
     // For requests, we'll look for status changes. This is harder with simple polling 
     // but we can check updatedAt if available. Assuming simple added alerts for now.
 
-    // Alerts (Admin to all)
-    const alertsSnap = await db.collection('alerts')
+    // Notifications (replacing alerts)
+    const notificationsSnap = await db.collection('notifications')
       .where('createdAt', '>', lastPollTime)
       .get();
     
-    if (!alertsSnap.empty) {
+    if (!notificationsSnap.empty) {
       const usersSnap = await db.collection('users').get();
-      for (const alertDoc of alertsSnap.docs) {
-        const alertData = alertDoc.data();
-        for (const userDoc of usersSnap.docs) {
-          await sendPushNotification(userDoc.id, 'تنبيه إداري', alertData.message || alertData.title);
+      for (const notifDoc of notificationsSnap.docs) {
+        const notifData = notifDoc.data();
+        if (notifData.type === 'admin_alert' || notifData.type === 'broadcast') {
+          for (const userDoc of usersSnap.docs) {
+            await sendPushNotification(userDoc.id, 'تنبيه إداري', notifData.message || notifData.title);
+          }
         }
       }
     }

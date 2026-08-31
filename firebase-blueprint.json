@@ -131,6 +131,20 @@
         "createdBy": { "type": "string" }
       },
       "required": ["userId", "period", "createdAt"]
+    },
+    "ShiftSchedule": {
+      "title": "ShiftSchedule",
+      "description": "Planned work shifts for employees",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "startTime": { "type": "string", "description": "HH:mm format" },
+        "endTime": { "type": "string", "description": "HH:mm format" },
+        "status": { "type": "string", "enum": ["scheduled", "completed", "cancelled"] },
+        "notificationsSent": { "type": "object" }
+      },
+      "required": ["userId", "date", "startTime", "endTime", "status"]
     }
   },
   "firestore": {
@@ -169,6 +183,10 @@
     "/financial_records/{recordId}": {
       "schema": "FinancialRecord",
       "description": "Financial records for salary"
+    },
+    "/schedules/{scheduleId}": {
+      "schema": "ShiftSchedule",
+      "description": "Planned shifts"
     }
   }
 }
