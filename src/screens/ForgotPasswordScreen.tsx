@@ -109,7 +109,7 @@ export default function ForgotPasswordScreen() {
         </form>
 
         <div className="mt-12 w-full h-12 flex items-center justify-center opacity-20">
-          <img src="./logo_upscayl_4x_upscayl-standard-4x.png" alt="KUDO" className="h-full object-contain" />
+          <img src="/icon.png" alt="KUDO" className="h-full object-contain" />
         </div>
       </div>
     </div>
